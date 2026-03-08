@@ -8,6 +8,11 @@ import milestone2019 from "@/assets/milestone-2019.jpg";
 import milestone2021 from "@/assets/milestone-2021.jpg";
 import milestone2023 from "@/assets/milestone-2023.jpg";
 import milestone2025 from "@/assets/milestone-2025.jpg";
+import teamAbebe from "@/assets/team-abebe.jpg";
+import teamSara from "@/assets/team-sara.jpg";
+import teamDaniel from "@/assets/team-daniel.jpg";
+import teamMeron from "@/assets/team-meron.jpg";
+import teamYonas from "@/assets/team-yonas.jpg";
 
 const AnimatedCounter = ({ target, suffix = "" }: { target: number; suffix?: string }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -35,11 +40,11 @@ const AnimatedCounter = ({ target, suffix = "" }: { target: number; suffix?: str
 };
 
 const teamMembers = [
-  { name: "Abebe Kebede", role: "about.teamFounder", avatar: "AK" },
-  { name: "Sara Mulugeta", role: "about.teamOperations", avatar: "SM" },
-  { name: "Daniel Hailu", role: "about.teamGuide", avatar: "DH" },
-  { name: "Meron Tadesse", role: "about.teamMarketing", avatar: "MT" },
-  { name: "Yonas Girma", role: "about.teamLogistics", avatar: "YG" },
+  { name: "Abebe Kebede", role: "about.teamFounder", image: teamAbebe },
+  { name: "Sara Mulugeta", role: "about.teamOperations", image: teamSara },
+  { name: "Daniel Hailu", role: "about.teamGuide", image: teamDaniel },
+  { name: "Meron Tadesse", role: "about.teamMarketing", image: teamMeron },
+  { name: "Yonas Girma", role: "about.teamLogistics", image: teamYonas },
 ];
 
 const AboutEthiopia = () => {
@@ -179,8 +184,8 @@ const AboutEthiopia = () => {
                 transition={{ delay: i * 0.08 }}
                 className="glass-card hover-lift group rounded-2xl p-6 text-center"
               >
-                <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10 font-display text-xl font-bold text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                  {member.avatar}
+                <div className="mx-auto mb-4 h-24 w-24 overflow-hidden rounded-full ring-2 ring-primary/20 transition-all group-hover:ring-4 group-hover:ring-primary">
+                  <img src={member.image} alt={member.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
                 </div>
                 <h3 className="font-display text-base font-bold text-foreground">{member.name}</h3>
                 <p className="mt-1 font-body text-xs text-muted-foreground">{t(member.role)}</p>
