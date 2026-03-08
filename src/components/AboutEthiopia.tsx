@@ -121,7 +121,7 @@ const AboutEthiopia = () => {
             <span className="font-body text-sm tracking-widest text-primary uppercase">{t("about.timelineBadge")}</span>
             <h2 className="mt-3 font-display text-3xl font-bold text-foreground md:text-4xl">{t("about.timelineTitle")}</h2>
           </div>
-          <div className="relative mx-auto max-w-3xl">
+          <div className="relative mx-auto max-w-4xl">
             <div className="absolute left-4 top-0 bottom-0 w-px bg-border md:left-1/2" />
             {milestones.map((m, i) => (
               <motion.div
@@ -130,18 +130,30 @@ const AboutEthiopia = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className={`relative mb-8 flex items-center gap-6 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} pl-12 md:pl-0`}
+                className={`relative mb-12 flex items-center gap-6 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} pl-12 md:pl-0`}
               >
                 <div className={`hidden md:block flex-1 ${i % 2 === 0 ? "text-right" : "text-left"}`}>
-                  <div className="glass-card inline-block rounded-xl p-4">
-                    <span className="font-display text-lg font-bold text-primary">{m.year}</span>
-                    <p className="mt-1 font-body text-sm text-foreground">{m.title}</p>
+                  <div className="glass-card inline-block overflow-hidden rounded-2xl">
+                    <div className="aspect-[16/10] w-64 overflow-hidden">
+                      <img src={m.image} alt={m.title} className="h-full w-full object-cover transition-transform duration-500 hover:scale-110" loading="lazy" />
+                    </div>
+                    <div className="p-4">
+                      <span className="font-display text-xl font-bold text-primary">{m.year}</span>
+                      <p className="mt-1 font-body text-sm text-foreground">{m.title}</p>
+                    </div>
                   </div>
                 </div>
-                <div className="absolute left-2.5 md:left-1/2 md:-translate-x-1/2 h-3 w-3 rounded-full bg-primary ring-4 ring-background" />
+                <div className="absolute left-2.5 md:left-1/2 md:-translate-x-1/2 h-4 w-4 rounded-full bg-primary ring-4 ring-background shadow-lg" style={{ boxShadow: "var(--shadow-gold)" }} />
                 <div className="flex-1 md:hidden">
-                  <span className="font-display text-lg font-bold text-primary">{m.year}</span>
-                  <p className="font-body text-sm text-foreground">{m.title}</p>
+                  <div className="glass-card overflow-hidden rounded-2xl">
+                    <div className="aspect-video w-full overflow-hidden">
+                      <img src={m.image} alt={m.title} className="h-full w-full object-cover" loading="lazy" />
+                    </div>
+                    <div className="p-4">
+                      <span className="font-display text-lg font-bold text-primary">{m.year}</span>
+                      <p className="mt-1 font-body text-sm text-foreground">{m.title}</p>
+                    </div>
+                  </div>
                 </div>
                 <div className="hidden md:block flex-1" />
               </motion.div>
