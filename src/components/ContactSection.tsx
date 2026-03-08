@@ -1,13 +1,16 @@
 import { motion } from "framer-motion";
-import { Phone, Mail, MessageCircle, MapPin, Send, Upload, X, FileText } from "lucide-react";
+import { Phone, Mail, MessageCircle, MapPin, Send, Upload, X, FileText, Loader2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", whatsapp: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -18,17 +21,44 @@ const ContactSection = () => {
     { icon: MapPin, label: t("contact.office"), value: t("contact.officeValue"), action: "#" },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Build WhatsApp message with form data
-    const waNumber = formData.whatsapp || formData.phone;
-    const message = `New Inquiry from ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nWhatsApp: ${waNumber}\n\nMessage: ${formData.message}`;
-    const waLink = `https://wa.me/251998900160?text=${encodeURIComponent(message)}`;
-    window.open(waLink, "_blank");
-    setSubmitted(true);
-    setFormData({ name: "", email: "", phone: "", whatsapp: "", message: "" });
-    setFile(null);
-    setTimeout(() => setSubmitted(false), 4000);
+    setLoading(true);
+    try {
+      const { error } = await supabase.from("contact_inquiries").insert({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || null,
+        whatsapp: formData.whatsapp || null,
+        message: formData.message,
+      });
+
+      if (error) throw error;
+
+      // Send email notification (best-effort, don't block on failure)
+      supabase.functions.invoke("send-contact-email", {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          whatsapp: formData.whatsapp,
+          message: formData.message,
+        },
+      }).catch(console.error);
+
+      setSubmitted(true);
+      setFormData({ name: "", email: "", phone: "", whatsapp: "", message: "" });
+      setFile(null);
+      toast({ title: "Inquiry sent!", description: "We'll get back to you within 24 hours." });
+      setTimeout(() => setSubmitted(false), 4000);
+    } catch (err) {
+      console.error("Contact form error:", err);
+      toast({ title: "Something went wrong", description: "Please try again or contact us via WhatsApp.", variant: "destructive" });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -118,9 +148,9 @@ const ContactSection = () => {
                   )}
                 </div>
 
-                <Button type="submit" className="w-full gap-2 rounded-xl bg-primary py-3 font-body font-semibold text-primary-foreground hover:bg-gold-dark" style={{ background: "var(--gradient-gold)" }}>
-                  <Send className="h-4 w-4" />
-                  {t("contact.sendInquiry")}
+                <Button type="submit" disabled={loading} className="w-full gap-2 rounded-xl bg-primary py-3 font-body font-semibold text-primary-foreground hover:bg-gold-dark" style={{ background: "var(--gradient-gold)" }}>
+                  {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
+                  {loading ? "Sending..." : t("contact.sendInquiry")}
                 </Button>
               </form>
             )}
