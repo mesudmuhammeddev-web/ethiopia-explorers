@@ -121,48 +121,136 @@ const AboutEthiopia = () => {
         </motion.div>
 
         {/* Agency Timeline */}
-        <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-24">
-          <div className="text-center mb-12">
-            <span className="font-body text-sm tracking-widest text-primary uppercase">{t("about.timelineBadge")}</span>
-            <h2 className="mt-3 font-display text-3xl font-bold text-foreground md:text-4xl">{t("about.timelineTitle")}</h2>
+        <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-24 relative">
+          {/* Background decoration */}
+          <div className="absolute inset-0 -mx-6 rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/40 to-transparent" />
+            <div className="absolute top-1/3 left-1/3 w-72 h-72 rounded-full bg-primary/5 blur-[120px]" />
+            <div className="absolute bottom-1/3 right-1/4 w-56 h-56 rounded-full bg-accent/5 blur-[100px]" />
           </div>
-          <div className="relative mx-auto max-w-4xl">
-            <div className="absolute left-4 top-0 bottom-0 w-px bg-border md:left-1/2" />
-            {milestones.map((m, i) => (
+
+          <div className="relative z-10">
+            <div className="text-center mb-16">
+              <span className="font-body text-sm tracking-widest text-primary uppercase">{t("about.timelineBadge")}</span>
+              <h2 className="mt-3 font-display text-3xl font-bold text-foreground md:text-4xl">{t("about.timelineTitle")}</h2>
+            </div>
+            <div className="relative mx-auto max-w-4xl">
+              {/* Animated timeline spine */}
+              <div className="absolute left-4 top-0 bottom-0 md:left-1/2 md:-translate-x-px w-0.5 overflow-hidden">
+                <motion.div
+                  className="w-full bg-gradient-to-b from-primary/0 via-primary to-primary/0"
+                  initial={{ height: 0 }}
+                  whileInView={{ height: "100%" }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.5, ease: "easeOut" }}
+                />
+                {/* Traveling light pulse */}
+                <motion.div
+                  className="absolute left-0 w-full h-24 bg-gradient-to-b from-transparent via-primary/80 to-transparent"
+                  animate={{ top: ["-10%", "110%"] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
+                />
+              </div>
+
+              {milestones.map((m, i) => (
+                <motion.div
+                  key={m.year}
+                  initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15, type: "spring", stiffness: 80, damping: 16 }}
+                  className={`relative mb-16 flex items-center gap-8 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} pl-12 md:pl-0`}
+                >
+                  {/* Desktop card */}
+                  <div className={`hidden md:block flex-1 ${i % 2 === 0 ? "text-right" : "text-left"}`}>
+                    <motion.div
+                      whileHover={{ y: -6, transition: { type: "spring", stiffness: 300 } }}
+                      className="group glass-card inline-block overflow-hidden rounded-2xl border border-border/50 hover:border-primary/30 transition-all duration-500"
+                    >
+                      {/* Hover glow */}
+                      <div className="absolute -inset-1 rounded-2xl bg-gradient-to-b from-primary/10 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+                      <div className="relative">
+                        <div className="aspect-[16/10] w-64 overflow-hidden">
+                          <img src={m.image} alt={m.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+                          {/* Image overlay gradient */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-card/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        </div>
+                        <div className="p-4">
+                          <span className="font-display text-xl font-bold text-primary">{m.year}</span>
+                          <p className="mt-1 font-body text-sm text-foreground">{m.title}</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Center node with animated rings */}
+                  <div className="absolute left-2.5 md:left-1/2 md:-translate-x-1/2 z-10">
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.15 + 0.2, type: "spring", stiffness: 200 }}
+                      className="relative"
+                    >
+                      {/* Pulsing outer ring */}
+                      <motion.div
+                        className="absolute -inset-3 rounded-full border border-primary/30"
+                        animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
+                        transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.3 }}
+                      />
+                      <motion.div
+                        className="absolute -inset-1.5 rounded-full border border-primary/20"
+                        animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0, 0.3] }}
+                        transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.3 + 0.3 }}
+                      />
+                      <div className="h-5 w-5 rounded-full bg-primary shadow-lg" style={{ boxShadow: "0 0 20px hsl(var(--primary) / 0.5)" }} />
+                    </motion.div>
+                  </div>
+
+                  {/* Horizontal connector line (desktop) */}
+                  <motion.div
+                    className={`hidden md:block absolute top-1/2 h-px ${i % 2 === 0 ? "right-1/2 mr-3 left-[calc(50%-120px)]" : "left-1/2 ml-3 right-[calc(50%-120px)]"}`}
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.15 + 0.3, duration: 0.5 }}
+                    style={{ 
+                      transformOrigin: i % 2 === 0 ? "right" : "left",
+                      background: "linear-gradient(90deg, hsl(var(--primary) / 0.05), hsl(var(--primary) / 0.4), hsl(var(--primary) / 0.05))" 
+                    }}
+                  />
+
+                  {/* Mobile card */}
+                  <div className="flex-1 md:hidden">
+                    <motion.div
+                      whileHover={{ y: -4 }}
+                      className="glass-card overflow-hidden rounded-2xl border border-border/50"
+                    >
+                      <div className="aspect-video w-full overflow-hidden">
+                        <img src={m.image} alt={m.title} className="h-full w-full object-cover" loading="lazy" />
+                      </div>
+                      <div className="p-4">
+                        <span className="font-display text-lg font-bold text-primary">{m.year}</span>
+                        <p className="mt-1 font-body text-sm text-foreground">{m.title}</p>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  <div className="hidden md:block flex-1" />
+                </motion.div>
+              ))}
+
+              {/* End node */}
               <motion.div
-                key={m.year}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                className="absolute bottom-0 left-4 md:left-1/2 md:-translate-x-1/2 -translate-y-2"
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className={`relative mb-12 flex items-center gap-6 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} pl-12 md:pl-0`}
+                transition={{ delay: 0.8, type: "spring" }}
               >
-                <div className={`hidden md:block flex-1 ${i % 2 === 0 ? "text-right" : "text-left"}`}>
-                  <div className="glass-card inline-block overflow-hidden rounded-2xl">
-                    <div className="aspect-[16/10] w-64 overflow-hidden">
-                      <img src={m.image} alt={m.title} className="h-full w-full object-cover transition-transform duration-500 hover:scale-110" loading="lazy" />
-                    </div>
-                    <div className="p-4">
-                      <span className="font-display text-xl font-bold text-primary">{m.year}</span>
-                      <p className="mt-1 font-body text-sm text-foreground">{m.title}</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="absolute left-2.5 md:left-1/2 md:-translate-x-1/2 h-4 w-4 rounded-full bg-primary ring-4 ring-background shadow-lg" style={{ boxShadow: "var(--shadow-gold)" }} />
-                <div className="flex-1 md:hidden">
-                  <div className="glass-card overflow-hidden rounded-2xl">
-                    <div className="aspect-video w-full overflow-hidden">
-                      <img src={m.image} alt={m.title} className="h-full w-full object-cover" loading="lazy" />
-                    </div>
-                    <div className="p-4">
-                      <span className="font-display text-lg font-bold text-primary">{m.year}</span>
-                      <p className="mt-1 font-body text-sm text-foreground">{m.title}</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="hidden md:block flex-1" />
+                <div className="h-3 w-3 rounded-full bg-accent" style={{ boxShadow: "0 0 15px hsl(var(--accent) / 0.5)" }} />
               </motion.div>
-            ))}
+            </div>
           </div>
         </motion.div>
 
