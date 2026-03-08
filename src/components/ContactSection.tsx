@@ -137,9 +137,9 @@ const ContactSection = () => {
                   )}
                 </div>
 
-                <Button type="submit" className="w-full gap-2 rounded-xl bg-primary py-3 font-body font-semibold text-primary-foreground hover:bg-gold-dark" style={{ background: "var(--gradient-gold)" }}>
-                  <Send className="h-4 w-4" />
-                  {t("contact.sendInquiry")}
+                <Button type="submit" disabled={loading} className="w-full gap-2 rounded-xl bg-primary py-3 font-body font-semibold text-primary-foreground hover:bg-gold-dark" style={{ background: "var(--gradient-gold)" }}>
+                  {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
+                  {loading ? "Sending..." : t("contact.sendInquiry")}
                 </Button>
               </form>
             )}
