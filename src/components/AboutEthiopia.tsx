@@ -460,7 +460,7 @@ const AboutEthiopia = () => {
                 ))}
               </svg>
 
-              <div className="relative z-10 grid gap-8 sm:grid-cols-3 lg:grid-cols-5">
+              <div className="relative z-10 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-8 lg:grid-cols-5">
                 {teamMembers.map((member, i) => (
                   <motion.div
                     key={member.name}
