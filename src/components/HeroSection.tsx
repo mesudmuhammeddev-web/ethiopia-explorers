@@ -76,7 +76,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-background/50" />
 
       {/* Slide indicators */}
-      <div className="absolute bottom-24 left-1/2 z-20 flex -translate-x-1/2 gap-2">
+      <div className="absolute bottom-20 sm:bottom-24 left-1/2 z-20 flex -translate-x-1/2 gap-2">
         {slides.map((_, i) => (
           <button
             key={i}
@@ -100,7 +100,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="mx-auto max-w-4xl font-display text-5xl font-bold leading-tight text-foreground md:text-7xl lg:text-8xl"
+          className="mx-auto max-w-4xl font-display text-3xl font-bold leading-tight text-foreground sm:text-5xl md:text-7xl lg:text-8xl"
         >
           {t("hero.title1")}{" "}
           <span className="text-gradient-gold italic">{t("hero.title2")}</span> &{" "}
@@ -156,7 +156,7 @@ const HeroSection = () => {
           className="mx-auto mt-10 max-w-3xl"
         >
           <div className="glass-card rounded-2xl p-3">
-            <div className="grid gap-2 sm:grid-cols-4">
+            <div className="grid gap-2 grid-cols-1 sm:grid-cols-4">
               <div className="relative">
                 <select value={destination} onChange={(e) => setDestination(e.target.value)} className="w-full appearance-none rounded-xl bg-secondary/60 px-4 py-3.5 pr-10 font-body text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50">
                   <option value="">{t("hero.allDestinations")}</option>
@@ -189,7 +189,7 @@ const HeroSection = () => {
         </motion.div>
 
         {/* Stats */}
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.3 }} className="mx-auto mt-16 grid max-w-2xl grid-cols-4 gap-8">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.3 }} className="mx-auto mt-12 sm:mt-16 grid max-w-2xl grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8">
           {[
             { value: "500+", label: t("hero.happyTravelers") },
             { value: "50+", label: t("hero.uniqueTours") },
@@ -197,8 +197,8 @@ const HeroSection = () => {
             { value: "4.9", label: t("hero.starRating") },
           ].map((stat) => (
             <div key={stat.label}>
-              <div className="font-display text-3xl font-bold text-primary md:text-4xl">{stat.value}</div>
-              <div className="mt-1 font-body text-xs tracking-wider text-muted-foreground uppercase">{stat.label}</div>
+              <div className="font-display text-2xl font-bold text-primary sm:text-3xl md:text-4xl">{stat.value}</div>
+              <div className="mt-1 font-body text-[10px] sm:text-xs tracking-wider text-muted-foreground uppercase">{stat.label}</div>
             </div>
           ))}
         </motion.div>
