@@ -154,7 +154,7 @@ const ContactSection = () => {
 
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex-1 overflow-hidden rounded-2xl border border-border min-h-[280px]">
               <iframe
-                src="https://maps.google.com/maps?q=11.5936,37.3863&z=13&output=embed"
+                src="https://maps.google.com/maps?q=9.0192,38.7525&z=13&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: "280px" }}
