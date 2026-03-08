@@ -85,17 +85,21 @@ const types = ["All", "Nature", "Culture", "Adventure", "Islamic Heritage"];
 
 const LazyImage = ({ src, alt, className, onClick }: { src: string; alt: string; className?: string; onClick?: () => void }) => {
   const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
   const [imgSrc, setImgSrc] = useState(src);
 
   useEffect(() => {
     setImgSrc(src);
     setLoaded(false);
+    setError(false);
   }, [src]);
 
   return (
-    <div className={`relative overflow-hidden ${className || ""}`} onClick={onClick}>
+    <div className={`relative overflow-hidden bg-muted ${className || ""}`} onClick={onClick}>
       {!loaded && (
-        <div className="absolute inset-0 bg-muted animate-pulse" />
+        <div className="absolute inset-0 bg-muted animate-pulse flex items-center justify-center">
+          <Camera className="w-6 h-6 text-muted-foreground/40" />
+        </div>
       )}
       <img
         src={imgSrc}
@@ -104,10 +108,13 @@ const LazyImage = ({ src, alt, className, onClick }: { src: string; alt: string;
         decoding="async"
         onLoad={() => setLoaded(true)}
         onError={() => {
-          if (imgSrc !== "/placeholder.svg") setImgSrc("/placeholder.svg");
+          if (!error) {
+            setError(true);
+            setImgSrc("/placeholder.svg");
+          }
           setLoaded(true);
         }}
-        className={`w-full h-full object-cover transition-all duration-700 ${loaded ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}
+        className={`w-full h-full object-cover transition-all duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
       />
     </div>
   );
