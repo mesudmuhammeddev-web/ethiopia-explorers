@@ -23,6 +23,25 @@ export interface TourAvailability {
   totalSpots: number;
 }
 
+export interface ItineraryStep {
+  time: string;
+  title: string;
+  description: string;
+}
+
+export interface TourInclusion {
+  included: string[];
+  notIncluded: string[];
+}
+
+export interface TourReview {
+  name: string;
+  country: string;
+  rating: number;
+  text: string;
+  date: string;
+}
+
 export interface Tour {
   id: number;
   name: string;
@@ -33,7 +52,13 @@ export interface Tour {
   category: "Adventure" | "Culture" | "Relaxation";
   rating: number;
   image: string;
+  galleryImages: string[];
   description: string;
+  longDescription: string;
+  highlights: string[];
+  itinerary: ItineraryStep[];
+  inclusions: TourInclusion;
+  reviews: TourReview[];
   relatedTourIds: number[];
   availability: TourAvailability[];
 }
