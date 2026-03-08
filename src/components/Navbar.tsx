@@ -5,6 +5,7 @@ import { Menu, X, Phone, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
+  { key: "about", href: "#about" },
   { key: "destinations", href: "#destinations" },
   { key: "tours", href: "#tours" },
   { key: "experiences", href: "#experiences" },
