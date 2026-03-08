@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone, Globe } from "lucide-react";
+import { Menu, X, Phone, Globe, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
@@ -13,17 +13,26 @@ const navLinks = [
 ];
 
 const languages = [
-  { code: "en", flag: "🇬🇧" },
-  { code: "fr", flag: "🇫🇷" },
-  { code: "de", flag: "🇩🇪" },
-  { code: "es", flag: "🇪🇸" },
+  { code: "en", flag: "🇬🇧", label: "English" },
+  { code: "fr", flag: "🇫🇷", label: "Français" },
+  { code: "de", flag: "🇩🇪", label: "Deutsch" },
+  { code: "es", flag: "🇪🇸", label: "Español" },
 ];
+
+const resolveLanguage = (lng: string): string => {
+  const base = lng.split("-")[0].split("_")[0].toLowerCase();
+  return languages.find((l) => l.code === base) ? base : "en";
+};
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const langRef = useRef<HTMLDivElement>(null);
+
+  const activeLang = resolveLanguage(i18n.language);
+  const currentLang = languages.find((l) => l.code === activeLang) || languages[0];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -31,7 +40,24 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const currentLang = languages.find((l) => l.code === i18n.language) || languages[0];
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false);
+      }
+    };
+    if (langOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [langOpen]);
+
+  const switchLanguage = (code: string) => {
+    i18n.changeLanguage(code);
+    localStorage.setItem("i18nextLng", code);
+    setLangOpen(false);
+  };
 
   return (
     <motion.nav
@@ -60,34 +86,39 @@ const Navbar = () => {
           ))}
 
           {/* Language Switcher */}
-          <div className="relative">
+          <div className="relative" ref={langRef}>
             <button
               onClick={() => setLangOpen(!langOpen)}
               className="flex items-center gap-1.5 rounded-lg bg-secondary px-3 py-1.5 font-body text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+              aria-expanded={langOpen}
+              aria-haspopup="listbox"
             >
               <Globe className="h-3.5 w-3.5" />
-              {currentLang.flag} {t(`language.${currentLang.code}`)}
+              {currentLang.flag} {currentLang.label}
             </button>
             <AnimatePresence>
               {langOpen && (
                 <motion.div
-                  initial={{ opacity: 0, y: -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  className="absolute right-0 top-full mt-2 overflow-hidden rounded-xl glass-card min-w-[140px]"
+                  initial={{ opacity: 0, y: -8, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -8, scale: 0.95 }}
+                  transition={{ duration: 0.15 }}
+                  className="absolute right-0 top-full mt-2 overflow-hidden rounded-xl glass-card min-w-[160px] shadow-lg"
+                  role="listbox"
                 >
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
-                      onClick={() => {
-                        i18n.changeLanguage(lang.code);
-                        setLangOpen(false);
-                      }}
-                      className={`flex w-full items-center gap-2 px-4 py-2.5 font-body text-xs transition-colors hover:bg-secondary ${
-                        i18n.language === lang.code ? "text-primary font-semibold" : "text-foreground"
+                      onClick={() => switchLanguage(lang.code)}
+                      role="option"
+                      aria-selected={activeLang === lang.code}
+                      className={`flex w-full items-center gap-2.5 px-4 py-2.5 font-body text-xs transition-colors hover:bg-secondary/80 ${
+                        activeLang === lang.code ? "text-primary font-semibold bg-primary/5" : "text-foreground"
                       }`}
                     >
-                      {lang.flag} {t(`language.${lang.code}`)}
+                      <span className="text-base">{lang.flag}</span>
+                      <span className="flex-1 text-left">{lang.label}</span>
+                      {activeLang === lang.code && <Check className="h-3.5 w-3.5 text-primary" />}
                     </button>
                   ))}
                 </motion.div>
@@ -95,9 +126,11 @@ const Navbar = () => {
             </AnimatePresence>
           </div>
 
-          <Button size="sm" className="gap-2 bg-primary text-primary-foreground hover:bg-gold-dark">
-            <Phone className="h-3.5 w-3.5" />
-            {t("nav.bookNow")}
+          <Button size="sm" asChild className="gap-2 bg-primary text-primary-foreground hover:bg-gold-dark">
+            <a href="https://wa.me/251900000000" target="_blank" rel="noopener noreferrer">
+              <Phone className="h-3.5 w-3.5" />
+              {t("nav.bookNow")}
+            </a>
           </Button>
         </div>
 
@@ -132,20 +165,22 @@ const Navbar = () => {
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
-                    onClick={() => {
-                      i18n.changeLanguage(lang.code);
-                    }}
-                    className={`flex-1 rounded-lg py-2 text-center font-body text-xs transition-all ${
-                      i18n.language === lang.code
-                        ? "bg-primary text-primary-foreground font-semibold"
-                        : "bg-secondary text-muted-foreground"
+                    onClick={() => switchLanguage(lang.code)}
+                    className={`flex-1 rounded-lg py-2.5 text-center font-body text-xs transition-all ${
+                      activeLang === lang.code
+                        ? "bg-primary text-primary-foreground font-semibold ring-2 ring-primary/30"
+                        : "bg-secondary text-muted-foreground hover:bg-secondary/80"
                     }`}
                   >
                     {lang.flag} {lang.code.toUpperCase()}
                   </button>
                 ))}
               </div>
-              <Button className="bg-primary text-primary-foreground">{t("nav.bookNow")}</Button>
+              <Button asChild className="bg-primary text-primary-foreground">
+                <a href="https://wa.me/251900000000" target="_blank" rel="noopener noreferrer">
+                  {t("nav.bookNow")}
+                </a>
+              </Button>
             </div>
           </motion.div>
         )}
