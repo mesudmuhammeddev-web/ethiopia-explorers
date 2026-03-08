@@ -100,7 +100,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="mx-auto max-w-4xl font-display text-5xl font-bold leading-tight text-foreground md:text-7xl lg:text-8xl"
+          className="mx-auto max-w-4xl font-display text-3xl font-bold leading-tight text-foreground sm:text-5xl md:text-7xl lg:text-8xl"
         >
           {t("hero.title1")}{" "}
           <span className="text-gradient-gold italic">{t("hero.title2")}</span> &{" "}
