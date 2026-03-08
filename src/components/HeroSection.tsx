@@ -76,7 +76,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-background/50" />
 
       {/* Slide indicators */}
-      <div className="absolute bottom-24 left-1/2 z-20 flex -translate-x-1/2 gap-2">
+      <div className="absolute bottom-20 sm:bottom-24 left-1/2 z-20 flex -translate-x-1/2 gap-2">
         {slides.map((_, i) => (
           <button
             key={i}
