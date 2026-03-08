@@ -187,7 +187,7 @@ const TourSearch = () => {
                     </div>
                     <div className="flex flex-col items-center gap-1">
                       <span className="font-body text-xs font-semibold text-primary">⭐ {tour.rating}</span>
-                      <Button size="sm" className="bg-primary text-primary-foreground hover:bg-gold-dark" onClick={(e) => e.stopPropagation()}>
+                      <Button size="sm" className="bg-primary text-primary-foreground hover:bg-gold-dark" onClick={(e) => { e.stopPropagation(); navigate(`/tour/${tour.slug}`); }}>
                         Book Now
                       </Button>
                     </div>
