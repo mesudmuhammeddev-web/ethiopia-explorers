@@ -71,8 +71,8 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6">
-        <a href="#" className="font-display text-2xl font-bold text-foreground">
-          Ethio<span className="text-gradient-gold">Wander</span>
+        <a href="#" className="flex items-center gap-2">
+          <img src={logo} alt="Ethiopia Travel Logo" className="h-10 w-auto" />
         </a>
 
         {/* Desktop */}
