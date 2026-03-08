@@ -253,7 +253,7 @@ const Gallery = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.35, delay: Math.min(idx * 0.03, 0.5) }}
-                className={`group relative cursor-pointer rounded-lg md:rounded-xl overflow-hidden ${getSpanClass(img.aspect, idx)}`}
+                className={`group relative cursor-pointer rounded-lg md:rounded-xl overflow-hidden bg-muted ${getSpanClass(img.aspect, idx)}`}
                 onClick={() => openLightbox(idx)}
               >
                 <LazyImage
