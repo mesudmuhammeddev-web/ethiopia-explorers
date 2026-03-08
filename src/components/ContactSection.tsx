@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
-import { Phone, Mail, MessageCircle, MapPin, Send, Upload, X, FileText } from "lucide-react";
+import { Phone, Mail, MessageCircle, MapPin, Send, Upload, X, FileText, Loader2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
   const { t } = useTranslation();
