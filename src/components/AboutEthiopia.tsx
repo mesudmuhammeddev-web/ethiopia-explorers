@@ -8,6 +8,11 @@ import milestone2019 from "@/assets/milestone-2019.jpg";
 import milestone2021 from "@/assets/milestone-2021.jpg";
 import milestone2023 from "@/assets/milestone-2023.jpg";
 import milestone2025 from "@/assets/milestone-2025.jpg";
+import teamAbebe from "@/assets/team-abebe.jpg";
+import teamSara from "@/assets/team-sara.jpg";
+import teamDaniel from "@/assets/team-daniel.jpg";
+import teamMeron from "@/assets/team-meron.jpg";
+import teamYonas from "@/assets/team-yonas.jpg";
 
 const AnimatedCounter = ({ target, suffix = "" }: { target: number; suffix?: string }) => {
   const ref = useRef<HTMLDivElement>(null);
