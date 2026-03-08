@@ -202,17 +202,17 @@ const Testimonials = () => {
           {/* Nav arrows */}
           <button
             onClick={prev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-14 flex h-10 w-10 items-center justify-center rounded-full bg-secondary/80 border border-border text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+            className="absolute -left-2 sm:left-0 top-1/2 -translate-y-1/2 sm:-translate-x-14 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-secondary/80 border border-border text-foreground hover:bg-primary hover:text-primary-foreground transition-colors z-10"
             aria-label="Previous testimonial"
           >
-            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
           <button
             onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-14 flex h-10 w-10 items-center justify-center rounded-full bg-secondary/80 border border-border text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+            className="absolute -right-2 sm:right-0 top-1/2 -translate-y-1/2 sm:translate-x-14 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-secondary/80 border border-border text-foreground hover:bg-primary hover:text-primary-foreground transition-colors z-10"
             aria-label="Next testimonial"
           >
-            <ChevronRight className="h-5 w-5" />
+            <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
 
           {/* Dots */}
