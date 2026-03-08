@@ -21,17 +21,33 @@ const ContactSection = () => {
     { icon: MapPin, label: t("contact.office"), value: t("contact.officeValue"), action: "#" },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Build WhatsApp message with form data
-    const waNumber = formData.whatsapp || formData.phone;
-    const message = `New Inquiry from ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nWhatsApp: ${waNumber}\n\nMessage: ${formData.message}`;
-    const waLink = `https://wa.me/251998900160?text=${encodeURIComponent(message)}`;
-    window.open(waLink, "_blank");
-    setSubmitted(true);
-    setFormData({ name: "", email: "", phone: "", whatsapp: "", message: "" });
-    setFile(null);
-    setTimeout(() => setSubmitted(false), 4000);
+    setLoading(true);
+    try {
+      const { error } = await supabase.from("contact_inquiries").insert({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || null,
+        whatsapp: formData.whatsapp || null,
+        message: formData.message,
+      });
+
+      if (error) throw error;
+
+      setSubmitted(true);
+      setFormData({ name: "", email: "", phone: "", whatsapp: "", message: "" });
+      setFile(null);
+      toast({ title: "Inquiry sent!", description: "We'll get back to you within 24 hours." });
+      setTimeout(() => setSubmitted(false), 4000);
+    } catch (err) {
+      console.error("Contact form error:", err);
+      toast({ title: "Something went wrong", description: "Please try again or contact us via WhatsApp.", variant: "destructive" });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
