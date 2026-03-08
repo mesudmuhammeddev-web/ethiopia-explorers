@@ -246,10 +246,32 @@
     "tourNotFoundDesc": "The tour you're looking for doesn't exist.",
     "backToHome": "Back to Home"
   },
+  "buildTrip": {
+    "badge": "Plan in 30 seconds",
+    "title": "🧭 Build Your Trip",
+    "subtitle": "Tell us what you want — we'll craft the perfect Ethiopian adventure for you.",
+    "selectDestination": "📍 Select Destination",
+    "destinationDesc": "Where in Ethiopia do you want to explore?",
+    "selectTravelType": "🏷️ Select Travel Type",
+    "travelTypeDesc": "What kind of experience are you looking for?",
+    "selectBudget": "💰 Select Budget",
+    "budgetDesc": "What's your budget range per person?",
+    "selectDate": "📅 Select Travel Date",
+    "dateDesc": "When do you want to travel?",
+    "selected": "Selected:",
+    "back": "Back",
+    "next": "Next",
+    "getMyTripPlan": "Get My Trip Plan",
+    "adventure": "Adventure",
+    "family": "Family",
+    "luxury": "Luxury",
+    "honeymoon": "Honeymoon"
+  },
   "language": {
     "en": "English",
     "fr": "Français",
     "de": "Deutsch",
-    "es": "Español"
+    "es": "Español",
+    "am": "አማርኛ"
   }
 }

@@ -205,10 +205,32 @@
     "tourNotFoundDesc": "Le circuit que vous recherchez n'existe pas.",
     "backToHome": "Retour à l'accueil"
   },
+  "buildTrip": {
+    "badge": "Planifiez en 30 secondes",
+    "title": "🧭 Créez votre voyage",
+    "subtitle": "Dites-nous ce que vous voulez — nous créerons l'aventure éthiopienne parfaite pour vous.",
+    "selectDestination": "📍 Choisir la destination",
+    "destinationDesc": "Où en Éthiopie souhaitez-vous explorer ?",
+    "selectTravelType": "🏷️ Type de voyage",
+    "travelTypeDesc": "Quel type d'expérience recherchez-vous ?",
+    "selectBudget": "💰 Choisir le budget",
+    "budgetDesc": "Quel est votre budget par personne ?",
+    "selectDate": "📅 Date de voyage",
+    "dateDesc": "Quand souhaitez-vous voyager ?",
+    "selected": "Sélectionné :",
+    "back": "Retour",
+    "next": "Suivant",
+    "getMyTripPlan": "Obtenir mon plan de voyage",
+    "adventure": "Aventure",
+    "family": "Famille",
+    "luxury": "Luxe",
+    "honeymoon": "Lune de miel"
+  },
   "language": {
     "en": "English",
     "fr": "Français",
     "de": "Deutsch",
-    "es": "Español"
+    "es": "Español",
+    "am": "አማርኛ"
   }
 }
