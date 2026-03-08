@@ -56,7 +56,7 @@ const testimonials = [
     name: "Fatima Al-Hassan",
     location: "Dubai, UAE",
     rating: 5,
-    text: "We did the Omo Valley tribal tour with our family. The children loved meeting the Mursi and Hamer tribes. EthioWander handled every detail flawlessly.",
+    text: "We did the Omo Valley tribal tour with our family. The children loved meeting the Mursi and Hamer tribes. Ethiopia Travel Explorer handled every detail flawlessly.",
     avatar: "FA",
     tour: "Omo Valley Tribal Experience",
   },
