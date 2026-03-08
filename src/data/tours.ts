@@ -71,7 +71,7 @@ function generateAvailability(totalSpots: number): TourAvailability[] {
   return avail;
 }
 
-function slugify(name: string) {
+export function slugify(name: string) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
