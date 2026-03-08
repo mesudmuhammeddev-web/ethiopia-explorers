@@ -14,7 +14,7 @@ const ContactSection = () => {
   const contactMethods = [
     { icon: MessageCircle, label: t("contact.whatsapp"), value: t("contact.whatsappValue"), action: "https://wa.me/251998900160", highlight: true },
     { icon: Phone, label: t("contact.phone"), value: "+251 99 890 0160", action: "tel:+251998900160" },
-    { icon: Mail, label: t("contact.email"), value: "info@ethiowander.com", action: "mailto:info@ethiowander.com" },
+    { icon: Mail, label: t("contact.email"), value: "info@ethiopiatravelexplorer.com", action: "mailto:info@ethiopiatravelexplorer.com" },
     { icon: MapPin, label: t("contact.office"), value: t("contact.officeValue"), action: "#" },
   ];
 
@@ -161,7 +161,7 @@ const ContactSection = () => {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="EthioWander Office Location — Bahir Dar, Ethiopia"
+                title="Ethiopia Travel Explorer Office Location — Bahir Dar, Ethiopia"
               />
             </motion.div>
           </motion.div>
