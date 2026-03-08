@@ -83,38 +83,18 @@ const galleryImages: GalleryImage[] = [
 const regions = ["All", "Amhara", "Afar", "Tigray", "Harari", "SNNPR", "Oromia", "Addis Ababa"];
 const types = ["All", "Nature", "Culture", "Adventure", "Islamic Heritage"];
 
-const LazyImage = ({ src, alt, className, onClick }: { src: string; alt: string; className?: string; onClick?: () => void }) => {
-  const [loaded, setLoaded] = useState(false);
-  const [error, setError] = useState(false);
-  const [imgSrc, setImgSrc] = useState(src);
-
-  useEffect(() => {
-    setImgSrc(src);
-    setLoaded(false);
-    setError(false);
-  }, [src]);
-
+const GalleryImage = ({ src, alt, className, onClick }: { src: string; alt: string; className?: string; onClick?: () => void }) => {
   return (
     <div className={`relative overflow-hidden bg-muted ${className || ""}`} onClick={onClick}>
-      {!loaded && (
-        <div className="absolute inset-0 bg-muted animate-pulse flex items-center justify-center">
-          <Camera className="w-6 h-6 text-muted-foreground/40" />
-        </div>
-      )}
       <img
-        src={imgSrc}
+        src={src}
         alt={alt}
         loading="lazy"
         decoding="async"
-        onLoad={() => setLoaded(true)}
-        onError={() => {
-          if (!error) {
-            setError(true);
-            setImgSrc("/placeholder.svg");
-          }
-          setLoaded(true);
+        onError={(e) => {
+          (e.target as HTMLImageElement).src = "/placeholder.svg";
         }}
-        className={`w-full h-full object-cover transition-all duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
+        className="w-full h-full object-cover"
       />
     </div>
   );
