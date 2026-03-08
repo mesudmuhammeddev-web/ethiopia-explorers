@@ -184,8 +184,8 @@ const AboutEthiopia = () => {
                 transition={{ delay: i * 0.08 }}
                 className="glass-card hover-lift group rounded-2xl p-6 text-center"
               >
-                <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10 font-display text-xl font-bold text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                  {member.avatar}
+                <div className="mx-auto mb-4 h-24 w-24 overflow-hidden rounded-full ring-2 ring-primary/20 transition-all group-hover:ring-4 group-hover:ring-primary">
+                  <img src={member.image} alt={member.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
                 </div>
                 <h3 className="font-display text-base font-bold text-foreground">{member.name}</h3>
                 <p className="mt-1 font-body text-xs text-muted-foreground">{t(member.role)}</p>
