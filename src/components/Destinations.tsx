@@ -21,6 +21,10 @@ import addisAbaba from "@/assets/addis-ababa.jpg";
 import langano from "@/assets/langano.jpg";
 import debreDamo from "@/assets/debre-damo.jpg";
 import awash from "@/assets/awash.jpg";
+import negashMosque from "@/assets/negash-mosque.jpg";
+import anwarMosque from "@/assets/anwar-mosque.jpg";
+import hararMosques from "@/assets/harar-mosques.jpg";
+import sheikhHussein from "@/assets/sheikh-hussein.jpg";
 
 const destinations = [
   { name: "Lake Tana", description: "Ethiopia's largest lake, home to ancient island monasteries", tours: 8, image: lakeTana, region: "Amhara", type: "Cultural", price: 120 },
