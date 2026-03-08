@@ -23,6 +23,10 @@ import debreDamo from "@/assets/debre-damo.jpg";
 import awash from "@/assets/awash.jpg";
 import monastery from "@/assets/monastery.jpg";
 import sunsetCruise from "@/assets/sunset-cruise.jpg";
+import negashMosque from "@/assets/negash-mosque.jpg";
+import anwarMosque from "@/assets/anwar-mosque.jpg";
+import hararMosques from "@/assets/harar-mosques.jpg";
+import sheikhHussein from "@/assets/sheikh-hussein.jpg";
 
 type GalleryImage = {
   id: number;
