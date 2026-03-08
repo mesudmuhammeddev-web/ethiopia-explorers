@@ -10,6 +10,7 @@ const ContactSection = () => {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", whatsapp: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
