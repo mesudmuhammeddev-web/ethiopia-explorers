@@ -52,11 +52,11 @@ const AboutEthiopia = () => {
   ];
 
   const milestones = [
-    { year: "2018", title: t("about.milestone1") },
-    { year: "2019", title: t("about.milestone2") },
-    { year: "2021", title: t("about.milestone3") },
-    { year: "2023", title: t("about.milestone4") },
-    { year: "2025", title: t("about.milestone5") },
+    { year: "2018", title: t("about.milestone1"), image: milestone2018 },
+    { year: "2019", title: t("about.milestone2"), image: milestone2019 },
+    { year: "2021", title: t("about.milestone3"), image: milestone2021 },
+    { year: "2023", title: t("about.milestone4"), image: milestone2023 },
+    { year: "2025", title: t("about.milestone5"), image: milestone2025 },
   ];
 
   return (
