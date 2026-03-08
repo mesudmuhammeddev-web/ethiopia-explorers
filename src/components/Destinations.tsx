@@ -50,6 +50,7 @@ import lakeChamo from "@/assets/lake-chamo.jpg";
 import turmi from "@/assets/turmi.jpg";
 import menagesha from "@/assets/menagesha.jpg";
 import ankober from "@/assets/ankober.jpg";
+import adwaMuseum from "@/assets/adwa-museum.jpg";
 
 const destinations = [
   // Amhara Region
