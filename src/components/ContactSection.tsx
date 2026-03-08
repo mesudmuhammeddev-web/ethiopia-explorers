@@ -37,21 +37,20 @@ const ContactSection = () => {
 
       if (error) throw error;
 
-      // Send email notification (best-effort, don't block on failure)
-      supabase.functions.invoke("send-contact-email", {
-        body: {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          whatsapp: formData.whatsapp,
-          message: formData.message,
-        },
-      }).catch(console.error);
+      // Open WhatsApp with inquiry details
+      const whatsappMessage = encodeURIComponent(
+        `New Inquiry from ${formData.name}\n` +
+        `Email: ${formData.email}\n` +
+        (formData.phone ? `Phone: ${formData.phone}\n` : '') +
+        (formData.whatsapp ? `WhatsApp: ${formData.whatsapp}\n` : '') +
+        `\nMessage:\n${formData.message}`
+      );
+      window.open(`https://wa.me/251998900160?text=${whatsappMessage}`, '_blank');
 
       setSubmitted(true);
       setFormData({ name: "", email: "", phone: "", whatsapp: "", message: "" });
       setFile(null);
-      toast({ title: "Inquiry sent!", description: "We'll get back to you within 24 hours." });
+      toast({ title: "Inquiry sent!", description: "We've opened WhatsApp so you can chat with us directly." });
       setTimeout(() => setSubmitted(false), 4000);
     } catch (err) {
       console.error("Contact form error:", err);
