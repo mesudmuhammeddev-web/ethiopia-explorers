@@ -13,6 +13,14 @@ import axum from "@/assets/axum.jpg";
 import harar from "@/assets/harar.jpg";
 import omoValley from "@/assets/omo-valley.jpg";
 import baleMountains from "@/assets/bale-mountains.jpg";
+import sofOmar from "@/assets/sof-omar.jpg";
+import tiya from "@/assets/tiya.jpg";
+import ertaAle from "@/assets/erta-ale.jpg";
+import wonchi from "@/assets/wonchi.jpg";
+import addisAbaba from "@/assets/addis-ababa.jpg";
+import langano from "@/assets/langano.jpg";
+import debreDamo from "@/assets/debre-damo.jpg";
+import awash from "@/assets/awash.jpg";
 
 const destinations = [
   { name: "Lake Tana", description: "Ethiopia's largest lake, home to ancient island monasteries", tours: 8, image: lakeTana, region: "Amhara", type: "Cultural", price: 120 },
@@ -25,9 +33,17 @@ const destinations = [
   { name: "Harar", description: "Africa's 4th holiest Islamic city with 82 mosques & hyena men", tours: 6, image: harar, region: "Harari", type: "Cultural", price: 130 },
   { name: "Omo Valley", description: "Meet indigenous tribes with ancient traditions & body art", tours: 7, image: omoValley, region: "SNNPR", type: "Cultural", price: 280 },
   { name: "Bale Mountains", description: "Home to the endangered Ethiopian wolf & afro-alpine wilderness", tours: 5, image: baleMountains, region: "Oromia", type: "Nature", price: 175 },
+  { name: "Erta Ale", description: "One of the world's few permanent lava lakes — a fiery spectacle at night", tours: 3, image: ertaAle, region: "Afar", type: "Adventure", price: 400 },
+  { name: "Sof Omar Cave", description: "Africa's longest cave system with stunning limestone pillars & underground river", tours: 4, image: sofOmar, region: "Oromia", type: "Nature", price: 160 },
+  { name: "Wonchi Crater Lake", description: "Turquoise volcanic lake with horseback trails & hot springs", tours: 5, image: wonchi, region: "Oromia", type: "Nature", price: 90 },
+  { name: "Addis Ababa", description: "The capital city — National Museum, Mercato, Holy Trinity Cathedral & vibrant nightlife", tours: 10, image: addisAbaba, region: "Addis Ababa", type: "Cultural", price: 60 },
+  { name: "Tiya Stelae", description: "UNESCO megalithic site with mysterious carved stone pillars dating back centuries", tours: 3, image: tiya, region: "SNNPR", type: "Historical", price: 70 },
+  { name: "Lake Langano", description: "Ethiopia's favorite resort lake — swim, kayak & relax on golden shores", tours: 4, image: langano, region: "Oromia", type: "Nature", price: 80 },
+  { name: "Debre Damo", description: "6th-century cliff-top monastery accessible only by rope — a spiritual adventure", tours: 3, image: debreDamo, region: "Tigray", type: "Historical", price: 140 },
+  { name: "Awash National Park", description: "Waterfalls, hot springs & wildlife — oryx, baboons & 450+ bird species", tours: 6, image: awash, region: "Afar", type: "Nature", price: 120 },
 ];
 
-const regions = ["All", "Amhara", "Afar", "Tigray", "Harari", "SNNPR", "Oromia"];
+const regions = ["All", "Amhara", "Afar", "Tigray", "Harari", "SNNPR", "Oromia", "Addis Ababa"];
 const types = ["All", "Cultural", "Historical", "Adventure", "Nature"];
 const priceRanges = ["All", "$0–$100", "$100–$200", "$200+"];
 
