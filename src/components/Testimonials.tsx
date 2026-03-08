@@ -170,7 +170,7 @@ const Testimonials = () => {
                 animate="center"
                 exit="exit"
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                className="glass-card w-full rounded-3xl p-8 md:p-12 relative"
+                className="glass-card w-full rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 relative"
               >
                 {/* Quote icon */}
                 <Quote className="absolute top-6 right-8 h-12 w-12 text-primary/10" />
