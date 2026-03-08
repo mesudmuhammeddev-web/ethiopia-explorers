@@ -236,7 +236,7 @@ const Gallery = () => {
         </motion.div>
 
         {/* Masonry Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 auto-rows-[140px] sm:auto-rows-[180px] lg:auto-rows-[200px] gap-2 md:gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-flow-dense auto-rows-[140px] sm:auto-rows-[180px] lg:auto-rows-[200px] gap-2 md:gap-3">
           <AnimatePresence mode="popLayout">
             {visible.map((img, idx) => (
               <motion.div
