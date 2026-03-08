@@ -156,7 +156,7 @@ const HeroSection = () => {
           className="mx-auto mt-10 max-w-3xl"
         >
           <div className="glass-card rounded-2xl p-3">
-            <div className="grid gap-2 sm:grid-cols-4">
+            <div className="grid gap-2 grid-cols-1 sm:grid-cols-4">
               <div className="relative">
                 <select value={destination} onChange={(e) => setDestination(e.target.value)} className="w-full appearance-none rounded-xl bg-secondary/60 px-4 py-3.5 pr-10 font-body text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50">
                   <option value="">{t("hero.allDestinations")}</option>
