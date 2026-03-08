@@ -154,12 +154,13 @@ const ContactSection = () => {
 
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex-1 overflow-hidden rounded-2xl border border-border min-h-[280px]">
               <iframe
-                src="https://www.openstreetmap.org/export/embed.html?bbox=37.30%2C11.55%2C37.45%2C11.65&layer=mapnik&marker=11.5936%2C37.3863"
+                src="https://maps.google.com/maps?q=11.5936,37.3863&z=13&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: "280px" }}
                 allowFullScreen
                 loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
                 title="EthioWander Office Location — Bahir Dar, Ethiopia"
               />
             </motion.div>
