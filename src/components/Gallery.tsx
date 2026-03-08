@@ -43,67 +43,31 @@ const galleryImages: GalleryImage[] = [
   { id: 5, src: gondar, title: "Fasil Ghebbi Castle", location: "Gondar", region: "Amhara", type: "Culture", aspect: "landscape" },
   { id: 6, src: lalibela, title: "Bete Giyorgis Church", location: "Lalibela", region: "Amhara", type: "Culture", aspect: "square" },
   { id: 7, src: simienMountains, title: "Simien Peaks Panorama", location: "Simien Mountains", region: "Amhara", type: "Adventure", aspect: "landscape" },
-  { id: 8, src: lakeTana, title: "Papyrus-lined Shores", location: "Lake Tana", region: "Amhara", type: "Nature", aspect: "square" },
-  { id: 9, src: gondar, title: "Royal Enclosure Gardens", location: "Gondar", region: "Amhara", type: "Culture", aspect: "landscape" },
-  { id: 10, src: lalibela, title: "Underground Tunnels", location: "Lalibela", region: "Amhara", type: "Adventure", aspect: "portrait" },
-  { id: 11, src: simienMountains, title: "Gelada Baboon Colony", location: "Simien Mountains", region: "Amhara", type: "Nature", aspect: "landscape" },
-  { id: 12, src: heroFalls, title: "Misty Rainbow Falls", location: "Blue Nile", region: "Amhara", type: "Nature", aspect: "landscape" },
-  { id: 13, src: monastery, title: "Ancient Murals", location: "Lake Tana", region: "Amhara", type: "Culture", aspect: "square" },
-  { id: 14, src: sunsetCruise, title: "Highland Reflections", location: "Lake Tana", region: "Amhara", type: "Nature", aspect: "portrait" },
 
   // Afar Region
-  { id: 15, src: danakil, title: "Dallol Sulfur Springs", location: "Danakil Depression", region: "Afar", type: "Adventure", aspect: "landscape" },
-  { id: 16, src: ertaAle, title: "Erta Ale Lava Lake", location: "Erta Ale", region: "Afar", type: "Adventure", aspect: "square" },
-  { id: 17, src: danakil, title: "Salt Flat Caravans", location: "Danakil Depression", region: "Afar", type: "Culture", aspect: "landscape" },
-  { id: 18, src: awash, title: "Awash River Gorge", location: "Awash National Park", region: "Afar", type: "Nature", aspect: "portrait" },
-  { id: 19, src: ertaAle, title: "Volcanic Night Glow", location: "Erta Ale", region: "Afar", type: "Adventure", aspect: "landscape" },
-  { id: 20, src: danakil, title: "Alien Mineral Pools", location: "Danakil Depression", region: "Afar", type: "Nature", aspect: "square" },
-  { id: 21, src: awash, title: "Awash Wildlife", location: "Awash National Park", region: "Afar", type: "Nature", aspect: "landscape" },
+  { id: 8, src: danakil, title: "Dallol Sulfur Springs", location: "Danakil Depression", region: "Afar", type: "Adventure", aspect: "landscape" },
+  { id: 9, src: ertaAle, title: "Erta Ale Lava Lake", location: "Erta Ale", region: "Afar", type: "Adventure", aspect: "square" },
+  { id: 10, src: awash, title: "Awash River Gorge", location: "Awash National Park", region: "Afar", type: "Nature", aspect: "portrait" },
 
   // Tigray Region
-  { id: 22, src: axum, title: "Obelisk of Axum", location: "Axum", region: "Tigray", type: "Culture", aspect: "portrait" },
-  { id: 23, src: debreDamo, title: "Debre Damo Cliff Monastery", location: "Debre Damo", region: "Tigray", type: "Adventure", aspect: "landscape" },
-  { id: 24, src: axum, title: "Queen of Sheba's Pool", location: "Axum", region: "Tigray", type: "Culture", aspect: "square" },
-  { id: 25, src: debreDamo, title: "Rope Ascent Trail", location: "Debre Damo", region: "Tigray", type: "Adventure", aspect: "landscape" },
-  { id: 26, src: axum, title: "Royal Tomb Entrance", location: "Axum", region: "Tigray", type: "Culture", aspect: "portrait" },
+  { id: 11, src: axum, title: "Obelisk of Axum", location: "Axum", region: "Tigray", type: "Culture", aspect: "portrait" },
+  { id: 12, src: debreDamo, title: "Debre Damo Cliff Monastery", location: "Debre Damo", region: "Tigray", type: "Adventure", aspect: "landscape" },
 
   // Harari Region
-  { id: 27, src: harar, title: "Harar Jugol Alleyway", location: "Harar", region: "Harari", type: "Culture", aspect: "portrait" },
-  { id: 28, src: harar, title: "Spice Market Colors", location: "Harar", region: "Harari", type: "Culture", aspect: "landscape" },
-  { id: 29, src: harar, title: "Hyena Man at Dusk", location: "Harar", region: "Harari", type: "Adventure", aspect: "square" },
-  { id: 30, src: harar, title: "Mosque Minarets", location: "Harar", region: "Harari", type: "Culture", aspect: "landscape" },
+  { id: 13, src: harar, title: "Harar Jugol Alleyway", location: "Harar", region: "Harari", type: "Culture", aspect: "portrait" },
 
   // SNNPR Region
-  { id: 31, src: omoValley, title: "Mursi Tribe Portrait", location: "Omo Valley", region: "SNNPR", type: "Culture", aspect: "portrait" },
-  { id: 32, src: tiya, title: "Tiya Megalithic Stelae", location: "Tiya", region: "SNNPR", type: "Culture", aspect: "landscape" },
-  { id: 33, src: omoValley, title: "Karo Body Painting", location: "Omo Valley", region: "SNNPR", type: "Culture", aspect: "square" },
-  { id: 34, src: omoValley, title: "Hamer Bull Jumping", location: "Omo Valley", region: "SNNPR", type: "Adventure", aspect: "landscape" },
-  { id: 35, src: tiya, title: "Ancient Stone Carvings", location: "Tiya", region: "SNNPR", type: "Culture", aspect: "portrait" },
-  { id: 36, src: omoValley, title: "Omo River Sunset", location: "Omo Valley", region: "SNNPR", type: "Nature", aspect: "landscape" },
+  { id: 14, src: omoValley, title: "Mursi Tribe Portrait", location: "Omo Valley", region: "SNNPR", type: "Culture", aspect: "portrait" },
+  { id: 15, src: tiya, title: "Tiya Megalithic Stelae", location: "Tiya", region: "SNNPR", type: "Culture", aspect: "landscape" },
 
   // Oromia Region
-  { id: 37, src: baleMountains, title: "Ethiopian Wolf Hunt", location: "Bale Mountains", region: "Oromia", type: "Nature", aspect: "landscape" },
-  { id: 38, src: wonchi, title: "Wonchi Crater Lake", location: "Wonchi", region: "Oromia", type: "Nature", aspect: "square" },
-  { id: 39, src: sofOmar, title: "Sof Omar Cave Pillars", location: "Sof Omar", region: "Oromia", type: "Adventure", aspect: "portrait" },
-  { id: 40, src: langano, title: "Lake Langano Shores", location: "Langano", region: "Oromia", type: "Nature", aspect: "landscape" },
-  { id: 41, src: baleMountains, title: "Sanetti Plateau Dawn", location: "Bale Mountains", region: "Oromia", type: "Nature", aspect: "landscape" },
-  { id: 42, src: wonchi, title: "Horseback at Wonchi", location: "Wonchi", region: "Oromia", type: "Adventure", aspect: "portrait" },
-  { id: 43, src: sofOmar, title: "Underground River", location: "Sof Omar", region: "Oromia", type: "Adventure", aspect: "landscape" },
-  { id: 44, src: langano, title: "Golden Beach Kayaking", location: "Langano", region: "Oromia", type: "Adventure", aspect: "square" },
-  { id: 45, src: baleMountains, title: "Harenna Cloud Forest", location: "Bale Mountains", region: "Oromia", type: "Nature", aspect: "landscape" },
+  { id: 16, src: baleMountains, title: "Ethiopian Wolf Hunt", location: "Bale Mountains", region: "Oromia", type: "Nature", aspect: "landscape" },
+  { id: 17, src: wonchi, title: "Wonchi Crater Lake", location: "Wonchi", region: "Oromia", type: "Nature", aspect: "square" },
+  { id: 18, src: sofOmar, title: "Sof Omar Cave Pillars", location: "Sof Omar", region: "Oromia", type: "Adventure", aspect: "portrait" },
+  { id: 19, src: langano, title: "Lake Langano Shores", location: "Langano", region: "Oromia", type: "Nature", aspect: "landscape" },
 
   // Addis Ababa
-  { id: 46, src: addisAbaba, title: "Mercato Bustle", location: "Addis Ababa", region: "Addis Ababa", type: "Culture", aspect: "landscape" },
-  { id: 47, src: addisAbaba, title: "Holy Trinity Cathedral", location: "Addis Ababa", region: "Addis Ababa", type: "Culture", aspect: "portrait" },
-  { id: 48, src: addisAbaba, title: "City Skyline at Night", location: "Addis Ababa", region: "Addis Ababa", type: "Culture", aspect: "landscape" },
-  { id: 49, src: addisAbaba, title: "National Museum", location: "Addis Ababa", region: "Addis Ababa", type: "Culture", aspect: "square" },
-  { id: 50, src: addisAbaba, title: "Entoto Mountain View", location: "Addis Ababa", region: "Addis Ababa", type: "Nature", aspect: "landscape" },
-
-  // Extra mixed
-  { id: 51, src: simienMountains, title: "Cliff Edge Trail", location: "Simien Mountains", region: "Amhara", type: "Adventure", aspect: "landscape" },
-  { id: 52, src: danakil, title: "Afar Salt Miners", location: "Danakil Depression", region: "Afar", type: "Culture", aspect: "portrait" },
-  { id: 53, src: lalibela, title: "Pilgrims at Prayer", location: "Lalibela", region: "Amhara", type: "Culture", aspect: "square" },
-  { id: 54, src: wonchi, title: "Crater Hot Springs", location: "Wonchi", region: "Oromia", type: "Nature", aspect: "landscape" },
+  { id: 20, src: addisAbaba, title: "Mercato Bustle", location: "Addis Ababa", region: "Addis Ababa", type: "Culture", aspect: "landscape" },
 ];
 
 const regions = ["All", "Amhara", "Afar", "Tigray", "Harari", "SNNPR", "Oromia", "Addis Ababa"];
