@@ -84,8 +84,6 @@ const FeaturedExperiences = () => {
                     </div>
                     <Button
                       size="sm"
-                    <Button
-                      size="sm"
                       className="gap-1 bg-primary text-primary-foreground hover:bg-gold-dark"
                       onClick={() => navigate(`/tour/${tour.slug}`)}
                     >
