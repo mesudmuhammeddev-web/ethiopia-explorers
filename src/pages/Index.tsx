@@ -23,6 +23,7 @@ const Index = () => {
       <Gallery />
       <WhyChooseUs />
       <TourSearch />
+      <BuildYourTrip />
       <FeaturedExperiences />
       <TourComparison />
       <Testimonials />
