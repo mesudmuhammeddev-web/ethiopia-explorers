@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,6 +8,7 @@ import { tours, getPriceForGroup } from "@/data/tours";
 const featuredIds = [1, 2, 3, 4, 7, 9, 13, 14];
 
 const FeaturedExperiences = () => {
+  const navigate = useNavigate();
   const [travelers, setTravelers] = useState(2);
   const featured = featuredIds.map((id) => tours.find((t) => t.id === id)!).filter(Boolean);
 
@@ -83,6 +85,7 @@ const FeaturedExperiences = () => {
                     <Button
                       size="sm"
                       className="gap-1 bg-primary text-primary-foreground hover:bg-gold-dark"
+                      onClick={() => navigate(`/tour/${tour.slug}`)}
                     >
                       Book
                       <ArrowRight className="h-3.5 w-3.5" />
