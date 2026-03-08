@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { tours, destinationList, categories, getPriceForGroup, getPricingLabel, type Tour } from "@/data/tours";
 
 const TourSearch = () => {
+  const navigate = useNavigate();
   const [selectedDest, setSelectedDest] = useState("All");
   const [selectedCat, setSelectedCat] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
