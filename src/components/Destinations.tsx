@@ -193,7 +193,10 @@ const Destinations = () => {
           {filtered.map((dest, i) => (
             <motion.div key={dest.name} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="group hover-lift cursor-pointer overflow-hidden rounded-2xl">
               <div className="relative aspect-[3/4] overflow-hidden">
-                <img src={dest.image} alt={dest.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" decoding="async" />
+                <img src={dest.image} alt={dest.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" decoding="async" onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.src.endsWith("/placeholder.svg")) target.src = "/placeholder.svg";
+                }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
                 <div className="absolute top-2 right-2 sm:top-3 sm:right-3 rounded-full bg-primary/90 px-2 py-0.5 sm:px-2.5 sm:py-1 font-body text-[10px] sm:text-xs font-semibold text-primary-foreground">
                   ${dest.price}+

@@ -85,6 +85,12 @@ const types = ["All", "Nature", "Culture", "Adventure", "Islamic Heritage"];
 
 const LazyImage = ({ src, alt, className, onClick }: { src: string; alt: string; className?: string; onClick?: () => void }) => {
   const [loaded, setLoaded] = useState(false);
+  const [imgSrc, setImgSrc] = useState(src);
+
+  useEffect(() => {
+    setImgSrc(src);
+    setLoaded(false);
+  }, [src]);
 
   return (
     <div className={`relative overflow-hidden ${className || ""}`} onClick={onClick}>
@@ -92,10 +98,15 @@ const LazyImage = ({ src, alt, className, onClick }: { src: string; alt: string;
         <div className="absolute inset-0 bg-muted animate-pulse" />
       )}
       <img
-        src={src}
+        src={imgSrc}
         alt={alt}
         loading="lazy"
+        decoding="async"
         onLoad={() => setLoaded(true)}
+        onError={() => {
+          if (imgSrc !== "/placeholder.svg") setImgSrc("/placeholder.svg");
+          setLoaded(true);
+        }}
         className={`w-full h-full object-cover transition-all duration-700 ${loaded ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}
       />
     </div>
@@ -225,7 +236,7 @@ const Gallery = () => {
         </motion.div>
 
         {/* Masonry Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 auto-rows-[140px] sm:auto-rows-[180px] lg:auto-rows-[200px] gap-2 md:gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-flow-dense auto-rows-[140px] sm:auto-rows-[180px] lg:auto-rows-[200px] gap-2 md:gap-3">
           <AnimatePresence mode="popLayout">
             {visible.map((img, idx) => (
               <motion.div
