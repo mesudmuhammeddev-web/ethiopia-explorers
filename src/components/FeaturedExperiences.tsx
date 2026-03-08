@@ -8,6 +8,7 @@ import { tours, getPriceForGroup } from "@/data/tours";
 const featuredIds = [1, 2, 3, 4, 7, 9, 13, 14];
 
 const FeaturedExperiences = () => {
+  const navigate = useNavigate();
   const [travelers, setTravelers] = useState(2);
   const featured = featuredIds.map((id) => tours.find((t) => t.id === id)!).filter(Boolean);
 
