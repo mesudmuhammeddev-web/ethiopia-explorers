@@ -1,21 +1,43 @@
 import { motion } from "framer-motion";
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight, MapPin, Search, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { tours, destinationList, categories, slugify } from "@/data/tours";
 import heroImage from "@/assets/hero-falls.jpg";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+  const [destination, setDestination] = useState("");
+  const [category, setCategory] = useState("");
+  const [duration, setDuration] = useState("");
+
+  const handleSearch = () => {
+    // Find first matching tour and navigate, or scroll to tours section
+    const matched = tours.find((t) => {
+      const destMatch = !destination || t.destination === destination;
+      const catMatch = !category || t.category === category;
+      const durMatch =
+        !duration ||
+        (duration === "1-3" && parseInt(t.duration) <= 3) ||
+        (duration === "4-7" && parseInt(t.duration) >= 4 && parseInt(t.duration) <= 7) ||
+        (duration === "8+" && parseInt(t.duration) >= 8);
+      return destMatch && catMatch && durMatch;
+    });
+    if (matched) {
+      navigate(`/tour/${slugify(matched.name)}`);
+    } else {
+      document.getElementById("tours")?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      {/* Background image with parallax feel */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroImage})` }}
       />
-      {/* Gradient overlay */}
-      <div
-        className="absolute inset-0"
-        style={{ background: "var(--gradient-hero)" }}
-      />
+      <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
       <div className="absolute inset-0 bg-background/40" />
 
       <div className="container relative z-10 mx-auto px-6 text-center">
@@ -38,9 +60,9 @@ const HeroSection = () => {
           transition={{ duration: 1, delay: 0.5 }}
           className="mx-auto max-w-4xl font-display text-5xl font-bold leading-tight text-foreground md:text-7xl lg:text-8xl"
         >
-          Discover Ethiopia's Most{" "}
-          <span className="text-gradient-gold italic">Beautiful</span>{" "}
-          Destinations
+          Unforgettable Ethiopia{" "}
+          <span className="text-gradient-gold italic">Tours</span> &{" "}
+          <span className="text-gradient-gold italic">Adventures</span>
         </motion.h1>
 
         <motion.p
@@ -49,29 +71,74 @@ const HeroSection = () => {
           transition={{ duration: 1, delay: 0.7 }}
           className="mx-auto mt-6 max-w-2xl font-body text-lg text-muted-foreground md:text-xl"
         >
-          Private Tours • Local Guides • Authentic Experiences
+          Authentic, personalized tours across Ethiopia's rich history, culture,
+          and landscapes — crafted by local experts
         </motion.p>
 
+        {/* Integrated Search Form — inspired by Abyssinian Tour Operator */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.9 }}
-          className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+          className="mx-auto mt-10 max-w-3xl"
         >
-          <Button
-            size="lg"
-            className="group gap-2 bg-primary px-8 text-lg font-semibold text-primary-foreground hover:bg-gold-dark"
-          >
-            Explore Tours
-            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-foreground/20 px-8 text-lg text-foreground hover:bg-foreground/10"
-          >
-            Plan Your Trip
-          </Button>
+          <div className="glass-card rounded-2xl p-3">
+            <div className="grid gap-2 sm:grid-cols-4">
+              {/* Destination */}
+              <div className="relative">
+                <select
+                  value={destination}
+                  onChange={(e) => setDestination(e.target.value)}
+                  className="w-full appearance-none rounded-xl bg-secondary/60 px-4 py-3.5 pr-10 font-body text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                >
+                  <option value="">All Destinations</option>
+                  {destinationList.map((d) => (
+                    <option key={d} value={d}>{d}</option>
+                  ))}
+                </select>
+                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              </div>
+
+              {/* Category */}
+              <div className="relative">
+                <select
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  className="w-full appearance-none rounded-xl bg-secondary/60 px-4 py-3.5 pr-10 font-body text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                >
+                  <option value="">All Activities</option>
+                  {categories.map((c) => (
+                    <option key={c} value={c}>{c}</option>
+                  ))}
+                </select>
+                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              </div>
+
+              {/* Duration */}
+              <div className="relative">
+                <select
+                  value={duration}
+                  onChange={(e) => setDuration(e.target.value)}
+                  className="w-full appearance-none rounded-xl bg-secondary/60 px-4 py-3.5 pr-10 font-body text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                >
+                  <option value="">Any Duration</option>
+                  <option value="1-3">1–3 Days</option>
+                  <option value="4-7">4–7 Days</option>
+                  <option value="8+">8+ Days</option>
+                </select>
+                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              </div>
+
+              {/* Search button */}
+              <Button
+                onClick={handleSearch}
+                className="gap-2 rounded-xl bg-primary px-6 py-3.5 font-body text-sm font-semibold text-primary-foreground hover:bg-gold-dark"
+              >
+                <Search className="h-4 w-4" />
+                Find Tours
+              </Button>
+            </div>
+          </div>
         </motion.div>
 
         {/* Stats */}
@@ -79,11 +146,12 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="mx-auto mt-20 grid max-w-xl grid-cols-3 gap-8"
+          className="mx-auto mt-16 grid max-w-2xl grid-cols-4 gap-8"
         >
           {[
             { value: "500+", label: "Happy Travelers" },
             { value: "50+", label: "Unique Tours" },
+            { value: "15+", label: "Destinations" },
             { value: "4.9", label: "Star Rating" },
           ].map((stat) => (
             <div key={stat.label}>
