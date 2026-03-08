@@ -19,6 +19,7 @@ const Index = () => {
       <HeroSection />
       <AboutEthiopia />
       <Destinations />
+      <Gallery />
       <WhyChooseUs />
       <TourSearch />
       <FeaturedExperiences />
