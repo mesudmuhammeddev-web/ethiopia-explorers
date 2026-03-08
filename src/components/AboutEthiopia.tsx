@@ -2,7 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { Globe, Calendar, Mountain, Award, Users, MapPin } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useRef, useEffect, useState } from "react";
-import monastery from "@/assets/monastery.jpg";
+import monastery from "@/assets/ethiopia-beauty.jpg";
 import milestone2018 from "@/assets/milestone-2018.jpg";
 import milestone2019 from "@/assets/milestone-2019.jpg";
 import milestone2021 from "@/assets/milestone-2021.jpg";
