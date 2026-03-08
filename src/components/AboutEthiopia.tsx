@@ -66,34 +66,118 @@ const AboutEthiopia = () => {
 
   return (
     <section id="about" className="relative py-24 overflow-hidden">
+      {/* Background ambient effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], opacity: [0.03, 0.06, 0.03] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-20 -left-20 h-96 w-96 rounded-full bg-primary blur-[120px]"
+        />
+        <motion.div
+          animate={{ scale: [1.2, 1, 1.2], opacity: [0.02, 0.05, 0.02] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute bottom-20 -right-20 h-80 w-80 rounded-full bg-accent blur-[100px]"
+        />
+      </div>
+
       <div className="container mx-auto px-6">
         {/* Main About Section */}
         <div className="grid items-center gap-16 lg:grid-cols-2">
-          <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative">
-            <div className="aspect-[4/5] overflow-hidden rounded-3xl">
-              <img src={monastery} alt="Ancient Ethiopian monastery on Lake Tana" className="h-full w-full object-cover" loading="lazy" />
+          <motion.div
+            initial={{ opacity: 0, x: -40, rotateY: 10 }}
+            whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, type: "spring", stiffness: 60 }}
+            className="relative"
+          >
+            <div className="aspect-[4/5] overflow-hidden rounded-3xl group">
+              <motion.img
+                src={monastery}
+                alt="Ancient Ethiopian monastery on Lake Tana"
+                className="h-full w-full object-cover"
+                loading="lazy"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.7 }}
+              />
+              {/* Shimmer overlay */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent"
+                animate={{ x: ["-100%", "200%"] }}
+                transition={{ duration: 4, repeat: Infinity, repeatDelay: 6, ease: "easeInOut" }}
+              />
             </div>
-            <div className="absolute -bottom-6 -right-4 glass-card rounded-2xl p-6 md:right-[-2rem]">
-              <div className="font-display text-3xl font-bold text-primary">3000+</div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5, type: "spring", stiffness: 120 }}
+              className="absolute -bottom-6 -right-4 glass-card rounded-2xl p-6 md:right-[-2rem]"
+            >
+              <motion.div
+                className="font-display text-3xl font-bold text-primary"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+              >
+                3000+
+              </motion.div>
               <div className="font-body text-xs tracking-wider text-muted-foreground uppercase">{t("about.yearsHistory")}</div>
-            </div>
+            </motion.div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-            <span className="font-body text-sm tracking-widest text-primary uppercase">{t("about.badge")}</span>
-            <h2 className="mt-3 font-display text-4xl font-bold text-foreground md:text-5xl">
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.span
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-block font-body text-sm tracking-widest text-primary uppercase"
+            >
+              {t("about.badge")}
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="mt-3 font-display text-4xl font-bold text-foreground md:text-5xl"
+            >
               {t("about.title")} <span className="text-gradient-gold italic">{t("about.titleHighlight")}</span> {t("about.titleEnd")}
-            </h2>
-            <p className="mt-4 font-body text-muted-foreground leading-relaxed">{t("about.description")}</p>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="mt-4 font-body text-muted-foreground leading-relaxed"
+            >
+              {t("about.description")}
+            </motion.p>
 
             <div className="mt-10 space-y-8">
               {facts.map((fact, i) => (
-                <motion.div key={fact.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }} className="flex gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <motion.div
+                  key={fact.title}
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 + i * 0.15, type: "spring", stiffness: 80 }}
+                  whileHover={{ x: 8, transition: { type: "spring", stiffness: 300 } }}
+                  className="flex gap-4 group cursor-default"
+                >
+                  <motion.div
+                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-lg"
+                    style={{ boxShadow: "none" }}
+                    whileHover={{ boxShadow: "0 8px 25px -4px hsl(var(--primary) / 0.4)" }}
+                  >
                     <fact.icon className="h-5 w-5" />
-                  </div>
+                  </motion.div>
                   <div>
-                    <h3 className="font-display text-lg font-bold text-foreground">{fact.title}</h3>
+                    <h3 className="font-display text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-300">{fact.title}</h3>
                     <p className="mt-1 font-body text-sm text-muted-foreground leading-relaxed">{fact.text}</p>
                   </div>
                 </motion.div>
@@ -103,19 +187,47 @@ const AboutEthiopia = () => {
         </div>
 
         {/* Animated Counters / Achievements */}
-        <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-24 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-24 grid gap-8 sm:grid-cols-2 lg:grid-cols-4"
+        >
           {[
             { icon: Users, target: 500, suffix: "+", label: t("about.counterTravelers") },
             { icon: MapPin, target: 50, suffix: "+", label: t("about.counterTours") },
             { icon: Award, target: 8, suffix: "", label: t("about.counterAwards") },
             { icon: Globe, target: 15, suffix: "+", label: t("about.counterDestinations") },
           ].map((item, i) => (
-            <motion.div key={item.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="glass-card rounded-2xl p-8 text-center">
-              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                <item.icon className="h-6 w-6" />
+            <motion.div
+              key={item.label}
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.12, type: "spring", stiffness: 100 }}
+              whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
+              className="glass-card rounded-2xl p-8 text-center group relative overflow-hidden"
+            >
+              {/* Hover glow */}
+              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-b from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+              <div className="relative z-10">
+                <motion.div
+                  className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground"
+                  whileHover={{ rotate: [0, -10, 10, 0], transition: { duration: 0.5 } }}
+                >
+                  <item.icon className="h-6 w-6" />
+                </motion.div>
+                <AnimatedCounter target={item.target} suffix={item.suffix} />
+                <div className="mt-2 font-body text-sm text-muted-foreground">{item.label}</div>
               </div>
-              <AnimatedCounter target={item.target} suffix={item.suffix} />
-              <div className="mt-2 font-body text-sm text-muted-foreground">{item.label}</div>
+              {/* Decorative bottom accent */}
+              <motion.div
+                className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary/40 to-transparent"
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 + i * 0.1, duration: 0.6 }}
+              />
             </motion.div>
           ))}
         </motion.div>
