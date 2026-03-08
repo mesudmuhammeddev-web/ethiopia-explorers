@@ -24,7 +24,7 @@ const testimonials = [
     name: "Elena Rossi",
     location: "Milan, Italy",
     rating: 5,
-    text: "From the ancient churches of Lalibela to the castles of Gondar, every moment felt like stepping back in time. EthioWander made it all seamless.",
+    text: "From the ancient churches of Lalibela to the castles of Gondar, every moment felt like stepping back in time. Ethiopia Travel Explorer made it all seamless.",
     avatar: "ER",
     tour: "Historical North Circuit",
   },
