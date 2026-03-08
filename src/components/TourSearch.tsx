@@ -339,7 +339,7 @@ const TourSearch = () => {
                             <DollarSign className="h-4 w-4 text-primary" />
                             {t("tourSearch.dynamicPricing")}
                           </h4>
-                          <div className="flex flex-wrap gap-3">
+                          <div className="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:gap-3">
                             {[
                               { label: t("tourSearch.person1"), price: tour.pricing.solo, active: travelers === 1 },
                               { label: t("tourSearch.people23"), price: tour.pricing.small, active: travelers >= 2 && travelers < 4 },
@@ -348,16 +348,16 @@ const TourSearch = () => {
                               <motion.div
                                 key={tier.label}
                                 whileHover={{ scale: 1.05 }}
-                                className={`rounded-xl px-5 py-3 text-center transition-all duration-300 ${
+                                className={`rounded-xl px-3 py-2 sm:px-5 sm:py-3 text-center transition-all duration-300 ${
                                   tier.active
                                     ? "bg-primary/15 ring-2 ring-primary shadow-lg shadow-primary/10"
                                     : "bg-secondary/60 hover:bg-secondary"
                                 }`}
                               >
-                                <p className={`font-display text-xl font-bold ${tier.active ? "text-primary" : "text-foreground"}`}>
+                                <p className={`font-display text-base sm:text-xl font-bold ${tier.active ? "text-primary" : "text-foreground"}`}>
                                   ${tier.price.toFixed(2)}
                                 </p>
-                                <p className="text-[10px] text-muted-foreground mt-0.5">{tier.label}</p>
+                                <p className="text-[9px] sm:text-[10px] text-muted-foreground mt-0.5">{tier.label}</p>
                               </motion.div>
                             ))}
                           </div>

@@ -28,18 +28,18 @@ const TourComparison = () => {
           <p className="mx-auto mt-4 max-w-lg font-body text-muted-foreground">{t("compare.subtitle")}</p>
         </motion.div>
 
-        <div className="mx-auto mt-10 flex max-w-5xl items-center justify-center gap-3">
-          <span className="font-body text-sm text-muted-foreground">{t("compare.travelers")}</span>
+        <div className="mx-auto mt-10 flex max-w-5xl flex-wrap items-center justify-center gap-2 sm:gap-3">
+          <span className="font-body text-xs sm:text-sm text-muted-foreground">{t("compare.travelers")}</span>
           {[1, 2, 3, 4, 6].map((n) => (
-            <button key={n} onClick={() => setTravelers(n)} className={`rounded-lg px-3 py-1.5 font-body text-xs font-medium transition-all ${travelers === n ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"}`}>
+            <button key={n} onClick={() => setTravelers(n)} className={`rounded-lg px-2.5 py-1 sm:px-3 sm:py-1.5 font-body text-[10px] sm:text-xs font-medium transition-all ${travelers === n ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"}`}>
               {n} {n === 1 ? t("compare.person") : t("compare.people")}
             </button>
           ))}
         </div>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="mx-auto mt-8 max-w-5xl overflow-x-auto">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="mx-auto mt-8 max-w-5xl overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
           <div className="glass-card rounded-2xl p-6">
-            <table className="w-full">
+            <table className="w-full min-w-[600px]">
               <thead>
                 <tr className="border-b border-border">
                   <th className="pb-4 text-left font-body text-xs font-medium uppercase tracking-wider text-muted-foreground">{t("compare.feature")}</th>

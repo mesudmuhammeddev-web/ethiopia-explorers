@@ -460,7 +460,7 @@ const AboutEthiopia = () => {
                 ))}
               </svg>
 
-              <div className="relative z-10 grid gap-8 sm:grid-cols-3 lg:grid-cols-5">
+              <div className="relative z-10 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-8 lg:grid-cols-5">
                 {teamMembers.map((member, i) => (
                   <motion.div
                     key={member.name}
@@ -476,7 +476,7 @@ const AboutEthiopia = () => {
 
                     <div className="relative glass-card rounded-2xl p-6 text-center border border-border/50 group-hover:border-primary/30 transition-all duration-500">
                       {/* Avatar with animated ring */}
-                      <div className="relative mx-auto mb-5 h-28 w-28">
+                      <div className="relative mx-auto mb-4 sm:mb-5 h-20 w-20 sm:h-28 sm:w-28">
                         {/* Spinning ring */}
                         <motion.div
                           className="absolute -inset-1 rounded-full"
