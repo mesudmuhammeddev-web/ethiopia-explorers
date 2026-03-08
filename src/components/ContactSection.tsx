@@ -1,13 +1,15 @@
 import { motion } from "framer-motion";
-import { Phone, Mail, MessageCircle, MapPin, Send } from "lucide-react";
+import { Phone, Mail, MessageCircle, MapPin, Send, Upload, X, FileText } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 
 const ContactSection = () => {
   const { t } = useTranslation();
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", whatsapp: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [file, setFile] = useState<File | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const contactMethods = [
     { icon: MessageCircle, label: t("contact.whatsapp"), value: t("contact.whatsappValue"), action: "https://wa.me/251900000000", highlight: true },
@@ -18,10 +20,26 @@ const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Build WhatsApp message with form data
+    const waNumber = formData.whatsapp || formData.phone;
+    const message = `New Inquiry from ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nWhatsApp: ${waNumber}\n\nMessage: ${formData.message}`;
+    const waLink = `https://wa.me/251900000000?text=${encodeURIComponent(message)}`;
+    window.open(waLink, "_blank");
     setSubmitted(true);
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    setFormData({ name: "", email: "", phone: "", whatsapp: "", message: "" });
+    setFile(null);
     setTimeout(() => setSubmitted(false), 4000);
   };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selected = e.target.files?.[0];
+    if (selected && selected.size <= 5 * 1024 * 1024) {
+      setFile(selected);
+    }
+  };
+
+  const inputClass = "peer w-full rounded-xl border border-border bg-secondary/40 px-4 pt-6 pb-2 font-body text-sm text-foreground placeholder-transparent focus:outline-none focus:ring-2 focus:ring-primary/50";
+  const labelClass = "pointer-events-none absolute left-4 top-2 font-body text-xs text-muted-foreground transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary";
 
   return (
     <section id="contact" className="relative py-24">
@@ -47,58 +65,59 @@ const ContactSection = () => {
                 <p className="mt-2 font-body text-sm text-muted-foreground">{t("contact.thankYouText")}</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="relative">
-                  <input
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    required
-                    placeholder=" "
-                    className="peer w-full rounded-xl border border-border bg-secondary/40 px-4 pt-6 pb-2 font-body text-sm text-foreground placeholder-transparent focus:outline-none focus:ring-2 focus:ring-primary/50"
-                  />
-                  <label className="pointer-events-none absolute left-4 top-2 font-body text-xs text-muted-foreground transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary">
-                    {t("contact.nameLabel")}
-                  </label>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="relative">
+                    <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} required placeholder=" " className={inputClass} />
+                    <label className={labelClass}>{t("contact.nameLabel")}</label>
+                  </div>
+                  <div className="relative">
+                    <input type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} required placeholder=" " className={inputClass} />
+                    <label className={labelClass}>{t("contact.emailLabel")}</label>
+                  </div>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="relative">
+                    <input type="tel" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} placeholder=" " className={inputClass} />
+                    <label className={labelClass}>{t("contact.phoneLabel")}</label>
+                  </div>
+                  <div className="relative">
+                    <input type="tel" value={formData.whatsapp} onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })} placeholder=" " className={inputClass} />
+                    <label className={labelClass}>
+                      <span className="flex items-center gap-1">
+                        <MessageCircle className="h-3 w-3 inline" /> WhatsApp
+                      </span>
+                    </label>
+                  </div>
                 </div>
                 <div className="relative">
-                  <input
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    required
-                    placeholder=" "
-                    className="peer w-full rounded-xl border border-border bg-secondary/40 px-4 pt-6 pb-2 font-body text-sm text-foreground placeholder-transparent focus:outline-none focus:ring-2 focus:ring-primary/50"
-                  />
-                  <label className="pointer-events-none absolute left-4 top-2 font-body text-xs text-muted-foreground transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary">
-                    {t("contact.emailLabel")}
-                  </label>
+                  <textarea value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} required rows={3} placeholder=" " className={`${inputClass} resize-none`} />
+                  <label className={labelClass}>{t("contact.messageLabel")}</label>
                 </div>
-                <div className="relative">
-                  <input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder=" "
-                    className="peer w-full rounded-xl border border-border bg-secondary/40 px-4 pt-6 pb-2 font-body text-sm text-foreground placeholder-transparent focus:outline-none focus:ring-2 focus:ring-primary/50"
-                  />
-                  <label className="pointer-events-none absolute left-4 top-2 font-body text-xs text-muted-foreground transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary">
-                    {t("contact.phoneLabel")}
-                  </label>
+
+                {/* File upload */}
+                <div>
+                  <input ref={fileInputRef} type="file" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" onChange={handleFileChange} className="hidden" />
+                  {file ? (
+                    <div className="flex items-center gap-3 rounded-xl border border-border bg-secondary/40 px-4 py-3">
+                      <FileText className="h-5 w-5 text-primary" />
+                      <span className="font-body text-sm text-foreground flex-1 truncate">{file.name}</span>
+                      <button type="button" onClick={() => { setFile(null); if (fileInputRef.current) fileInputRef.current.value = ""; }} className="text-muted-foreground hover:text-foreground">
+                        <X className="h-4 w-4" />
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => fileInputRef.current?.click()}
+                      className="flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-border bg-secondary/20 px-4 py-3 font-body text-sm text-muted-foreground hover:border-primary/50 hover:text-foreground transition-colors"
+                    >
+                      <Upload className="h-4 w-4" />
+                      Attach document (passport, itinerary) — max 5MB
+                    </button>
+                  )}
                 </div>
-                <div className="relative">
-                  <textarea
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    required
-                    rows={4}
-                    placeholder=" "
-                    className="peer w-full rounded-xl border border-border bg-secondary/40 px-4 pt-6 pb-2 font-body text-sm text-foreground placeholder-transparent focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
-                  />
-                  <label className="pointer-events-none absolute left-4 top-2 font-body text-xs text-muted-foreground transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary">
-                    {t("contact.messageLabel")}
-                  </label>
-                </div>
+
                 <Button type="submit" className="w-full gap-2 rounded-xl bg-primary py-3 font-body font-semibold text-primary-foreground hover:bg-gold-dark" style={{ background: "var(--gradient-gold)" }}>
                   <Send className="h-4 w-4" />
                   {t("contact.sendInquiry")}
@@ -133,7 +152,6 @@ const ContactSection = () => {
               ))}
             </div>
 
-            {/* Google Map */}
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex-1 overflow-hidden rounded-2xl border border-border min-h-[280px]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63056.82073884746!2d37.3563!3d11.5936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1644d1a50b0dc96d%3A0x3132dc270e68c58c!2sBahir%20Dar%2C%20Ethiopia!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
