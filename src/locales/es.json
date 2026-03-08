@@ -205,10 +205,32 @@
     "tourNotFoundDesc": "El tour que busca no existe.",
     "backToHome": "Volver al inicio"
   },
+  "buildTrip": {
+    "badge": "Planifique en 30 segundos",
+    "title": "🧭 Cree su viaje",
+    "subtitle": "Díganos lo que quiere — crearemos la aventura etíope perfecta para usted.",
+    "selectDestination": "📍 Seleccionar destino",
+    "destinationDesc": "¿Dónde en Etiopía quiere explorar?",
+    "selectTravelType": "🏷️ Tipo de viaje",
+    "travelTypeDesc": "¿Qué tipo de experiencia busca?",
+    "selectBudget": "💰 Seleccionar presupuesto",
+    "budgetDesc": "¿Cuál es su presupuesto por persona?",
+    "selectDate": "📅 Fecha de viaje",
+    "dateDesc": "¿Cuándo quiere viajar?",
+    "selected": "Seleccionado:",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "getMyTripPlan": "Obtener mi plan de viaje",
+    "adventure": "Aventura",
+    "family": "Familia",
+    "luxury": "Lujo",
+    "honeymoon": "Luna de miel"
+  },
   "language": {
     "en": "English",
     "fr": "Français",
     "de": "Deutsch",
-    "es": "Español"
+    "es": "Español",
+    "am": "አማርኛ"
   }
 }

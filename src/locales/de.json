@@ -205,10 +205,32 @@
     "tourNotFoundDesc": "Die Tour, die Sie suchen, existiert nicht.",
     "backToHome": "Zurück zur Startseite"
   },
+  "buildTrip": {
+    "badge": "In 30 Sekunden planen",
+    "title": "🧭 Reise planen",
+    "subtitle": "Sagen Sie uns, was Sie wollen — wir gestalten das perfekte Äthiopien-Abenteuer für Sie.",
+    "selectDestination": "📍 Reiseziel wählen",
+    "destinationDesc": "Wo in Äthiopien möchten Sie erkunden?",
+    "selectTravelType": "🏷️ Reiseart wählen",
+    "travelTypeDesc": "Welche Art von Erlebnis suchen Sie?",
+    "selectBudget": "💰 Budget wählen",
+    "budgetDesc": "Wie hoch ist Ihr Budget pro Person?",
+    "selectDate": "📅 Reisedatum wählen",
+    "dateDesc": "Wann möchten Sie reisen?",
+    "selected": "Ausgewählt:",
+    "back": "Zurück",
+    "next": "Weiter",
+    "getMyTripPlan": "Meinen Reiseplan erhalten",
+    "adventure": "Abenteuer",
+    "family": "Familie",
+    "luxury": "Luxus",
+    "honeymoon": "Flitterwochen"
+  },
   "language": {
     "en": "English",
     "fr": "Français",
     "de": "Deutsch",
-    "es": "Español"
+    "es": "Español",
+    "am": "አማርኛ"
   }
 }

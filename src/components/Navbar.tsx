@@ -17,6 +17,7 @@ const languages = [
   { code: "fr", flag: "🇫🇷", label: "Français" },
   { code: "de", flag: "🇩🇪", label: "Deutsch" },
   { code: "es", flag: "🇪🇸", label: "Español" },
+  { code: "am", flag: "🇪🇹", label: "አማርኛ" },
 ];
 
 const resolveLanguage = (lng: string): string => {
