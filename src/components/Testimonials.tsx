@@ -40,7 +40,7 @@ const testimonials = [
     name: "Amara Johnson",
     location: "London, UK",
     rating: 5,
-    text: "Trekking the Simien Mountains with EthioWander was the highlight of my year. The Gelada baboons, the views — absolutely unreal. Can't wait to return!",
+    text: "Trekking the Simien Mountains with Ethiopia Travel Explorer was the highlight of my year. The Gelada baboons, the views — absolutely unreal. Can't wait to return!",
     avatar: "AJ",
     tour: "Simien Mountains Trek",
   },
