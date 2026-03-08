@@ -59,7 +59,7 @@ const FeaturedExperiences = () => {
                 )}
 
                 {/* Availability counter */}
-                <div className="absolute top-3 right-3 z-10 flex items-center gap-1 rounded-full bg-background/80 backdrop-blur-sm px-2.5 py-1 text-xs font-medium text-foreground border border-border">
+                <div className="absolute top-3 right-3 z-10 hidden sm:flex items-center gap-1 rounded-full bg-background/80 backdrop-blur-sm px-2.5 py-1 text-xs font-medium text-foreground border border-border">
                   <TrendingUp className="h-3 w-3 text-primary" />
                   {Math.floor(Math.random() * 8) + 3} booked this week
                 </div>

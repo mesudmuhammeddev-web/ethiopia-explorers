@@ -122,10 +122,10 @@ const Destinations = () => {
                 <div className="absolute top-2 right-2 sm:top-3 sm:right-3 rounded-full bg-primary/90 px-2 py-0.5 sm:px-2.5 sm:py-1 font-body text-[10px] sm:text-xs font-semibold text-primary-foreground">
                   ${dest.price}+
                 </div>
-                <div className="absolute inset-x-0 bottom-0 p-4">
-                  <span className="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">{dest.tours} {t("destinations.tours")}</span>
-                  <h3 className="mt-2 font-display text-lg font-bold leading-tight text-foreground">{dest.name}</h3>
-                  <p className="mt-1 font-body text-xs text-muted-foreground line-clamp-2">{dest.description}</p>
+                <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4">
+                  <span className="rounded-full bg-primary/20 px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs font-medium text-primary">{dest.tours} {t("destinations.tours")}</span>
+                  <h3 className="mt-1.5 sm:mt-2 font-display text-sm sm:text-lg font-bold leading-tight text-foreground">{dest.name}</h3>
+                  <p className="mt-1 font-body text-[10px] sm:text-xs text-muted-foreground line-clamp-2 hidden sm:block">{dest.description}</p>
                   <a
                     href={`https://wa.me/251900000000?text=I'm interested in ${dest.name} tours`}
                     target="_blank"
