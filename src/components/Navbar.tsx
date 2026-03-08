@@ -177,7 +177,7 @@ const Navbar = () => {
                 ))}
               </div>
               <Button asChild className="bg-primary text-primary-foreground">
-                <a href="https://wa.me/251900000000" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/251998900160" target="_blank" rel="noopener noreferrer">
                   {t("nav.bookNow")}
                 </a>
               </Button>

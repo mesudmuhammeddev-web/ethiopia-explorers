@@ -289,7 +289,7 @@ const TourSearch = () => {
                         <span className="font-body text-sm font-bold text-foreground">{tour.rating}</span>
                       </div>
                       <a
-                        href={`https://wa.me/251900000000?text=${encodeURIComponent(`Hi, I want to book ${tour.name}`)}`}
+                        href={`https://wa.me/251998900160?text=${encodeURIComponent(`Hi, I want to book ${tour.name}`)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}

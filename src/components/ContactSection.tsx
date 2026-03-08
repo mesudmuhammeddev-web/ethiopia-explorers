@@ -23,7 +23,7 @@ const ContactSection = () => {
     // Build WhatsApp message with form data
     const waNumber = formData.whatsapp || formData.phone;
     const message = `New Inquiry from ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nWhatsApp: ${waNumber}\n\nMessage: ${formData.message}`;
-    const waLink = `https://wa.me/251900000000?text=${encodeURIComponent(message)}`;
+    const waLink = `https://wa.me/251998900160?text=${encodeURIComponent(message)}`;
     window.open(waLink, "_blank");
     setSubmitted(true);
     setFormData({ name: "", email: "", phone: "", whatsapp: "", message: "" });

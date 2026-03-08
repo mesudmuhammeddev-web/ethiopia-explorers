@@ -83,7 +83,7 @@ const FeaturedExperiences = () => {
                     </div>
                     <div className="flex gap-1.5">
                       <a
-                        href={`https://wa.me/251900000000?text=${encodeURIComponent(`Hi, I want to book ${tour.name}`)}`}
+                        href={`https://wa.me/251998900160?text=${encodeURIComponent(`Hi, I want to book ${tour.name}`)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex h-9 w-9 items-center justify-center rounded-lg bg-green-600 text-white hover:bg-green-700 transition-colors"
