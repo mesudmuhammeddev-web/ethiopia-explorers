@@ -167,30 +167,159 @@ const AboutEthiopia = () => {
         </motion.div>
 
         {/* Team Section */}
-        <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-24">
-          <div className="text-center mb-12">
-            <span className="font-body text-sm tracking-widest text-primary uppercase">{t("about.teamBadge")}</span>
-            <h2 className="mt-3 font-display text-3xl font-bold text-foreground md:text-4xl">
-              {t("about.teamTitle")} <span className="text-gradient-gold italic">{t("about.teamHighlight")}</span>
-            </h2>
+        <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-24 relative">
+          {/* Background decoration */}
+          <div className="absolute inset-0 -mx-6 -my-12 rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-b from-secondary/50 via-card/80 to-secondary/50" />
+            <div className="absolute inset-0 opacity-30">
+              <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-primary/10 blur-[100px]" />
+              <div className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full bg-accent/10 blur-[80px]" />
+            </div>
+            {/* Animated grid pattern */}
+            <svg className="absolute inset-0 w-full h-full opacity-[0.04]">
+              <defs>
+                <pattern id="team-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <circle cx="20" cy="20" r="1" fill="hsl(var(--primary))" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#team-grid)" />
+            </svg>
           </div>
-          <div className="grid gap-6 sm:grid-cols-3 lg:grid-cols-5">
-            {teamMembers.map((member, i) => (
-              <motion.div
-                key={member.name}
+
+          <div className="relative z-10 py-12">
+            <div className="text-center mb-16">
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="font-body text-sm tracking-widest text-primary uppercase"
+              >
+                {t("about.teamBadge")}
+              </motion.span>
+              <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="glass-card hover-lift group rounded-2xl p-6 text-center"
+                transition={{ delay: 0.1 }}
+                className="mt-3 font-display text-3xl font-bold text-foreground md:text-4xl"
               >
-                <div className="mx-auto mb-4 h-24 w-24 overflow-hidden rounded-full ring-2 ring-primary/20 transition-all group-hover:ring-4 group-hover:ring-primary">
-                  <img src={member.image} alt={member.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-                </div>
-                <h3 className="font-display text-base font-bold text-foreground">{member.name}</h3>
-                <p className="mt-1 font-body text-xs text-muted-foreground">{t(member.role)}</p>
-              </motion.div>
-            ))}
+                {t("about.teamTitle")} <span className="text-gradient-gold italic">{t("about.teamHighlight")}</span>
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="mt-3 text-muted-foreground text-sm max-w-md mx-auto"
+              >
+                The passionate people behind every unforgettable Ethiopian journey
+              </motion.p>
+            </div>
+
+            {/* Team grid with connecting lines */}
+            <div className="relative max-w-5xl mx-auto">
+              {/* SVG connecting lines */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none hidden lg:block" style={{ zIndex: 0 }}>
+                <defs>
+                  <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+                    <stop offset="30%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
+                    <stop offset="70%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
+                    <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+                  </linearGradient>
+                  <linearGradient id="line-grad-v" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.1" />
+                    <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.4" />
+                    <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.1" />
+                  </linearGradient>
+                </defs>
+                {/* Horizontal connecting line */}
+                <motion.line
+                  x1="10%" y1="40%" x2="90%" y2="40%"
+                  stroke="url(#line-grad)"
+                  strokeWidth="1"
+                  strokeDasharray="6 4"
+                  initial={{ pathLength: 0 }}
+                  whileInView={{ pathLength: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.5, ease: "easeInOut" }}
+                />
+                {/* Animated pulse dots along the line */}
+                {[0, 1, 2, 3].map((idx) => (
+                  <motion.circle
+                    key={idx}
+                    r="2.5"
+                    fill="hsl(var(--primary))"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: [0, 0.8, 0] }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 2, delay: idx * 0.4, repeat: Infinity, repeatDelay: 1 }}
+                    cx={`${20 + idx * 20}%`}
+                    cy="40%"
+                  />
+                ))}
+              </svg>
+
+              <div className="relative z-10 grid gap-8 sm:grid-cols-3 lg:grid-cols-5">
+                {teamMembers.map((member, i) => (
+                  <motion.div
+                    key={member.name}
+                    initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.12, type: "spring", stiffness: 100, damping: 15 }}
+                    whileHover={{ y: -12, transition: { type: "spring", stiffness: 300 } }}
+                    className="group relative"
+                  >
+                    {/* Glow effect behind card */}
+                    <div className="absolute -inset-1 rounded-2xl bg-gradient-to-b from-primary/20 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-lg" />
+
+                    <div className="relative glass-card rounded-2xl p-6 text-center border border-border/50 group-hover:border-primary/30 transition-all duration-500">
+                      {/* Avatar with animated ring */}
+                      <div className="relative mx-auto mb-5 h-28 w-28">
+                        {/* Spinning ring */}
+                        <motion.div
+                          className="absolute -inset-1 rounded-full"
+                          style={{
+                            background: "conic-gradient(from 0deg, transparent, hsl(var(--primary)), transparent, hsl(var(--accent)), transparent)",
+                            opacity: 0.3,
+                          }}
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                        />
+                        <div className="absolute inset-0 rounded-full bg-card" />
+                        <div className="absolute inset-1 overflow-hidden rounded-full ring-2 ring-primary/20 group-hover:ring-primary/60 transition-all duration-500">
+                          <img
+                            src={member.image}
+                            alt={member.name}
+                            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            loading="lazy"
+                          />
+                        </div>
+                        {/* Status dot */}
+                        <motion.div
+                          className="absolute bottom-1 right-1 h-4 w-4 rounded-full bg-green-500 ring-2 ring-card"
+                          animate={{ scale: [1, 1.2, 1] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                        />
+                      </div>
+
+                      <h3 className="font-display text-base font-bold text-foreground group-hover:text-primary transition-colors duration-300">{member.name}</h3>
+                      <p className="mt-1 font-body text-xs text-muted-foreground">{t(member.role)}</p>
+
+                      {/* Decorative bottom line */}
+                      <motion.div
+                        className="mt-4 mx-auto h-0.5 rounded-full bg-gradient-to-r from-transparent via-primary/50 to-transparent"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: "80%" }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.5 + i * 0.1, duration: 0.6 }}
+                      />
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>
