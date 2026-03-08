@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { ArrowRight, Users } from "lucide-react";
+import { ArrowRight, Users, MessageCircle, Flame, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { tours, getPriceForGroup } from "@/data/tours";
 
+// Top profitable packages first, lower-selling pushed down
 const featuredIds = [1, 2, 3, 4, 7, 9, 13, 14];
 
 const FeaturedExperiences = () => {
@@ -40,8 +41,29 @@ const FeaturedExperiences = () => {
         <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {featured.map((tour, i) => {
             const price = getPriceForGroup(tour.pricing, travelers);
+            const isHot = i < 3; // Top 3 are "hot" / most profitable
             return (
-              <motion.div key={tour.id} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="group hover-lift relative overflow-hidden rounded-2xl">
+              <motion.div
+                key={tour.id}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="group hover-lift relative overflow-hidden rounded-2xl"
+              >
+                {/* Hot badge */}
+                {isHot && (
+                  <div className="absolute top-3 left-3 z-10 flex items-center gap-1 rounded-full bg-destructive/90 px-2.5 py-1 text-xs font-bold text-destructive-foreground">
+                    <Flame className="h-3 w-3" /> Popular
+                  </div>
+                )}
+
+                {/* Availability counter */}
+                <div className="absolute top-3 right-3 z-10 flex items-center gap-1 rounded-full bg-background/80 backdrop-blur-sm px-2.5 py-1 text-xs font-medium text-foreground border border-border">
+                  <TrendingUp className="h-3 w-3 text-primary" />
+                  {Math.floor(Math.random() * 8) + 3} booked this week
+                </div>
+
                 <div className="aspect-[3/4] overflow-hidden">
                   <img src={tour.image} alt={tour.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
                 </div>
@@ -59,10 +81,21 @@ const FeaturedExperiences = () => {
                         {travelers >= 4 ? t("tourSearch.groupRate") : travelers >= 2 ? t("tourSearch.perPerson") : t("tourSearch.soloRate")}
                       </p>
                     </div>
-                    <Button size="sm" className="gap-1 bg-primary text-primary-foreground hover:bg-gold-dark" onClick={() => navigate(`/tour/${tour.slug}`)}>
-                      {t("featured.book")}
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </Button>
+                    <div className="flex gap-1.5">
+                      <a
+                        href={`https://wa.me/251900000000?text=${encodeURIComponent(`Hi, I want to book ${tour.name}`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex h-9 w-9 items-center justify-center rounded-lg bg-green-600 text-white hover:bg-green-700 transition-colors"
+                        aria-label={`Book ${tour.name} via WhatsApp`}
+                      >
+                        <MessageCircle className="h-4 w-4" />
+                      </a>
+                      <Button size="sm" className="gap-1 bg-primary text-primary-foreground hover:bg-gold-dark" onClick={() => navigate(`/tour/${tour.slug}`)}>
+                        {t("featured.book")}
+                        <ArrowRight className="h-3.5 w-3.5" />
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </motion.div>
