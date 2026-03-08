@@ -37,7 +37,7 @@ const TourComparison = () => {
           ))}
         </div>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="mx-auto mt-8 max-w-5xl overflow-x-auto">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="mx-auto mt-8 max-w-5xl overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
           <div className="glass-card rounded-2xl p-6">
             <table className="w-full">
               <thead>
