@@ -45,10 +45,14 @@ const destinations = [
   { name: "Lake Langano", description: "Ethiopia's favorite resort lake — swim, kayak & relax on golden shores", tours: 4, image: langano, region: "Oromia", type: "Nature", price: 80 },
   { name: "Debre Damo", description: "6th-century cliff-top monastery accessible only by rope — a spiritual adventure", tours: 3, image: debreDamo, region: "Tigray", type: "Historical", price: 140 },
   { name: "Awash National Park", description: "Waterfalls, hot springs & wildlife — oryx, baboons & 450+ bird species", tours: 6, image: awash, region: "Afar", type: "Nature", price: 120 },
+  { name: "Al-Nejashi Mosque", description: "Africa's first mosque in Negash — one of Islam's earliest sanctuaries, dating to the 7th century", tours: 4, image: negashMosque, region: "Tigray", type: "Islamic Heritage", price: 130 },
+  { name: "Anwar Mosque", description: "Ethiopia's largest mosque in Addis Ababa — a stunning symbol of Islamic architecture and faith", tours: 3, image: anwarMosque, region: "Addis Ababa", type: "Islamic Heritage", price: 50 },
+  { name: "Harar Jugol Mosques", description: "The 4th holiest Islamic city with 82 mosques & 102 shrines within ancient walled city walls", tours: 6, image: hararMosques, region: "Harari", type: "Islamic Heritage", price: 130 },
+  { name: "Sheikh Hussein Shrine", description: "Major Islamic pilgrimage site in Bale — a sacred shrine attracting thousands of devotees annually", tours: 4, image: sheikhHussein, region: "Oromia", type: "Islamic Heritage", price: 160 },
 ];
 
 const regions = ["All", "Amhara", "Afar", "Tigray", "Harari", "SNNPR", "Oromia", "Addis Ababa"];
-const types = ["All", "Cultural", "Historical", "Adventure", "Nature"];
+const types = ["All", "Cultural", "Historical", "Adventure", "Nature", "Islamic Heritage"];
 const priceRanges = ["All", "$0–$100", "$100–$200", "$200+"];
 
 const Destinations = () => {

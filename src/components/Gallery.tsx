@@ -72,10 +72,16 @@ const galleryImages: GalleryImage[] = [
 
   // Addis Ababa
   { id: 20, src: addisAbaba, title: "Mercato Bustle", location: "Addis Ababa", region: "Addis Ababa", type: "Culture", aspect: "landscape" },
+
+  // Islamic Heritage Sites
+  { id: 21, src: negashMosque, title: "Al-Nejashi Mosque", location: "Negash", region: "Tigray", type: "Islamic Heritage", aspect: "landscape" },
+  { id: 22, src: anwarMosque, title: "Anwar Mosque", location: "Addis Ababa", region: "Addis Ababa", type: "Islamic Heritage", aspect: "landscape" },
+  { id: 23, src: hararMosques, title: "Harar Jugol Mosques", location: "Harar", region: "Harari", type: "Islamic Heritage", aspect: "portrait" },
+  { id: 24, src: sheikhHussein, title: "Sheikh Hussein Shrine", location: "Bale", region: "Oromia", type: "Islamic Heritage", aspect: "landscape" },
 ];
 
 const regions = ["All", "Amhara", "Afar", "Tigray", "Harari", "SNNPR", "Oromia", "Addis Ababa"];
-const types = ["All", "Nature", "Culture", "Adventure"];
+const types = ["All", "Nature", "Culture", "Adventure", "Islamic Heritage"];
 
 const LazyImage = ({ src, alt, className, onClick }: { src: string; alt: string; className?: string; onClick?: () => void }) => {
   const [loaded, setLoaded] = useState(false);
