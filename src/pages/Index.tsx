@@ -5,6 +5,7 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import Destinations from "@/components/Destinations";
 import Gallery from "@/components/Gallery";
 import TourSearch from "@/components/TourSearch";
+import BuildYourTrip from "@/components/BuildYourTrip";
 import FeaturedExperiences from "@/components/FeaturedExperiences";
 import TourComparison from "@/components/TourComparison";
 import Testimonials from "@/components/Testimonials";
