@@ -3,6 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import AboutEthiopia from "@/components/AboutEthiopia";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Destinations from "@/components/Destinations";
+import Gallery from "@/components/Gallery";
 import TourSearch from "@/components/TourSearch";
 import FeaturedExperiences from "@/components/FeaturedExperiences";
 import TourComparison from "@/components/TourComparison";
@@ -18,6 +19,7 @@ const Index = () => {
       <HeroSection />
       <AboutEthiopia />
       <Destinations />
+      <Gallery />
       <WhyChooseUs />
       <TourSearch />
       <FeaturedExperiences />
