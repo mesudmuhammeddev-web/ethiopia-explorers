@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import lakeTana from "@/assets/lake-tana.jpg";
 import heroFalls from "@/assets/hero-falls.jpg";
 import gondar from "@/assets/gondar.jpg";
@@ -24,46 +25,27 @@ const destinations = [
 ];
 
 const Destinations = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="destinations" className="relative py-24">
       <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <span className="font-body text-sm tracking-widest text-primary uppercase">Where To Go</span>
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
+          <span className="font-body text-sm tracking-widest text-primary uppercase">{t("destinations.badge")}</span>
           <h2 className="mt-3 font-display text-4xl font-bold text-foreground md:text-5xl">
-            Iconic <span className="text-gradient-gold italic">Destinations</span>
+            {t("destinations.title")} <span className="text-gradient-gold italic">{t("destinations.titleHighlight")}</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-lg font-body text-muted-foreground">
-            From ancient churches to alien landscapes — explore 10 unforgettable Ethiopian destinations
-          </p>
+          <p className="mx-auto mt-4 max-w-lg font-body text-muted-foreground">{t("destinations.subtitle")}</p>
         </motion.div>
 
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {destinations.map((dest, i) => (
-            <motion.div
-              key={dest.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.07 }}
-              className="group hover-lift cursor-pointer overflow-hidden rounded-2xl"
-            >
+            <motion.div key={dest.name} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }} className="group hover-lift cursor-pointer overflow-hidden rounded-2xl">
               <div className="relative aspect-[3/4] overflow-hidden">
-                <img
-                  src={dest.image}
-                  alt={dest.name}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
-                />
+                <img src={dest.image} alt={dest.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-4">
-                  <span className="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">
-                    {dest.tours} tours
-                  </span>
+                  <span className="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">{dest.tours} {t("destinations.tours")}</span>
                   <h3 className="mt-2 font-display text-lg font-bold leading-tight text-foreground">{dest.name}</h3>
                   <p className="mt-1 font-body text-xs text-muted-foreground line-clamp-2">{dest.description}</p>
                 </div>
