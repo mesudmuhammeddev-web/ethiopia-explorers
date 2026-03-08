@@ -188,54 +188,66 @@ const TourSearch = () => {
               >
                 {/* Main row */}
                 <div
-                  className="flex cursor-pointer flex-col gap-4 p-5 sm:flex-row sm:items-center"
+                  className="flex cursor-pointer flex-col gap-4 p-4 sm:p-5"
                   onClick={() => toggleExpand(tour.id)}
                 >
-                  {/* Tour image thumbnail */}
-                  <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl sm:h-24 sm:w-24">
-                    <img
-                      src={tour.image}
-                      alt={tour.name}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
-                    {isHot && (
-                      <div className="absolute top-1 left-1 flex items-center gap-0.5 rounded-md bg-destructive/90 px-1.5 py-0.5 text-[9px] font-bold text-destructive-foreground">
-                        <Flame className="h-2.5 w-2.5" /> HOT
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Info */}
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-display text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-200">
-                      {tour.name}
-                    </h3>
-                    <div className="mt-1.5 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-                      <span className="flex items-center gap-1">
-                        <MapPin className="h-3.5 w-3.5 text-primary/70" />
-                        {tour.destination}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="h-3.5 w-3.5 text-primary/70" />
-                        {tour.duration}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Users className="h-3.5 w-3.5 text-primary/70" />
-                        {tour.groupSize}
-                      </span>
-                      <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
-                        {tour.category}
-                      </span>
+                  {/* Top: image + info */}
+                  <div className="flex gap-4 items-start sm:items-center">
+                    {/* Tour image thumbnail */}
+                    <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-xl sm:h-24 sm:w-24">
+                      <img
+                        src={tour.image}
+                        alt={tour.name}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
+                      {isHot && (
+                        <div className="absolute top-1 left-1 flex items-center gap-0.5 rounded-md bg-destructive/90 px-1.5 py-0.5 text-[9px] font-bold text-destructive-foreground">
+                          <Flame className="h-2.5 w-2.5" /> HOT
+                        </div>
+                      )}
                     </div>
+
+                    {/* Info */}
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-display text-base sm:text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-200 leading-tight">
+                        {tour.name}
+                      </h3>
+                      <div className="mt-1 sm:mt-1.5 flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm text-muted-foreground">
+                        <span className="flex items-center gap-1">
+                          <MapPin className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary/70" />
+                          {tour.destination}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Clock className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary/70" />
+                          {tour.duration}
+                        </span>
+                        <span className="hidden sm:flex items-center gap-1">
+                          <Users className="h-3.5 w-3.5 text-primary/70" />
+                          {tour.groupSize}
+                        </span>
+                        <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] sm:text-xs font-medium text-primary">
+                          {tour.category}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Expand chevron - visible on desktop inline */}
+                    <motion.div
+                      animate={{ rotate: isExpanded ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="hidden sm:block flex-shrink-0"
+                    >
+                      <ChevronDown className="h-5 w-5 text-muted-foreground" />
+                    </motion.div>
                   </div>
 
-                  {/* Availability + Price + Actions */}
-                  <div className="flex items-center gap-5">
+                  {/* Bottom: availability + price + actions (stacks on mobile) */}
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border/20 pt-3 sm:border-0 sm:pt-0 sm:ml-28">
                     {nextAvailable && (
-                      <div className="text-right">
-                        <div className="flex items-center justify-end gap-1 text-xs text-muted-foreground">
+                      <div className="flex items-center gap-2 sm:flex-col sm:items-end sm:gap-0">
+                        <div className="flex items-center gap-1 text-xs text-muted-foreground">
                           <Calendar className="h-3 w-3" />
                           {new Date(nextAvailable.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
                         </div>
@@ -251,8 +263,8 @@ const TourSearch = () => {
                       </div>
                     )}
 
-                    <div className="text-right">
-                      <span className="font-display text-2xl font-bold text-primary">${price.toFixed(2)}</span>
+                    <div className="text-left sm:text-right">
+                      <span className="font-display text-xl sm:text-2xl font-bold text-primary">${price.toFixed(2)}</span>
                       {travelers === 1 && (
                         <p className="text-[10px] text-muted-foreground">
                           <span className="line-through opacity-60">${tour.pricing.solo.toFixed(2)}</span>{" "}
@@ -265,42 +277,42 @@ const TourSearch = () => {
                         </p>
                       )}
                       {travelers >= 4 && (
-                        <p className="text-[10px] text-primary font-semibold flex items-center gap-0.5 justify-end">
+                        <p className="text-[10px] text-primary font-semibold flex items-center gap-0.5">
                           <TrendingUp className="h-3 w-3" /> {t("tourSearch.bestGroupRate")}
                         </p>
                       )}
                     </div>
 
-                    <div className="flex flex-col items-center gap-2">
+                    <div className="flex items-center gap-2 ml-auto sm:ml-0">
                       <div className="flex items-center gap-1">
                         <Star className="h-3.5 w-3.5 fill-primary text-primary" />
                         <span className="font-body text-sm font-bold text-foreground">{tour.rating}</span>
                       </div>
-                      <div className="flex gap-1.5">
-                        <a
-                          href={`https://wa.me/251900000000?text=${encodeURIComponent(`Hi, I want to book ${tour.name}`)}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="flex h-8 w-8 items-center justify-center rounded-lg bg-green-600 text-white hover:bg-green-700 transition-colors"
-                          aria-label="Book via WhatsApp"
-                        >
-                          <MessageCircle className="h-3.5 w-3.5" />
-                        </a>
-                        <Button
-                          size="sm"
-                          className="gap-1 bg-primary text-primary-foreground hover:bg-gold-dark shadow-md shadow-primary/20"
-                          onClick={(e) => { e.stopPropagation(); navigate(`/tour/${tour.slug}`); }}
-                        >
-                          {t("tourSearch.bookNow")}
-                          <ArrowRight className="h-3 w-3" />
-                        </Button>
-                      </div>
+                      <a
+                        href={`https://wa.me/251900000000?text=${encodeURIComponent(`Hi, I want to book ${tour.name}`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="flex h-8 w-8 items-center justify-center rounded-lg bg-green-600 text-white hover:bg-green-700 transition-colors"
+                        aria-label="Book via WhatsApp"
+                      >
+                        <MessageCircle className="h-3.5 w-3.5" />
+                      </a>
+                      <Button
+                        size="sm"
+                        className="gap-1 bg-primary text-primary-foreground hover:bg-gold-dark shadow-md shadow-primary/20 text-xs sm:text-sm"
+                        onClick={(e) => { e.stopPropagation(); navigate(`/tour/${tour.slug}`); }}
+                      >
+                        {t("tourSearch.bookNow")}
+                        <ArrowRight className="h-3 w-3" />
+                      </Button>
                     </div>
 
+                    {/* Mobile chevron */}
                     <motion.div
                       animate={{ rotate: isExpanded ? 180 : 0 }}
                       transition={{ duration: 0.3 }}
+                      className="sm:hidden"
                     >
                       <ChevronDown className="h-5 w-5 text-muted-foreground" />
                     </motion.div>
