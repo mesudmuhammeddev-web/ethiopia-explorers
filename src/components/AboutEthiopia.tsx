@@ -3,6 +3,11 @@ import { Globe, Calendar, Mountain, Award, Users, MapPin } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useRef, useEffect, useState } from "react";
 import monastery from "@/assets/monastery.jpg";
+import milestone2018 from "@/assets/milestone-2018.jpg";
+import milestone2019 from "@/assets/milestone-2019.jpg";
+import milestone2021 from "@/assets/milestone-2021.jpg";
+import milestone2023 from "@/assets/milestone-2023.jpg";
+import milestone2025 from "@/assets/milestone-2025.jpg";
 
 const AnimatedCounter = ({ target, suffix = "" }: { target: number; suffix?: string }) => {
   const ref = useRef<HTMLDivElement>(null);
