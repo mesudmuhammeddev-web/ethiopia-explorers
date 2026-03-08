@@ -101,6 +101,13 @@ const Footer = () => {
             <a href="#" className="font-body text-xs text-muted-foreground hover:text-primary">{t("footer.cancellation")}</a>
           </div>
         </div>
+
+        {/* Built by */}
+        <div className="border-t border-border mt-6 pt-4 text-center">
+          <p className="text-xs text-muted-foreground">
+            Built by <span className="font-semibold text-foreground">Mesud</span> and <span className="font-semibold text-foreground">Amanuel Technologies</span> · <a href="tel:+251905517626" className="text-primary hover:underline">+251 90 551 7626</a>
+          </p>
+        </div>
       </div>
     </footer>
   );
