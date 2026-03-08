@@ -197,8 +197,8 @@ const HeroSection = () => {
             { value: "4.9", label: t("hero.starRating") },
           ].map((stat) => (
             <div key={stat.label}>
-              <div className="font-display text-3xl font-bold text-primary md:text-4xl">{stat.value}</div>
-              <div className="mt-1 font-body text-xs tracking-wider text-muted-foreground uppercase">{stat.label}</div>
+              <div className="font-display text-2xl font-bold text-primary sm:text-3xl md:text-4xl">{stat.value}</div>
+              <div className="mt-1 font-body text-[10px] sm:text-xs tracking-wider text-muted-foreground uppercase">{stat.label}</div>
             </div>
           ))}
         </motion.div>
