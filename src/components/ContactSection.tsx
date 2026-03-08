@@ -37,6 +37,17 @@ const ContactSection = () => {
 
       if (error) throw error;
 
+      // Send email notification (best-effort, don't block on failure)
+      supabase.functions.invoke("send-contact-email", {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          whatsapp: formData.whatsapp,
+          message: formData.message,
+        },
+      }).catch(console.error);
+
       setSubmitted(true);
       setFormData({ name: "", email: "", phone: "", whatsapp: "", message: "" });
       setFile(null);
