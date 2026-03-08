@@ -1,11 +1,23 @@
-import { motion } from "framer-motion";
-import { ArrowRight, MapPin, Search, ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, MapPin, Search, ChevronDown, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { tours, destinationList, categories, slugify } from "@/data/tours";
 import heroImage from "@/assets/hero-falls.jpg";
+import lalibela from "@/assets/lalibela.jpg";
+import simienMountains from "@/assets/simien-mountains.jpg";
+import danakil from "@/assets/danakil.jpg";
+import omoValley from "@/assets/omo-valley.jpg";
+
+const slides = [
+  { image: heroImage, tagline: "hero.slide1" },
+  { image: lalibela, tagline: "hero.slide2" },
+  { image: simienMountains, tagline: "hero.slide3" },
+  { image: danakil, tagline: "hero.slide4" },
+  { image: omoValley, tagline: "hero.slide5" },
+];
 
 const HeroSection = () => {
   const { t } = useTranslation();
@@ -13,6 +25,16 @@ const HeroSection = () => {
   const [destination, setDestination] = useState("");
   const [category, setCategory] = useState("");
   const [duration, setDuration] = useState("");
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000);
+    return () => clearInterval(interval);
+  }, [nextSlide]);
 
   const handleSearch = () => {
     const matched = tours.find((tour) => {
@@ -32,11 +54,39 @@ const HeroSection = () => {
     }
   };
 
+  const scrollToPackages = () => {
+    document.getElementById("tours")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${heroImage})` }} />
+      {/* Sliding background images */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentSlide}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
+        />
+      </AnimatePresence>
       <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
-      <div className="absolute inset-0 bg-background/40" />
+      <div className="absolute inset-0 bg-background/50" />
+
+      {/* Slide indicators */}
+      <div className="absolute bottom-24 left-1/2 z-20 flex -translate-x-1/2 gap-2">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrentSlide(i)}
+            className={`h-1.5 rounded-full transition-all duration-500 ${
+              i === currentSlide ? "w-8 bg-primary" : "w-3 bg-foreground/30"
+            }`}
+          />
+        ))}
+      </div>
 
       <div className="container relative z-10 mx-auto px-6 text-center">
         <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}>
@@ -57,20 +107,52 @@ const HeroSection = () => {
           <span className="text-gradient-gold italic">{t("hero.title3")}</span>
         </motion.h1>
 
-        <motion.p
+        <AnimatePresence mode="wait">
+          <motion.p
+            key={currentSlide}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.5 }}
+            className="mx-auto mt-6 max-w-2xl font-body text-lg text-muted-foreground md:text-xl"
+          >
+            {t(slides[currentSlide].tagline)}
+          </motion.p>
+        </AnimatePresence>
+
+        {/* Dual CTA Buttons */}
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.7 }}
-          className="mx-auto mt-6 max-w-2xl font-body text-lg text-muted-foreground md:text-xl"
+          transition={{ duration: 1, delay: 0.8 }}
+          className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          {t("hero.subtitle")}
-        </motion.p>
+          <Button
+            size="lg"
+            asChild
+            className="gap-2 rounded-full bg-[hsl(var(--accent))] px-8 py-6 font-body text-base font-semibold text-accent-foreground shadow-lg transition-all hover:scale-105"
+          >
+            <a href="https://wa.me/251900000000?text=Hello!%20I'm%20interested%20in%20booking%20a%20tour." target="_blank" rel="noopener noreferrer">
+              <MessageCircle className="h-5 w-5" />
+              {t("hero.bookNow")}
+            </a>
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            onClick={scrollToPackages}
+            className="gap-2 rounded-full border-foreground/20 px-8 py-6 font-body text-base font-semibold text-foreground backdrop-blur-sm transition-all hover:scale-105 hover:bg-foreground/10"
+          >
+            {t("hero.seePackages")}
+            <ArrowRight className="h-5 w-5" />
+          </Button>
+        </motion.div>
 
         {/* Integrated Search Form */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.9 }}
+          transition={{ duration: 1, delay: 1 }}
           className="mx-auto mt-10 max-w-3xl"
         >
           <div className="glass-card rounded-2xl p-3">
@@ -107,7 +189,7 @@ const HeroSection = () => {
         </motion.div>
 
         {/* Stats */}
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.2 }} className="mx-auto mt-16 grid max-w-2xl grid-cols-4 gap-8">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.3 }} className="mx-auto mt-16 grid max-w-2xl grid-cols-4 gap-8">
           {[
             { value: "500+", label: t("hero.happyTravelers") },
             { value: "50+", label: t("hero.uniqueTours") },

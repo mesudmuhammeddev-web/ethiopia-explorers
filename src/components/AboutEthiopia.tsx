@@ -1,7 +1,41 @@
-import { motion } from "framer-motion";
-import { Globe, Calendar, Mountain } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { Globe, Calendar, Mountain, Award, Users, MapPin } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useRef, useEffect, useState } from "react";
 import monastery from "@/assets/monastery.jpg";
+
+const AnimatedCounter = ({ target, suffix = "" }: { target: number; suffix?: string }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true });
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!isInView) return;
+    let start = 0;
+    const duration = 2000;
+    const increment = target / (duration / 16);
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        setCount(target);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+    return () => clearInterval(timer);
+  }, [isInView, target]);
+
+  return <div ref={ref} className="font-display text-4xl font-bold text-primary md:text-5xl">{count.toLocaleString()}{suffix}</div>;
+};
+
+const teamMembers = [
+  { name: "Abebe Kebede", role: "about.teamFounder", avatar: "AK" },
+  { name: "Sara Mulugeta", role: "about.teamOperations", avatar: "SM" },
+  { name: "Daniel Hailu", role: "about.teamGuide", avatar: "DH" },
+  { name: "Meron Tadesse", role: "about.teamMarketing", avatar: "MT" },
+  { name: "Yonas Girma", role: "about.teamLogistics", avatar: "YG" },
+];
 
 const AboutEthiopia = () => {
   const { t } = useTranslation();
@@ -12,9 +46,18 @@ const AboutEthiopia = () => {
     { icon: Mountain, title: t("about.diversityTitle"), text: t("about.diversityText") },
   ];
 
+  const milestones = [
+    { year: "2018", title: t("about.milestone1") },
+    { year: "2019", title: t("about.milestone2") },
+    { year: "2021", title: t("about.milestone3") },
+    { year: "2023", title: t("about.milestone4") },
+    { year: "2025", title: t("about.milestone5") },
+  ];
+
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section id="about" className="relative py-24 overflow-hidden">
       <div className="container mx-auto px-6">
+        {/* Main About Section */}
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative">
             <div className="aspect-[4/5] overflow-hidden rounded-3xl">
@@ -48,6 +91,86 @@ const AboutEthiopia = () => {
             </div>
           </motion.div>
         </div>
+
+        {/* Animated Counters / Achievements */}
+        <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-24 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { icon: Users, target: 500, suffix: "+", label: t("about.counterTravelers") },
+            { icon: MapPin, target: 50, suffix: "+", label: t("about.counterTours") },
+            { icon: Award, target: 8, suffix: "", label: t("about.counterAwards") },
+            { icon: Globe, target: 15, suffix: "+", label: t("about.counterDestinations") },
+          ].map((item, i) => (
+            <motion.div key={item.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="glass-card rounded-2xl p-8 text-center">
+              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <item.icon className="h-6 w-6" />
+              </div>
+              <AnimatedCounter target={item.target} suffix={item.suffix} />
+              <div className="mt-2 font-body text-sm text-muted-foreground">{item.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Agency Timeline */}
+        <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-24">
+          <div className="text-center mb-12">
+            <span className="font-body text-sm tracking-widest text-primary uppercase">{t("about.timelineBadge")}</span>
+            <h2 className="mt-3 font-display text-3xl font-bold text-foreground md:text-4xl">{t("about.timelineTitle")}</h2>
+          </div>
+          <div className="relative mx-auto max-w-3xl">
+            <div className="absolute left-4 top-0 bottom-0 w-px bg-border md:left-1/2" />
+            {milestones.map((m, i) => (
+              <motion.div
+                key={m.year}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className={`relative mb-8 flex items-center gap-6 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} pl-12 md:pl-0`}
+              >
+                <div className={`hidden md:block flex-1 ${i % 2 === 0 ? "text-right" : "text-left"}`}>
+                  <div className="glass-card inline-block rounded-xl p-4">
+                    <span className="font-display text-lg font-bold text-primary">{m.year}</span>
+                    <p className="mt-1 font-body text-sm text-foreground">{m.title}</p>
+                  </div>
+                </div>
+                <div className="absolute left-2.5 md:left-1/2 md:-translate-x-1/2 h-3 w-3 rounded-full bg-primary ring-4 ring-background" />
+                <div className="flex-1 md:hidden">
+                  <span className="font-display text-lg font-bold text-primary">{m.year}</span>
+                  <p className="font-body text-sm text-foreground">{m.title}</p>
+                </div>
+                <div className="hidden md:block flex-1" />
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Team Section */}
+        <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-24">
+          <div className="text-center mb-12">
+            <span className="font-body text-sm tracking-widest text-primary uppercase">{t("about.teamBadge")}</span>
+            <h2 className="mt-3 font-display text-3xl font-bold text-foreground md:text-4xl">
+              {t("about.teamTitle")} <span className="text-gradient-gold italic">{t("about.teamHighlight")}</span>
+            </h2>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-3 lg:grid-cols-5">
+            {teamMembers.map((member, i) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="glass-card hover-lift group rounded-2xl p-6 text-center"
+              >
+                <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10 font-display text-xl font-bold text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  {member.avatar}
+                </div>
+                <h3 className="font-display text-base font-bold text-foreground">{member.name}</h3>
+                <p className="mt-1 font-body text-xs text-muted-foreground">{t(member.role)}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
