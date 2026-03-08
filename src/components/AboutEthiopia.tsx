@@ -40,11 +40,11 @@ const AnimatedCounter = ({ target, suffix = "" }: { target: number; suffix?: str
 };
 
 const teamMembers = [
-  { name: "Abebe Kebede", role: "about.teamFounder", avatar: "AK" },
-  { name: "Sara Mulugeta", role: "about.teamOperations", avatar: "SM" },
-  { name: "Daniel Hailu", role: "about.teamGuide", avatar: "DH" },
-  { name: "Meron Tadesse", role: "about.teamMarketing", avatar: "MT" },
-  { name: "Yonas Girma", role: "about.teamLogistics", avatar: "YG" },
+  { name: "Abebe Kebede", role: "about.teamFounder", image: teamAbebe },
+  { name: "Sara Mulugeta", role: "about.teamOperations", image: teamSara },
+  { name: "Daniel Hailu", role: "about.teamGuide", image: teamDaniel },
+  { name: "Meron Tadesse", role: "about.teamMarketing", image: teamMeron },
+  { name: "Yonas Girma", role: "about.teamLogistics", image: teamYonas },
 ];
 
 const AboutEthiopia = () => {
