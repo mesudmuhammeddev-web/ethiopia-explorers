@@ -25,33 +25,101 @@ import negashMosque from "@/assets/negash-mosque.jpg";
 import anwarMosque from "@/assets/anwar-mosque.jpg";
 import hararMosques from "@/assets/harar-mosques.jpg";
 import sheikhHussein from "@/assets/sheikh-hussein.jpg";
+// New destinations
+import bahirDar from "@/assets/bahir-dar.jpg";
+import konso from "@/assets/konso.jpg";
+import dorze from "@/assets/dorze.jpg";
+import hawassa from "@/assets/hawassa.jpg";
+import arbaMinch from "@/assets/arba-minch.jpg";
+import kaffa from "@/assets/kaffa.jpg";
+import abunaYemata from "@/assets/abuna-yemata.jpg";
+import gheralta from "@/assets/gheralta.jpg";
+import entoto from "@/assets/entoto.jpg";
+import blueNileGorge from "@/assets/blue-nile-gorge.jpg";
+import nechisar from "@/assets/nechisar.jpg";
+import lakeZiway from "@/assets/lake-ziway.jpg";
+import gambella from "@/assets/gambella.jpg";
+import lakeAbbe from "@/assets/lake-abbe.jpg";
+import yeha from "@/assets/yeha.jpg";
+import wondoGenet from "@/assets/wondo-genet.jpg";
+import direDawa from "@/assets/dire-dawa.jpg";
+import jimma from "@/assets/jimma.jpg";
+import abijattaShalla from "@/assets/abijatta-shalla.jpg";
+import mekelle from "@/assets/mekelle.jpg";
+import lakeChamo from "@/assets/lake-chamo.jpg";
+import turmi from "@/assets/turmi.jpg";
+import menagesha from "@/assets/menagesha.jpg";
+import ankober from "@/assets/ankober.jpg";
 
 const destinations = [
+  // Amhara Region
   { name: "Lake Tana", description: "Ethiopia's largest lake, home to ancient island monasteries", tours: 8, image: lakeTana, region: "Amhara", type: "Cultural", price: 120 },
   { name: "Blue Nile Falls", description: "The 'Smoke of Fire' — Africa's most stunning waterfall", tours: 5, image: heroFalls, region: "Amhara", type: "Nature", price: 85 },
   { name: "Gondar", description: "The 'Camelot of Africa' with medieval royal castles", tours: 6, image: gondar, region: "Amhara", type: "Historical", price: 95 },
   { name: "Lalibela", description: "UNESCO World Heritage rock-hewn churches carved from stone", tours: 7, image: lalibela, region: "Amhara", type: "Historical", price: 150 },
   { name: "Simien Mountains", description: "Dramatic peaks, Gelada baboons & Africa's 4th highest summit", tours: 9, image: simienMountains, region: "Amhara", type: "Adventure", price: 200 },
+  { name: "Bahir Dar", description: "Gateway city on Lake Tana with palm-lined boulevards & boat cruises", tours: 6, image: bahirDar, region: "Amhara", type: "Cultural", price: 75 },
+  { name: "Blue Nile Gorge", description: "Ethiopia's Grand Canyon — a dramatic 1,500m deep river valley", tours: 4, image: blueNileGorge, region: "Amhara", type: "Adventure", price: 110 },
+  { name: "Ankober", description: "Emperor Menelik II's cliff-top palace ruins with panoramic escarpment views", tours: 3, image: ankober, region: "Amhara", type: "Historical", price: 90 },
+
+  // Afar Region
   { name: "Danakil Depression", description: "Earth's hottest place with alien sulfur springs & lava lakes", tours: 4, image: danakil, region: "Afar", type: "Adventure", price: 350 },
-  { name: "Axum", description: "Ancient obelisks & the legendary home of the Ark of the Covenant", tours: 5, image: axum, region: "Tigray", type: "Historical", price: 110 },
-  { name: "Harar", description: "Africa's 4th holiest Islamic city with 82 mosques & hyena men", tours: 6, image: harar, region: "Harari", type: "Cultural", price: 130 },
-  { name: "Omo Valley", description: "Meet indigenous tribes with ancient traditions & body art", tours: 7, image: omoValley, region: "SNNPR", type: "Cultural", price: 280 },
-  { name: "Bale Mountains", description: "Home to the endangered Ethiopian wolf & afro-alpine wilderness", tours: 5, image: baleMountains, region: "Oromia", type: "Nature", price: 175 },
   { name: "Erta Ale", description: "One of the world's few permanent lava lakes — a fiery spectacle at night", tours: 3, image: ertaAle, region: "Afar", type: "Adventure", price: 400 },
-  { name: "Sof Omar Cave", description: "Africa's longest cave system with stunning limestone pillars & underground river", tours: 4, image: sofOmar, region: "Oromia", type: "Nature", price: 160 },
-  { name: "Wonchi Crater Lake", description: "Turquoise volcanic lake with horseback trails & hot springs", tours: 5, image: wonchi, region: "Oromia", type: "Nature", price: 90 },
-  { name: "Addis Ababa", description: "The capital city — National Museum, Mercato, Holy Trinity Cathedral & vibrant nightlife", tours: 10, image: addisAbaba, region: "Addis Ababa", type: "Cultural", price: 60 },
-  { name: "Tiya Stelae", description: "UNESCO megalithic site with mysterious carved stone pillars dating back centuries", tours: 3, image: tiya, region: "SNNPR", type: "Historical", price: 70 },
-  { name: "Lake Langano", description: "Ethiopia's favorite resort lake — swim, kayak & relax on golden shores", tours: 4, image: langano, region: "Oromia", type: "Nature", price: 80 },
-  { name: "Debre Damo", description: "6th-century cliff-top monastery accessible only by rope — a spiritual adventure", tours: 3, image: debreDamo, region: "Tigray", type: "Historical", price: 140 },
   { name: "Awash National Park", description: "Waterfalls, hot springs & wildlife — oryx, baboons & 450+ bird species", tours: 6, image: awash, region: "Afar", type: "Nature", price: 120 },
-  { name: "Al-Nejashi Mosque", description: "Africa's first mosque in Negash — one of Islam's earliest sanctuaries, dating to the 7th century", tours: 4, image: negashMosque, region: "Tigray", type: "Islamic Heritage", price: 130 },
-  { name: "Anwar Mosque", description: "Ethiopia's largest mosque in Addis Ababa — a stunning symbol of Islamic architecture and faith", tours: 3, image: anwarMosque, region: "Addis Ababa", type: "Islamic Heritage", price: 50 },
-  { name: "Harar Jugol Mosques", description: "The 4th holiest Islamic city with 82 mosques & 102 shrines within ancient walled city walls", tours: 6, image: hararMosques, region: "Harari", type: "Islamic Heritage", price: 130 },
-  { name: "Sheikh Hussein Shrine", description: "Major Islamic pilgrimage site in Bale — a sacred shrine attracting thousands of devotees annually", tours: 4, image: sheikhHussein, region: "Oromia", type: "Islamic Heritage", price: 160 },
+  { name: "Lake Abbe", description: "Surreal limestone chimneys, flamingos & steaming fumaroles on salt flats", tours: 3, image: lakeAbbe, region: "Afar", type: "Adventure", price: 300 },
+
+  // Tigray Region
+  { name: "Axum", description: "Ancient obelisks & the legendary home of the Ark of the Covenant", tours: 5, image: axum, region: "Tigray", type: "Historical", price: 110 },
+  { name: "Debre Damo", description: "6th-century cliff-top monastery accessible only by rope", tours: 3, image: debreDamo, region: "Tigray", type: "Historical", price: 140 },
+  { name: "Abuna Yemata Guh", description: "Cliff-face church with ancient frescoes — the world's most inaccessible church", tours: 4, image: abunaYemata, region: "Tigray", type: "Adventure", price: 160 },
+  { name: "Gheralta Mountains", description: "Dramatic sandstone cliffs with hidden rock-hewn churches & trekking trails", tours: 5, image: gheralta, region: "Tigray", type: "Adventure", price: 145 },
+  { name: "Yeha Temple", description: "Pre-Aksumite ruins from 700 BC — the oldest standing structure in sub-Saharan Africa", tours: 3, image: yeha, region: "Tigray", type: "Historical", price: 80 },
+  { name: "Mekelle", description: "Tigray's capital with Yohannes IV Palace & gateway to Danakil expeditions", tours: 4, image: mekelle, region: "Tigray", type: "Cultural", price: 70 },
+  { name: "Al-Nejashi Mosque", description: "Africa's first mosque — one of Islam's earliest sanctuaries, dating to the 7th century", tours: 4, image: negashMosque, region: "Tigray", type: "Islamic Heritage", price: 130 },
+
+  // Harari Region
+  { name: "Harar", description: "Africa's 4th holiest Islamic city with 82 mosques & hyena men", tours: 6, image: harar, region: "Harari", type: "Cultural", price: 130 },
+  { name: "Harar Jugol Mosques", description: "The walled city with 82 mosques & 102 shrines within ancient walls", tours: 6, image: hararMosques, region: "Harari", type: "Islamic Heritage", price: 130 },
+
+  // Dire Dawa
+  { name: "Dire Dawa", description: "Multicultural railway city with French colonial architecture & colorful spice markets", tours: 4, image: direDawa, region: "Dire Dawa", type: "Cultural", price: 65 },
+
+  // SNNPR Region
+  { name: "Omo Valley", description: "Meet indigenous tribes with ancient traditions & body art", tours: 7, image: omoValley, region: "SNNPR", type: "Cultural", price: 280 },
+  { name: "Tiya Stelae", description: "UNESCO megalithic site with mysterious carved stone pillars", tours: 3, image: tiya, region: "SNNPR", type: "Historical", price: 70 },
+  { name: "Konso", description: "UNESCO terraced landscape with carved wooden waga totems & stone-walled villages", tours: 4, image: konso, region: "SNNPR", type: "Cultural", price: 150 },
+  { name: "Dorze Village", description: "Highland village famous for towering beehive bamboo huts & cotton weaving", tours: 3, image: dorze, region: "SNNPR", type: "Cultural", price: 80 },
+  { name: "Arba Minch", description: "Twin lakes panorama with Nechisar NP, crocodile market & God's Bridge", tours: 5, image: arbaMinch, region: "SNNPR", type: "Nature", price: 110 },
+  { name: "Lake Chamo", description: "Giant Nile crocodiles, hippos & African fish eagles on boat safari", tours: 4, image: lakeChamo, region: "SNNPR", type: "Nature", price: 95 },
+  { name: "Nechisar National Park", description: "Savanna grasslands with zebras, gazelles & the Bridge of Heaven", tours: 5, image: nechisar, region: "SNNPR", type: "Nature", price: 120 },
+  { name: "Turmi", description: "Hamer tribe bull jumping ceremony & vibrant weekly markets", tours: 4, image: turmi, region: "SNNPR", type: "Cultural", price: 250 },
+  { name: "Lake Hawassa", description: "Hippos at sunrise, pelicans on shore & the vibrant lakeside fish market", tours: 4, image: hawassa, region: "SNNPR", type: "Nature", price: 70 },
+  { name: "Wondo Genet", description: "Natural hot springs surrounded by tropical forest with colobus monkeys", tours: 3, image: wondoGenet, region: "SNNPR", type: "Nature", price: 60 },
+
+  // Oromia Region
+  { name: "Bale Mountains", description: "Home to the endangered Ethiopian wolf & afro-alpine wilderness", tours: 5, image: baleMountains, region: "Oromia", type: "Nature", price: 175 },
+  { name: "Sof Omar Cave", description: "Africa's longest cave system with stunning limestone pillars", tours: 4, image: sofOmar, region: "Oromia", type: "Nature", price: 160 },
+  { name: "Wonchi Crater Lake", description: "Turquoise volcanic lake with horseback trails & hot springs", tours: 5, image: wonchi, region: "Oromia", type: "Nature", price: 90 },
+  { name: "Lake Langano", description: "Ethiopia's favorite resort lake — swim, kayak & relax on golden shores", tours: 4, image: langano, region: "Oromia", type: "Nature", price: 80 },
+  { name: "Lake Ziway", description: "Rift Valley birdwatching paradise with flamingos, pelicans & volcanic islands", tours: 3, image: lakeZiway, region: "Oromia", type: "Nature", price: 65 },
+  { name: "Abijatta-Shalla Lakes", description: "Twin crater lakes with thousands of flamingos & steaming hot springs", tours: 4, image: abijattaShalla, region: "Oromia", type: "Nature", price: 85 },
+  { name: "Jimma", description: "Coffee kingdom capital with Abba Jifar Palace surrounded by plantations", tours: 4, image: jimma, region: "Oromia", type: "Cultural", price: 100 },
+  { name: "Sheikh Hussein Shrine", description: "Major Islamic pilgrimage site attracting thousands of devotees annually", tours: 4, image: sheikhHussein, region: "Oromia", type: "Islamic Heritage", price: 160 },
+
+  // Kaffa Region (Southwest)
+  { name: "Kaffa Biosphere", description: "Birthplace of coffee — wild Arabica forests, cloud forest trekking & coffee ceremonies", tours: 5, image: kaffa, region: "Southwest", type: "Nature", price: 130 },
+
+  // Addis Ababa
+  { name: "Addis Ababa", description: "The capital — National Museum, Mercato, Holy Trinity Cathedral & nightlife", tours: 10, image: addisAbaba, region: "Addis Ababa", type: "Cultural", price: 60 },
+  { name: "Entoto Mountains", description: "Hilltop escape above Addis with eucalyptus forest, ancient church & city views", tours: 3, image: entoto, region: "Addis Ababa", type: "Nature", price: 40 },
+  { name: "Anwar Mosque", description: "Ethiopia's largest mosque — a stunning symbol of Islamic architecture and faith", tours: 3, image: anwarMosque, region: "Addis Ababa", type: "Islamic Heritage", price: 50 },
+  { name: "Menagesha Suba Forest", description: "Africa's oldest protected forest with ancient podocarpus trees & colobus monkeys", tours: 3, image: menagesha, region: "Addis Ababa", type: "Nature", price: 55 },
+
+  // Gambella Region
+  { name: "Gambella National Park", description: "Pristine wetland wilderness with hippos, buffalo & migrating white-eared kob", tours: 3, image: gambella, region: "Gambella", type: "Nature", price: 220 },
 ];
 
-const regions = ["All", "Amhara", "Afar", "Tigray", "Harari", "SNNPR", "Oromia", "Addis Ababa"];
+const regions = ["All", "Amhara", "Afar", "Tigray", "Harari", "Dire Dawa", "SNNPR", "Oromia", "Southwest", "Addis Ababa", "Gambella"];
 const types = ["All", "Cultural", "Historical", "Adventure", "Nature", "Islamic Heritage"];
 const priceRanges = ["All", "$0–$100", "$100–$200", "$200+"];
 
