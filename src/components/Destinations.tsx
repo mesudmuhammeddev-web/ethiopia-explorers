@@ -50,6 +50,7 @@ import lakeChamo from "@/assets/lake-chamo.jpg";
 import turmi from "@/assets/turmi.jpg";
 import menagesha from "@/assets/menagesha.jpg";
 import ankober from "@/assets/ankober.jpg";
+import adwaMuseum from "@/assets/adwa-museum.jpg";
 
 const destinations = [
   // Amhara Region
@@ -113,6 +114,7 @@ const destinations = [
   { name: "Addis Ababa", description: "The capital — National Museum, Mercato, Holy Trinity Cathedral & nightlife", tours: 10, image: addisAbaba, region: "Addis Ababa", type: "Cultural", price: 60 },
   { name: "Entoto Mountains", description: "Hilltop escape above Addis with eucalyptus forest, ancient church & city views", tours: 3, image: entoto, region: "Addis Ababa", type: "Nature", price: 40 },
   { name: "Anwar Mosque", description: "Ethiopia's largest mosque — a stunning symbol of Islamic architecture and faith", tours: 3, image: anwarMosque, region: "Addis Ababa", type: "Islamic Heritage", price: 50 },
+  { name: "Adwa Museum", description: "Memorial museum celebrating Ethiopia's historic victory at the Battle of Adwa", tours: 4, image: adwaMuseum, region: "Addis Ababa", type: "Historical", price: 45 },
   { name: "Menagesha Suba Forest", description: "Africa's oldest protected forest with ancient podocarpus trees & colobus monkeys", tours: 3, image: menagesha, region: "Addis Ababa", type: "Nature", price: 55 },
 
   // Gambella Region
