@@ -182,7 +182,7 @@ const Testimonials = () => {
                 </div>
                 <span className="font-body text-xs text-primary/70 font-medium">{testimonial.tour}</span>
 
-                <p className="mt-5 font-body text-lg leading-relaxed text-muted-foreground italic md:text-xl">
+                <p className="mt-4 sm:mt-5 font-body text-base sm:text-lg leading-relaxed text-muted-foreground italic md:text-xl">
                   "{testimonial.text}"
                 </p>
 

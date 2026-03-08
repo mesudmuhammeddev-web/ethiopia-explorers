@@ -101,8 +101,8 @@ const TourSearch = () => {
             </div>
 
             {/* Destination pills */}
-            <div className="mt-5 flex flex-wrap items-center gap-2">
-              <MapPin className="h-4 w-4 text-primary" />
+            <div className="mt-5 flex flex-wrap items-start gap-2 overflow-x-auto pb-2 -mx-2 px-2 sm:mx-0 sm:px-0 sm:overflow-visible">
+              <MapPin className="h-4 w-4 text-primary flex-shrink-0 mt-1" />
               <div className="flex flex-wrap gap-1.5">
                 {destinationList.map((d) => (
                   <motion.button
