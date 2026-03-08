@@ -236,7 +236,7 @@ const Gallery = () => {
                 className={`group relative cursor-pointer rounded-lg md:rounded-xl overflow-hidden bg-muted ${getSpanClass(img.aspect, idx)}`}
                 onClick={() => openLightbox(idx)}
               >
-                <LazyImage
+                <GalleryImage
                   src={img.src}
                   alt={img.title}
                   className="absolute inset-0"
