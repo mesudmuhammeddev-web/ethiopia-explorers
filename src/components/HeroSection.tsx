@@ -189,7 +189,7 @@ const HeroSection = () => {
         </motion.div>
 
         {/* Stats */}
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.3 }} className="mx-auto mt-16 grid max-w-2xl grid-cols-4 gap-8">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.3 }} className="mx-auto mt-12 sm:mt-16 grid max-w-2xl grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8">
           {[
             { value: "500+", label: t("hero.happyTravelers") },
             { value: "50+", label: t("hero.uniqueTours") },
