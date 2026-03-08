@@ -12,8 +12,8 @@ const ContactSection = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const contactMethods = [
-    { icon: MessageCircle, label: t("contact.whatsapp"), value: t("contact.whatsappValue"), action: "https://wa.me/251900000000", highlight: true },
-    { icon: Phone, label: t("contact.phone"), value: "+251 900 000 000", action: "tel:+251900000000" },
+    { icon: MessageCircle, label: t("contact.whatsapp"), value: t("contact.whatsappValue"), action: "https://wa.me/251998900160", highlight: true },
+    { icon: Phone, label: t("contact.phone"), value: "+251 99 890 0160", action: "tel:+251998900160" },
     { icon: Mail, label: t("contact.email"), value: "info@ethiowander.com", action: "mailto:info@ethiowander.com" },
     { icon: MapPin, label: t("contact.office"), value: t("contact.officeValue"), action: "#" },
   ];
@@ -23,7 +23,7 @@ const ContactSection = () => {
     // Build WhatsApp message with form data
     const waNumber = formData.whatsapp || formData.phone;
     const message = `New Inquiry from ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nWhatsApp: ${waNumber}\n\nMessage: ${formData.message}`;
-    const waLink = `https://wa.me/251900000000?text=${encodeURIComponent(message)}`;
+    const waLink = `https://wa.me/251998900160?text=${encodeURIComponent(message)}`;
     window.open(waLink, "_blank");
     setSubmitted(true);
     setFormData({ name: "", email: "", phone: "", whatsapp: "", message: "" });

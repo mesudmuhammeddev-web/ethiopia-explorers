@@ -132,7 +132,7 @@ const HeroSection = () => {
             asChild
             className="gap-2 rounded-full bg-[hsl(var(--accent))] px-8 py-6 font-body text-base font-semibold text-accent-foreground shadow-lg transition-all hover:scale-105"
           >
-            <a href="https://wa.me/251900000000?text=Hello!%20I'm%20interested%20in%20booking%20a%20tour." target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/251998900160?text=Hello!%20I'm%20interested%20in%20booking%20a%20tour." target="_blank" rel="noopener noreferrer">
               <MessageCircle className="h-5 w-5" />
               {t("hero.bookNow")}
             </a>
