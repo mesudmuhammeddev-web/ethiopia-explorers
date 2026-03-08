@@ -327,17 +327,17 @@ const Gallery = () => {
             </motion.div>
 
             {/* Caption */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center text-white z-10">
-              <h3 className="font-semibold text-lg">{filtered[lightboxIndex].title}</h3>
-              <div className="flex items-center justify-center gap-1.5 text-white/70 text-sm mt-1">
-                <MapPin className="w-3.5 h-3.5" />
+            <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 text-center text-white z-10 w-[90vw] sm:w-auto">
+              <h3 className="font-semibold text-sm sm:text-lg">{filtered[lightboxIndex].title}</h3>
+              <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-1.5 text-white/70 text-xs sm:text-sm mt-1">
+                <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 <span>{filtered[lightboxIndex].location}</span>
-                <span className="mx-1.5">·</span>
+                <span className="mx-1">·</span>
                 <span>{filtered[lightboxIndex].region}</span>
-                <span className="mx-1.5">·</span>
+                <span className="mx-1">·</span>
                 <span>{filtered[lightboxIndex].type}</span>
               </div>
-              <p className="text-white/50 text-xs mt-1.5">{lightboxIndex + 1} / {filtered.length}</p>
+              <p className="text-white/50 text-[10px] sm:text-xs mt-1">{lightboxIndex + 1} / {filtered.length}</p>
             </div>
           </motion.div>
         )}

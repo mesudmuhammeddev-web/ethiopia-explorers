@@ -476,7 +476,7 @@ const AboutEthiopia = () => {
 
                     <div className="relative glass-card rounded-2xl p-6 text-center border border-border/50 group-hover:border-primary/30 transition-all duration-500">
                       {/* Avatar with animated ring */}
-                      <div className="relative mx-auto mb-5 h-28 w-28">
+                      <div className="relative mx-auto mb-4 sm:mb-5 h-20 w-20 sm:h-28 sm:w-28">
                         {/* Spinning ring */}
                         <motion.div
                           className="absolute -inset-1 rounded-full"
