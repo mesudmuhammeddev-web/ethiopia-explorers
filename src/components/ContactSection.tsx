@@ -161,7 +161,7 @@ const ContactSection = () => {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="EthioWander Office Location — Bahir Dar, Ethiopia"
+                title="Ethiopia Travel Explorer Office Location — Bahir Dar, Ethiopia"
               />
             </motion.div>
           </motion.div>

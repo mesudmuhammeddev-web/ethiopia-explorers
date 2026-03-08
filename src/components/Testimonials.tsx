@@ -80,7 +80,7 @@ const testimonials = [
     name: "Marie Dupont",
     location: "Paris, France",
     rating: 5,
-    text: "The sunset boat cruise on Lake Tana was pure magic. Pelicans, hippos, and ancient monasteries — all in one afternoon. Merci EthioWander!",
+    text: "The sunset boat cruise on Lake Tana was pure magic. Pelicans, hippos, and ancient monasteries — all in one afternoon. Merci Ethiopia Travel Explorer!",
     avatar: "MD",
     tour: "Lake Tana Sunset Cruise",
   },

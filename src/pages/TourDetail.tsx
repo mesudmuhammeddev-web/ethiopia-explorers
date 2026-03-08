@@ -282,7 +282,7 @@ const TourDetail = () => {
                 <a href={`https://wa.me/251998900160?text=${encodeURIComponent(`Hi! I'm interested in the ${tour.name} tour.`)}`} target="_blank" rel="noopener noreferrer" className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-secondary py-3 font-body text-xs font-medium text-foreground transition-colors hover:bg-secondary/80">
                   <Phone className="h-3.5 w-3.5 text-primary" /> {t("tourDetail.whatsApp")}
                 </a>
-                <a href={`mailto:info@ethiowander.com?subject=${encodeURIComponent(tour.name)}`} className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-secondary py-3 font-body text-xs font-medium text-foreground transition-colors hover:bg-secondary/80">
+                <a href={`mailto:info@ethiopiatravelexplorer.com?subject=${encodeURIComponent(tour.name)}`} className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-secondary py-3 font-body text-xs font-medium text-foreground transition-colors hover:bg-secondary/80">
                   <Mail className="h-3.5 w-3.5 text-primary" /> {t("tourDetail.emailUs")}
                 </a>
               </div>
