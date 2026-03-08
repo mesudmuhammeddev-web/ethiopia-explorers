@@ -432,7 +432,7 @@ export const tours: Tour[] = [
     relatedTourIds: [7, 8, 14], availability: generateAvailability(8, 15),
   },
   {
-    id: 16, name: "Ethiopian Coffee Ceremony", slug: slugify("Ethiopian Coffee Ceremony"), destination: "Lake Tana", duration: "2 hours",
+    id: 16, name: "Ethiopian Coffee Ceremony", slug: slugify("Ethiopian Coffee Ceremony"), destination: "Kaffa", duration: "2 hours",
     pricing: { solo: 25.00, small: 18.50, group: 15.00 }, groupSize: "1–10", category: "Culture", rating: 4.9, image: kaffa,
     galleryImages: [kaffa, lakeTana, harar],
     description: "Experience the traditional Ethiopian coffee ceremony — roasting, grinding & brewing the birthplace bean.",
