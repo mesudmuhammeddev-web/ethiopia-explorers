@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { tours, getTourBySlug, getPriceForGroup, type Tour } from "@/data/tours";
+import { getBookingFormUrl } from "@/lib/bookingForm";
 
 const TourDetail = () => {
   const { t } = useTranslation();
