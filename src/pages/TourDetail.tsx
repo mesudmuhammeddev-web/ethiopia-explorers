@@ -44,6 +44,18 @@ const TourDetail = () => {
 
   const handleBooking = (e: React.FormEvent) => {
     e.preventDefault();
+    const formUrl = getBookingFormUrl({
+      tourName: tour.name,
+      price,
+      travelers,
+      message: bookingNotes,
+    });
+    // Open pre-filled form with user's message
+    const url = new URL(formUrl);
+    if (bookingName) url.searchParams.set("entry.601266395", bookingName);
+    if (bookingEmail) url.searchParams.set("entry.714063095", bookingEmail);
+    if (bookingPhone) url.searchParams.set("entry.780707511", bookingPhone);
+    window.open(url.toString(), "_blank");
     setBookingSubmitted(true);
   };
 
