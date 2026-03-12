@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Users, MessageCircle, Flame, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { tours, getPriceForGroup } from "@/data/tours";
+import { getBookingFormUrl } from "@/lib/bookingForm";
 
 // Top profitable packages first, lower-selling pushed down
 const featuredIds = [1, 2, 3, 4, 7, 9, 13, 14];
