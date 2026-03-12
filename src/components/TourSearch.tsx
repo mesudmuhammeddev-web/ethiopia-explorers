@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Search, MapPin, Clock, DollarSign, Filter, Users, Calendar, ChevronDown, ChevronUp, Sparkles, Star, MessageCircle, ArrowRight, TrendingUp, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { tours, destinationList, categories, getPriceForGroup, getPricingLabel, type Tour } from "@/data/tours";
+import { getBookingFormUrl } from "@/lib/bookingForm";
 
 const TourSearch = () => {
   const { t } = useTranslation();
