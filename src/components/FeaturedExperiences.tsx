@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Users, MessageCircle, Flame, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { tours, getPriceForGroup } from "@/data/tours";
+import { getBookingFormUrl } from "@/lib/bookingForm";
 
 // Top profitable packages first, lower-selling pushed down
 const featuredIds = [1, 2, 3, 4, 7, 9, 13, 14];
@@ -91,10 +92,12 @@ const FeaturedExperiences = () => {
                       >
                         <MessageCircle className="h-4 w-4" />
                       </a>
-                      <Button size="sm" className="gap-1 bg-primary text-primary-foreground hover:bg-gold-dark" onClick={() => navigate(`/tour/${tour.slug}`)}>
-                        {t("featured.book")}
-                        <ArrowRight className="h-3.5 w-3.5" />
-                      </Button>
+                      <a href={getBookingFormUrl({ tourName: tour.name, price, travelers })} target="_blank" rel="noopener noreferrer">
+                        <Button size="sm" className="gap-1 bg-primary text-primary-foreground hover:bg-gold-dark">
+                          {t("featured.book")}
+                          <ArrowRight className="h-3.5 w-3.5" />
+                        </Button>
+                      </a>
                     </div>
                   </div>
                 </div>

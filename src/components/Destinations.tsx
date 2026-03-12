@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Filter, MessageCircle } from "lucide-react";
+import { getBookingFormUrl } from "@/lib/bookingForm";
 import { Button } from "@/components/ui/button";
 import lakeTana from "@/assets/lake-tana.jpg";
 import heroFalls from "@/assets/hero-falls.jpg";
@@ -208,7 +209,7 @@ const Destinations = () => {
                   <h3 className="mt-1.5 sm:mt-2 font-display text-sm sm:text-lg font-bold leading-tight text-foreground">{dest.name}</h3>
                   <p className="mt-1 font-body text-[10px] sm:text-xs text-muted-foreground line-clamp-2 hidden sm:block">{dest.description}</p>
                   <a
-                    href={`https://wa.me/251998900160?text=I'm interested in ${dest.name} tours`}
+                    href={getBookingFormUrl({ tourName: dest.name, price: dest.price })}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-primary/90 px-3 py-1.5 font-body text-xs font-semibold text-primary-foreground opacity-0 transition-all group-hover:opacity-100"

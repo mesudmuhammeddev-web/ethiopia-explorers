@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Search, MapPin, Clock, DollarSign, Filter, Users, Calendar, ChevronDown, ChevronUp, Sparkles, Star, MessageCircle, ArrowRight, TrendingUp, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { tours, destinationList, categories, getPriceForGroup, getPricingLabel, type Tour } from "@/data/tours";
+import { getBookingFormUrl } from "@/lib/bookingForm";
 
 const TourSearch = () => {
   const { t } = useTranslation();
@@ -298,14 +299,20 @@ const TourSearch = () => {
                       >
                         <MessageCircle className="h-3.5 w-3.5" />
                       </a>
-                      <Button
-                        size="sm"
-                        className="gap-1 bg-primary text-primary-foreground hover:bg-gold-dark shadow-md shadow-primary/20 text-xs sm:text-sm"
-                        onClick={(e) => { e.stopPropagation(); navigate(`/tour/${tour.slug}`); }}
+                      <a
+                        href={getBookingFormUrl({ tourName: tour.name, price, travelers })}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
                       >
-                        {t("tourSearch.bookNow")}
-                        <ArrowRight className="h-3 w-3" />
-                      </Button>
+                        <Button
+                          size="sm"
+                          className="gap-1 bg-primary text-primary-foreground hover:bg-gold-dark shadow-md shadow-primary/20 text-xs sm:text-sm"
+                        >
+                          {t("tourSearch.bookNow")}
+                          <ArrowRight className="h-3 w-3" />
+                        </Button>
+                      </a>
                     </div>
 
                     {/* Mobile chevron */}
