@@ -39,6 +39,7 @@ const App = () => (
           } />
         </Routes>
         <WhatsAppButton />
+        <HelpPopup />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
