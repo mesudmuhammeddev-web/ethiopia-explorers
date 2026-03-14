@@ -184,10 +184,17 @@ const Navbar = () => {
                   </button>
                 ))}
               </div>
-              <Button asChild className="bg-primary text-primary-foreground">
-                <a href="https://wa.me/251998900160" target="_blank" rel="noopener noreferrer">
-                  {t("nav.bookNow")}
-                </a>
+              <Button 
+                onClick={() => {
+                  setMobileOpen(false);
+                  setTimeout(() => {
+                    const el = document.getElementById("tours");
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                  }, 100);
+                }}
+                className="bg-primary text-primary-foreground"
+              >
+                {t("nav.bookNow")}
               </Button>
             </div>
           </motion.div>
