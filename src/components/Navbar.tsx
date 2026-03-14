@@ -129,11 +129,16 @@ const Navbar = () => {
             </AnimatePresence>
           </div>
 
-          <Button size="sm" asChild className="gap-2 bg-primary text-primary-foreground hover:bg-gold-dark">
-            <a href="https://wa.me/251998900160" target="_blank" rel="noopener noreferrer">
-              <Phone className="h-3.5 w-3.5" />
-              {t("nav.bookNow")}
-            </a>
+          <Button 
+            size="sm" 
+            onClick={() => {
+              const el = document.getElementById("tours");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="gap-2 bg-primary text-primary-foreground hover:bg-gold-dark cursor-pointer"
+          >
+            <Phone className="h-3.5 w-3.5" />
+            {t("nav.bookNow")}
           </Button>
         </div>
 
