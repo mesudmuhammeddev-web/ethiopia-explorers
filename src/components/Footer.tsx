@@ -41,7 +41,7 @@ const Footer = () => {
       <div className="container mx-auto px-6 py-12">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <a href="#" className="font-display text-2xl font-bold text-foreground">Ethiopia Travel <span className="text-gradient-gold">Explorer</span></a>
+            <Link to="/" className="font-display text-2xl font-bold text-foreground">Ethiopia Travel <span className="text-gradient-gold">Explorer</span></Link>
             <p className="mt-4 font-body text-sm leading-relaxed text-muted-foreground">{t("footer.aboutText")}</p>
             <div className="mt-6 flex gap-3">
               {[Facebook, Instagram, Youtube].map((Icon) => (
