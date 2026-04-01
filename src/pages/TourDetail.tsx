@@ -9,6 +9,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { tours, getTourBySlug, getPriceForGroup, type Tour } from "@/data/tours";
 import { getBookingFormUrl } from "@/lib/bookingForm";
+import Navbar from "@/components/Navbar";
+import SEOHead from "@/components/SEOHead";
 
 const TourDetail = () => {
   const { t } = useTranslation();
