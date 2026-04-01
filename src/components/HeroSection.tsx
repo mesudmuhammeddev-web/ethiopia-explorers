@@ -55,7 +55,7 @@ const HeroSection = () => {
   };
 
   const scrollToPackages = () => {
-    document.getElementById("tours")?.scrollIntoView({ behavior: "smooth" });
+    navigate("/tours");
   };
 
   return (
