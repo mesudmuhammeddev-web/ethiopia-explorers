@@ -10,11 +10,11 @@ const Footer = () => {
   const [email, setEmail] = useState("");
 
   const quickLinks = [
-    { label: t("footer.bespokeTours"), href: "#tours" },
-    { label: t("nav.destinations"), href: "#destinations" },
-    { label: t("nav.experiences"), href: "#experiences" },
-    { label: t("footer.travelGuide"), href: "#" },
-    { label: t("footer.aboutUs"), href: "#" },
+    { label: t("footer.bespokeTours"), href: "/tours" },
+    { label: t("nav.destinations"), href: "/destinations" },
+    { label: t("nav.experiences"), href: "/tours" },
+    { label: t("footer.travelGuide"), href: "/about" },
+    { label: t("footer.aboutUs"), href: "/about" },
   ];
 
   return (
