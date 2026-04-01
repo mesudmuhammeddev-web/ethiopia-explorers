@@ -56,7 +56,7 @@ const Footer = () => {
             <h4 className="font-display text-sm font-bold tracking-wider text-foreground uppercase">{t("footer.quickLinks")}</h4>
             <ul className="mt-4 space-y-3">
               {quickLinks.map((link) => (
-                <li key={link.label}><a href={link.href} className="font-body text-sm text-muted-foreground transition-colors hover:text-primary">{link.label}</a></li>
+                <li key={link.label}><Link to={link.href} className="font-body text-sm text-muted-foreground transition-colors hover:text-primary">{link.label}</Link></li>
               ))}
             </ul>
           </div>
