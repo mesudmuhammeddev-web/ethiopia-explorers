@@ -31,8 +31,8 @@ const TourDetail = () => {
       <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6">
         <h1 className="font-display text-3xl font-bold text-foreground">{t("tourDetail.tourNotFound")}</h1>
         <p className="mt-2 text-muted-foreground">{t("tourDetail.tourNotFoundDesc")}</p>
-        <Button className="mt-6 bg-primary text-primary-foreground" onClick={() => navigate("/")}>
-          <ArrowLeft className="mr-2 h-4 w-4" /> {t("tourDetail.backToHome")}
+        <Button className="mt-6 bg-primary text-primary-foreground" onClick={() => navigate("/tours")}>
+          <ArrowLeft className="mr-2 h-4 w-4" /> {t("tourDetail.backToAll")}
         </Button>
       </div>
     );
