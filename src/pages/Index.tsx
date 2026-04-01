@@ -1,9 +1,8 @@
 import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import SEOHead from "@/components/SEOHead";
 
-// Lazy load below-fold sections for faster initial paint
 const AboutEthiopia = lazy(() => import("@/components/AboutEthiopia"));
 const Destinations = lazy(() => import("@/components/Destinations"));
 const Gallery = lazy(() => import("@/components/Gallery"));
@@ -25,42 +24,24 @@ const SectionFallback = () => (
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Ethiopia Travel Explorer — Discover Ancient Wonders & Natural Beauty"
+        description="Explore Ethiopia with 50+ guided tours across 15+ destinations. Rock churches, Simien Mountains, Danakil Depression & more. Book your adventure today."
+        canonicalPath="/"
+      />
       <Navbar />
       <HeroSection />
-      <Suspense fallback={<SectionFallback />}>
-        <AboutEthiopia />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <Destinations />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <Gallery />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <WhyChooseUs />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <TourSearch />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <BuildYourTrip />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <FeaturedExperiences />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <TourComparison />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <Testimonials />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <ContactSection />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <Footer />
-      </Suspense>
-      <WhatsAppButton />
+      <Suspense fallback={<SectionFallback />}><AboutEthiopia /></Suspense>
+      <Suspense fallback={<SectionFallback />}><Destinations /></Suspense>
+      <Suspense fallback={<SectionFallback />}><Gallery /></Suspense>
+      <Suspense fallback={<SectionFallback />}><WhyChooseUs /></Suspense>
+      <Suspense fallback={<SectionFallback />}><TourSearch /></Suspense>
+      <Suspense fallback={<SectionFallback />}><BuildYourTrip /></Suspense>
+      <Suspense fallback={<SectionFallback />}><FeaturedExperiences /></Suspense>
+      <Suspense fallback={<SectionFallback />}><TourComparison /></Suspense>
+      <Suspense fallback={<SectionFallback />}><Testimonials /></Suspense>
+      <Suspense fallback={<SectionFallback />}><ContactSection /></Suspense>
+      <Suspense fallback={<SectionFallback />}><Footer /></Suspense>
     </div>
   );
 };

@@ -1,16 +1,17 @@
 import { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Globe, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
-  { key: "about", href: "#about" },
-  { key: "destinations", href: "#destinations" },
-  { key: "tours", href: "#tours" },
-  { key: "experiences", href: "#experiences" },
-  { key: "contact", href: "#contact" },
+  { key: "about", href: "/about" },
+  { key: "destinations", href: "/destinations" },
+  { key: "tours", href: "/tours" },
+  { key: "experiences", href: "/tours" },
+  { key: "contact", href: "/contact" },
 ];
 
 const languages = [
@@ -28,6 +29,8 @@ const resolveLanguage = (lng: string): string => {
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
@@ -42,7 +45,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (langRef.current && !langRef.current.contains(e.target as Node)) {
@@ -61,6 +63,8 @@ const Navbar = () => {
     setLangOpen(false);
   };
 
+  const isActive = (href: string) => location.pathname === href;
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -71,21 +75,23 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6">
-        <a href="#" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <img src={logo} alt="Ethiopia Travel Logo" className="h-10 w-auto" />
           <span className="text-lg font-bold text-primary-foreground tracking-tight hidden sm:inline">Ethiopia Travel Explorer</span>
-        </a>
+        </Link>
 
         {/* Desktop */}
         <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.key}
-              href={link.href}
-              className="font-body text-sm font-medium tracking-wide text-muted-foreground transition-colors hover:text-primary"
+              to={link.href}
+              className={`font-body text-sm font-medium tracking-wide transition-colors hover:text-primary ${
+                isActive(link.href) ? "text-primary" : "text-muted-foreground"
+              }`}
             >
               {t(`nav.${link.key}`)}
-            </a>
+            </Link>
           ))}
 
           {/* Language Switcher */}
@@ -131,10 +137,7 @@ const Navbar = () => {
 
           <Button 
             size="sm" 
-            onClick={() => {
-              const el = document.getElementById("tours");
-              if (el) el.scrollIntoView({ behavior: "smooth" });
-            }}
+            onClick={() => navigate("/tours")}
             className="gap-2 bg-primary text-primary-foreground hover:bg-gold-dark cursor-pointer"
           >
             <Phone className="h-3.5 w-3.5" />
@@ -159,14 +162,16 @@ const Navbar = () => {
           >
             <div className="flex flex-col gap-4 p-6">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.key}
-                  href={link.href}
+                  to={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="font-body text-lg text-foreground"
+                  className={`font-body text-lg ${
+                    isActive(link.href) ? "text-primary font-semibold" : "text-foreground"
+                  }`}
                 >
                   {t(`nav.${link.key}`)}
-                </a>
+                </Link>
               ))}
               {/* Mobile language switcher */}
               <div className="flex gap-2 pt-2 border-t border-border">
@@ -187,10 +192,7 @@ const Navbar = () => {
               <Button 
                 onClick={() => {
                   setMobileOpen(false);
-                  setTimeout(() => {
-                    const el = document.getElementById("tours");
-                    if (el) el.scrollIntoView({ behavior: "smooth" });
-                  }, 100);
+                  navigate("/tours");
                 }}
                 className="bg-primary text-primary-foreground"
               >

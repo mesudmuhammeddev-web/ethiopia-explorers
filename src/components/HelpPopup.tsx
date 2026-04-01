@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, MapPin } from "lucide-react";
 
 const HelpPopup = () => {
+  const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
@@ -16,8 +18,7 @@ const HelpPopup = () => {
   const handleClick = () => {
     setVisible(false);
     setDismissed(true);
-    const el = document.getElementById("contact");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    navigate("/contact");
   };
 
   const handleDismiss = (e: React.MouseEvent) => {

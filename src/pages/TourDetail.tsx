@@ -9,6 +9,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { tours, getTourBySlug, getPriceForGroup, type Tour } from "@/data/tours";
 import { getBookingFormUrl } from "@/lib/bookingForm";
+import Navbar from "@/components/Navbar";
+import SEOHead from "@/components/SEOHead";
 
 const TourDetail = () => {
   const { t } = useTranslation();
@@ -31,8 +33,8 @@ const TourDetail = () => {
       <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6">
         <h1 className="font-display text-3xl font-bold text-foreground">{t("tourDetail.tourNotFound")}</h1>
         <p className="mt-2 text-muted-foreground">{t("tourDetail.tourNotFoundDesc")}</p>
-        <Button className="mt-6 bg-primary text-primary-foreground" onClick={() => navigate("/")}>
-          <ArrowLeft className="mr-2 h-4 w-4" /> {t("tourDetail.backToHome")}
+        <Button className="mt-6 bg-primary text-primary-foreground" onClick={() => navigate("/tours")}>
+          <ArrowLeft className="mr-2 h-4 w-4" /> {t("tourDetail.backToAll")}
         </Button>
       </div>
     );
@@ -61,13 +63,19 @@ const TourDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title={`${tour.name} — Ethiopia Tour | Ethiopia Travel Explorer`}
+        description={`${tour.description} From $${tour.pricing.group.toFixed(2)}/person. Book your ${tour.destination} tour today.`}
+        canonicalPath={`/tour/${tour.slug}`}
+      />
+      <Navbar />
       {/* Hero */}
       <div className="relative h-[50vh] min-h-[400px] overflow-hidden">
         <img src={tour.image} alt={tour.name} className="h-full w-full object-cover" />
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
         <div className="absolute inset-x-0 bottom-0 p-6 md:p-12">
           <div className="container mx-auto">
-            <button onClick={() => navigate("/")} className="mb-4 flex items-center gap-2 font-body text-sm text-muted-foreground transition-colors hover:text-primary">
+            <button onClick={() => navigate("/tours")} className="mb-4 flex items-center gap-2 font-body text-sm text-muted-foreground transition-colors hover:text-primary">
               <ArrowLeft className="h-4 w-4" /> {t("tourDetail.backToAll")}
             </button>
             <div className="flex flex-wrap items-center gap-3">

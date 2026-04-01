@@ -1,6 +1,7 @@
 import { Mail, Phone, MapPin, Facebook, Instagram, Youtube, Send } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const destinations = ["Lake Tana", "Lalibela", "Simien Mountains", "Danakil Depression", "Gondar", "Axum", "Omo Valley", "Harar"];
@@ -10,11 +11,11 @@ const Footer = () => {
   const [email, setEmail] = useState("");
 
   const quickLinks = [
-    { label: t("footer.bespokeTours"), href: "#tours" },
-    { label: t("nav.destinations"), href: "#destinations" },
-    { label: t("nav.experiences"), href: "#experiences" },
-    { label: t("footer.travelGuide"), href: "#" },
-    { label: t("footer.aboutUs"), href: "#" },
+    { label: t("footer.bespokeTours"), href: "/tours" },
+    { label: t("nav.destinations"), href: "/destinations" },
+    { label: t("nav.experiences"), href: "/tours" },
+    { label: t("footer.travelGuide"), href: "/about" },
+    { label: t("footer.aboutUs"), href: "/about" },
   ];
 
   return (
@@ -40,7 +41,7 @@ const Footer = () => {
       <div className="container mx-auto px-6 py-12">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <a href="#" className="font-display text-2xl font-bold text-foreground">Ethiopia Travel <span className="text-gradient-gold">Explorer</span></a>
+            <Link to="/" className="font-display text-2xl font-bold text-foreground">Ethiopia Travel <span className="text-gradient-gold">Explorer</span></Link>
             <p className="mt-4 font-body text-sm leading-relaxed text-muted-foreground">{t("footer.aboutText")}</p>
             <div className="mt-6 flex gap-3">
               {[Facebook, Instagram, Youtube].map((Icon) => (
@@ -55,7 +56,7 @@ const Footer = () => {
             <h4 className="font-display text-sm font-bold tracking-wider text-foreground uppercase">{t("footer.quickLinks")}</h4>
             <ul className="mt-4 space-y-3">
               {quickLinks.map((link) => (
-                <li key={link.label}><a href={link.href} className="font-body text-sm text-muted-foreground transition-colors hover:text-primary">{link.label}</a></li>
+                <li key={link.label}><Link to={link.href} className="font-body text-sm text-muted-foreground transition-colors hover:text-primary">{link.label}</Link></li>
               ))}
             </ul>
           </div>
@@ -64,7 +65,7 @@ const Footer = () => {
             <h4 className="font-display text-sm font-bold tracking-wider text-foreground uppercase">{t("footer.topDestinations")}</h4>
             <ul className="mt-4 space-y-3">
               {destinations.map((dest) => (
-                <li key={dest}><a href="#destinations" className="font-body text-sm text-muted-foreground transition-colors hover:text-primary">{dest}</a></li>
+                <li key={dest}><Link to="/destinations" className="font-body text-sm text-muted-foreground transition-colors hover:text-primary">{dest}</Link></li>
               ))}
             </ul>
           </div>
