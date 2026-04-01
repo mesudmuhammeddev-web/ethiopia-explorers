@@ -63,6 +63,12 @@ const TourDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title={`${tour.name} — Ethiopia Tour | Ethiopia Travel Explorer`}
+        description={`${tour.description} From $${tour.pricing.group.toFixed(2)}/person. Book your ${tour.destination} tour today.`}
+        canonicalPath={`/tour/${tour.slug}`}
+      />
+      <Navbar />
       {/* Hero */}
       <div className="relative h-[50vh] min-h-[400px] overflow-hidden">
         <img src={tour.image} alt={tour.name} className="h-full w-full object-cover" />
