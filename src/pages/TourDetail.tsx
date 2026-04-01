@@ -67,7 +67,7 @@ const TourDetail = () => {
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
         <div className="absolute inset-x-0 bottom-0 p-6 md:p-12">
           <div className="container mx-auto">
-            <button onClick={() => navigate("/")} className="mb-4 flex items-center gap-2 font-body text-sm text-muted-foreground transition-colors hover:text-primary">
+            <button onClick={() => navigate("/tours")} className="mb-4 flex items-center gap-2 font-body text-sm text-muted-foreground transition-colors hover:text-primary">
               <ArrowLeft className="h-4 w-4" /> {t("tourDetail.backToAll")}
             </button>
             <div className="flex flex-wrap items-center gap-3">

@@ -50,7 +50,7 @@ const HeroSection = () => {
     if (matched) {
       navigate(`/tour/${slugify(matched.name)}`);
     } else {
-      document.getElementById("tours")?.scrollIntoView({ behavior: "smooth" });
+      navigate("/tours");
     }
   };
 
