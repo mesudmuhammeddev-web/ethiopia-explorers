@@ -65,7 +65,7 @@ const Footer = () => {
             <h4 className="font-display text-sm font-bold tracking-wider text-foreground uppercase">{t("footer.topDestinations")}</h4>
             <ul className="mt-4 space-y-3">
               {destinations.map((dest) => (
-                <li key={dest}><a href="#destinations" className="font-body text-sm text-muted-foreground transition-colors hover:text-primary">{dest}</a></li>
+                <li key={dest}><Link to="/destinations" className="font-body text-sm text-muted-foreground transition-colors hover:text-primary">{dest}</Link></li>
               ))}
             </ul>
           </div>
