@@ -30,7 +30,7 @@ const Footer = () => {
           </div>
           <form onSubmit={(e) => { e.preventDefault(); setEmail(""); }} className="flex w-full max-w-md gap-2">
             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t("footer.emailPlaceholder")} className="flex-1 rounded-lg border border-border bg-background px-4 py-2.5 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50" required />
-            <Button type="submit" className="gap-2 bg-primary text-primary-foreground hover:bg-accent/90">
+            <Button type="submit" className="gap-2 bg-accent text-accent-foreground hover:bg-accent/90">
               <Send className="h-4 w-4" />
               {t("footer.subscribe")}
             </Button>

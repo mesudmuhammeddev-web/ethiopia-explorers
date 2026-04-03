@@ -93,7 +93,7 @@ const FeaturedExperiences = () => {
                         <MessageCircle className="h-4 w-4" />
                       </a>
                       <a href={getBookingFormUrl({ tourName: tour.name, price, travelers })} target="_blank" rel="noopener noreferrer">
-                        <Button size="sm" className="gap-1 bg-primary text-primary-foreground hover:bg-accent/90">
+                        <Button size="sm" className="gap-1 bg-accent text-accent-foreground hover:bg-accent/90">
                           {t("featured.book")}
                           <ArrowRight className="h-3.5 w-3.5" />
                         </Button>
