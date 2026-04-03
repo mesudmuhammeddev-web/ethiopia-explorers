@@ -72,8 +72,8 @@ const HeroSection = () => {
           style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
         />
       </AnimatePresence>
-      <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
-      <div className="absolute inset-0 bg-background/50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background" />
+      <div className="absolute inset-0 bg-background/30" />
 
       {/* Slide indicators */}
       <div className="absolute bottom-20 sm:bottom-24 left-1/2 z-20 flex -translate-x-1/2 gap-2">
@@ -180,7 +180,7 @@ const HeroSection = () => {
                 </select>
                 <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               </div>
-              <Button onClick={handleSearch} className="gap-2 rounded-xl bg-primary px-6 py-3.5 font-body text-sm font-semibold text-primary-foreground hover:bg-gold-dark">
+              <Button onClick={handleSearch} className="gap-2 rounded-xl bg-primary px-6 py-3.5 font-body text-sm font-semibold text-primary-foreground hover:bg-accent/90">
                 <Search className="h-4 w-4" />
                 {t("hero.findTours")}
               </Button>

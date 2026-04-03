@@ -71,13 +71,13 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass-card py-3" : "py-6"
+        scrolled ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border py-3" : "bg-background py-6"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6">
         <Link to="/" className="flex items-center gap-2">
           <img src={logo} alt="Ethiopia Travel Logo" className="h-10 w-auto" />
-          <span className="text-lg font-bold text-primary-foreground tracking-tight hidden sm:inline">Ethiopia Travel Explorer</span>
+          <span className="text-lg font-bold text-primary tracking-tight hidden sm:inline">Ethiopia Travel Explorer</span>
         </Link>
 
         {/* Desktop */}
@@ -138,7 +138,7 @@ const Navbar = () => {
           <Button 
             size="sm" 
             onClick={() => navigate("/tours")}
-            className="gap-2 bg-primary text-primary-foreground hover:bg-gold-dark cursor-pointer"
+            className="gap-2 bg-accent text-accent-foreground hover:bg-accent/90 cursor-pointer"
           >
             <Phone className="h-3.5 w-3.5" />
             {t("nav.bookNow")}

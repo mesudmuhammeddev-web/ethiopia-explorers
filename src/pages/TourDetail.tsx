@@ -291,7 +291,7 @@ const TourDetail = () => {
                       <label className="font-body text-xs text-muted-foreground">{t("tourDetail.specialRequests")}</label>
                       <textarea maxLength={500} rows={3} value={bookingNotes} onChange={(e) => setBookingNotes(e.target.value)} className="mt-1 w-full resize-none rounded-lg bg-secondary px-4 py-2.5 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary" placeholder={t("tourDetail.requestsPlaceholder")} />
                     </div>
-                    <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-gold-dark" size="lg">
+                    <Button type="submit" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" size="lg">
                       {t("tourDetail.requestBooking", { total: totalPrice.toFixed(2) })}
                     </Button>
                     <p className="text-center font-body text-[10px] text-muted-foreground">{t("tourDetail.noPayment")}</p>
