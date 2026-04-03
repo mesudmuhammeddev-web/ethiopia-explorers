@@ -71,7 +71,7 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass-card py-3" : "py-6"
+        scrolled ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border py-3" : "bg-background py-6"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6">
