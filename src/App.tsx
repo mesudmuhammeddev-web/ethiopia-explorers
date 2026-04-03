@@ -56,6 +56,12 @@ const App = () => (
           <Route path="/contact" element={
             <Suspense fallback={<PageFallback />}><ContactPage /></Suspense>
           } />
+          <Route path="/blog" element={
+            <Suspense fallback={<PageFallback />}><BlogPage /></Suspense>
+          } />
+          <Route path="/blog/:slug" element={
+            <Suspense fallback={<PageFallback />}><BlogPost /></Suspense>
+          } />
           <Route path="/tour/:slug" element={
             <Suspense fallback={<PageFallback />}><TourDetail /></Suspense>
           } />
