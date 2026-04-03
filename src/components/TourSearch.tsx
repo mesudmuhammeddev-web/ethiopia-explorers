@@ -307,7 +307,7 @@ const TourSearch = () => {
                       >
                         <Button
                           size="sm"
-                          className="gap-1 bg-primary text-primary-foreground hover:bg-gold-dark shadow-md shadow-primary/20 text-xs sm:text-sm"
+                          className="gap-1 bg-primary text-primary-foreground hover:bg-accent/90 shadow-md shadow-primary/20 text-xs sm:text-sm"
                         >
                           {t("tourSearch.bookNow")}
                           <ArrowRight className="h-3 w-3" />

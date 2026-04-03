@@ -125,7 +125,7 @@ const TourComparison = () => {
                   <td className="pt-4" />
                   {selected.map((tour) => (
                     <td key={tour.id} className="pt-4 text-center">
-                      <Button size="sm" className="bg-primary text-primary-foreground hover:bg-gold-dark">{t("compare.bookNow")}</Button>
+                      <Button size="sm" className="bg-primary text-primary-foreground hover:bg-accent/90">{t("compare.bookNow")}</Button>
                     </td>
                   ))}
                   {selected.length < 5 && <td />}
