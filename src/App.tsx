@@ -16,6 +16,8 @@ const DestinationsPage = lazy(() => import("./pages/DestinationsPage"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const BlogPage = lazy(() => import("./pages/BlogPage"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
 
 const queryClient = new QueryClient();
 
@@ -53,6 +55,12 @@ const App = () => (
           } />
           <Route path="/contact" element={
             <Suspense fallback={<PageFallback />}><ContactPage /></Suspense>
+          } />
+          <Route path="/blog" element={
+            <Suspense fallback={<PageFallback />}><BlogPage /></Suspense>
+          } />
+          <Route path="/blog/:slug" element={
+            <Suspense fallback={<PageFallback />}><BlogPost /></Suspense>
           } />
           <Route path="/tour/:slug" element={
             <Suspense fallback={<PageFallback />}><TourDetail /></Suspense>

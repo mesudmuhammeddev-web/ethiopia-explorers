@@ -11,6 +11,7 @@ const navLinks = [
   { key: "destinations", href: "/destinations" },
   { key: "tours", href: "/tours" },
   { key: "experiences", href: "/tours" },
+  { key: "blog", href: "/blog" },
   { key: "contact", href: "/contact" },
 ];
 
