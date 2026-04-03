@@ -138,7 +138,7 @@ const Navbar = () => {
           <Button 
             size="sm" 
             onClick={() => navigate("/tours")}
-            className="gap-2 bg-primary text-primary-foreground hover:bg-gold-dark cursor-pointer"
+            className="gap-2 bg-accent text-accent-foreground hover:bg-accent/90 cursor-pointer"
           >
             <Phone className="h-3.5 w-3.5" />
             {t("nav.bookNow")}
