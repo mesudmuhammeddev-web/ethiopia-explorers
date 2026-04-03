@@ -212,7 +212,7 @@ const Destinations = () => {
                     href={getBookingFormUrl({ tourName: dest.name, price: dest.price })}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-primary/90 px-3 py-1.5 font-body text-xs font-semibold text-primary-foreground opacity-0 transition-all group-hover:opacity-100"
+                    className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-accent px-3 py-1.5 font-body text-xs font-semibold text-accent-foreground opacity-0 transition-all group-hover:opacity-100"
                   >
                     <MessageCircle className="h-3 w-3" />
                     {t("destinations.bookNow")}
