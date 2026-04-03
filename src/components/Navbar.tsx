@@ -77,7 +77,7 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between px-6">
         <Link to="/" className="flex items-center gap-2">
           <img src={logo} alt="Ethiopia Travel Logo" className="h-10 w-auto" />
-          <span className="text-lg font-bold text-primary-foreground tracking-tight hidden sm:inline">Ethiopia Travel Explorer</span>
+          <span className="text-lg font-bold text-primary tracking-tight hidden sm:inline">Ethiopia Travel Explorer</span>
         </Link>
 
         {/* Desktop */}
