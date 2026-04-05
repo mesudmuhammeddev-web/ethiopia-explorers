@@ -5,6 +5,7 @@
   <url><loc>https://ethiopia-explorers.lovable.app/destinations</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://ethiopia-explorers.lovable.app/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ethiopia-explorers.lovable.app/contact</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://ethiopia-explorers.lovable.app/tour/lake-tana-boat-tour</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://ethiopia-explorers.lovable.app/tour/blue-nile-falls-adventure</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://ethiopia-explorers.lovable.app/tour/monastery-island-hopping</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
@@ -60,4 +61,104 @@
   <url><loc>https://ethiopia-explorers.lovable.app/tour/mekelle-to-lalibela-overland</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://ethiopia-explorers.lovable.app/tour/langano-hot-springs-retreat</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://ethiopia-explorers.lovable.app/tour/historic-route-grand-tour</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/best-places-to-visit-ethiopia-2026</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/top-10-destinations-northern-ethiopia</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/most-beautiful-lakes-ethiopia</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/best-national-parks-ethiopia</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/addis-ababa-travel-guide</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/omo-valley-travel-guide</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/lalibela-rock-churches-guide</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/danakil-depression-travel-guide</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/harar-old-city-guide</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/bahir-dar-lake-tana-guide</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopian-coffee-ceremony-experience</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopian-traditional-music-dance</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/omo-valley-tribal-cultures</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopian-orthodox-christianity</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopian-wedding-traditions</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/konso-cultural-landscape</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/dorze-people-weaving-traditions</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopian-art-painting-traditions</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopian-calendar-unique-time</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopian-languages-diversity</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/simien-mountains-trekking-guide</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ras-dashen-summit-guide</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/bale-mountains-trekking</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/tigray-rock-church-hiking</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/blue-nile-gorge-adventure</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/erta-ale-volcano-trek</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopian-highlands-horse-trekking</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/white-water-rafting-omo-river</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/cycling-ethiopia-best-routes</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/rock-climbing-ethiopia</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/axum-obelisks-queen-sheba</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/gondar-royal-castles-history</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/lalibela-history-architecture</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/debre-damo-cliff-monastery</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/tiya-stelae-mystery</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ancient-city-of-aksum</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/yemrehanna-kristos-church</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/debre-birhan-selassie-church</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/harar-jugol-walled-city</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/dire-dawa-railway-heritage</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopian-wolf-conservation</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/gelada-baboons-simien-mountains</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/birdwatching-ethiopia-guide</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/rift-valley-lakes-flamingos</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/endemic-animals-ethiopia</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/awash-national-park-wildlife</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/nechisar-national-park-guide</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/gambella-national-park-migration</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/sof-omar-cave-exploration</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopian-highlands-ecosystem</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopian-food-guide-injera</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/coffee-birthplace-ethiopia</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/best-restaurants-addis-ababa</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopian-spices-berbere-mitmita</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopian-vegetarian-food</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/tej-ethiopian-honey-wine</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/kaffa-coffee-forest-origin</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopian-cooking-classes</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/street-food-ethiopia-guide</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopian-beer-breweries</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopia-travel-tips-first-timers</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopia-visa-guide-2026</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/best-time-visit-ethiopia</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopia-safety-guide-travelers</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopia-packing-list</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopia-budget-travel-guide</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/getting-around-ethiopia-transport</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopia-health-vaccinations</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopia-money-currency-guide</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopia-photography-tips</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/timkat-festival-guide</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/meskel-festival-finding-true-cross</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/enkutatash-ethiopian-new-year</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/genna-ethiopian-christmas</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/fasika-ethiopian-easter</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/bull-jumping-ceremony-hamar</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/irreecha-oromo-thanksgiving</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ashenda-festival-tigray</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/sheik-hussein-pilgrimage</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopia-festival-calendar-2026</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/wenchi-crater-lake-hidden-gem</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/sof-omar-caves-underground-wonder</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/lake-langano-weekend-getaway</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/chebera-churchura-national-park</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/entoto-mountain-addis-ababa</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ankober-historic-royal-town</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/gheralta-mountains-tigray</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/surma-people-body-art</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/lake-afrera-salt-lake-afar</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/jimma-palace-abba-jifar</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/14-day-historic-route-itinerary</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/7-day-ethiopia-highlights</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/21-day-complete-ethiopia-tour</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/5-day-omo-valley-itinerary</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/3-day-lalibela-itinerary</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/10-day-adventure-ethiopia</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopia-honeymoon-itinerary</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopia-family-travel-guide</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/solo-female-travel-ethiopia</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ethiopia-explorers.lovable.app/blog/ethiopia-vs-kenya-safari-comparison</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 </urlset>
