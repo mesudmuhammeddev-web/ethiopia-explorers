@@ -170,9 +170,14 @@ const BlogPost = () => {
                   to={`/blog/${r.slug}`}
                   className="group block bg-card border border-border rounded-xl overflow-hidden hover:shadow-md transition-all"
                 >
-                  <div className="h-32 bg-gradient-to-br from-primary/15 to-accent/15 flex items-center justify-center">
-                    <span className="text-3xl">{getCategoryEmoji(r.category)}</span>
-                  </div>
+                  <img
+                    src={getBlogImage(r.category, r.slug)}
+                    alt={r.title}
+                    className="h-32 w-full object-cover"
+                    loading="lazy"
+                    width={400}
+                    height={128}
+                  />
                   <div className="p-4">
                     <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2 text-sm">
                       {r.title}
