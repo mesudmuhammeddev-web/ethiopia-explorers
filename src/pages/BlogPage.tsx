@@ -159,9 +159,14 @@ const BlogPage = () => {
                   to={`/blog/${post.slug}`}
                   className="group block bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 h-full"
                 >
-                  <div className="h-48 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                    <span className="text-4xl">{getCategoryEmoji(post.category)}</span>
-                  </div>
+                  <img
+                    src={getBlogImage(post.category, post.slug)}
+                    alt={post.title}
+                    className="h-48 w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                    width={400}
+                    height={192}
+                  />
                   <div className="p-5">
                     <div className="flex items-center gap-2 mb-3">
                       <Badge variant="outline" className="text-xs">
