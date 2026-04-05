@@ -121,11 +121,15 @@ const BlogPost = () => {
           <p className="text-lg text-muted-foreground">{post.metaDescription}</p>
         </header>
 
-        {/* Hero Image Placeholder */}
+        {/* Hero Image */}
         <div className="container mx-auto px-4 max-w-3xl mb-10">
-          <div className="h-64 md:h-80 rounded-2xl bg-gradient-to-br from-primary/20 via-accent/10 to-primary/5 flex items-center justify-center">
-            <span className="text-6xl">{getCategoryEmoji(post.category)}</span>
-          </div>
+          <img
+            src={getBlogImage(post.category, post.slug)}
+            alt={post.title}
+            className="w-full h-64 md:h-80 rounded-2xl object-cover"
+            width={1280}
+            height={720}
+          />
         </div>
 
         {/* Article Content */}
