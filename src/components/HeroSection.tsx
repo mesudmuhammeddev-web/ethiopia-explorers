@@ -72,7 +72,7 @@ const HeroSection = () => {
           style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
         />
       </AnimatePresence>
-      <div className="absolute inset-0 bg-gradient-to-b from-background/5 via-background/15 to-background/75" />
+      <div className="absolute inset-0 bg-black/20" />
 
       {/* Slide indicators */}
       <div className="absolute bottom-20 sm:bottom-24 left-1/2 z-20 flex -translate-x-1/2 gap-2">
@@ -99,7 +99,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="mx-auto max-w-4xl font-display text-3xl font-bold leading-tight text-foreground sm:text-5xl md:text-7xl lg:text-8xl"
+          className="mx-auto max-w-4xl font-display text-3xl font-bold leading-tight text-white sm:text-5xl md:text-7xl lg:text-8xl [text-shadow:0_2px_16px_hsl(var(--foreground)/0.35)]"
         >
           {t("hero.title1")}{" "}
           <span className="text-gradient-gold italic">{t("hero.title2")}</span> &{" "}
@@ -113,7 +113,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.5 }}
-            className="mx-auto mt-6 max-w-2xl font-body text-lg text-muted-foreground md:text-xl"
+            className="mx-auto mt-6 max-w-2xl font-body text-lg text-white/90 md:text-xl [text-shadow:0_2px_12px_hsl(var(--foreground)/0.3)]"
           >
             {t(slides[currentSlide].tagline)}
           </motion.p>

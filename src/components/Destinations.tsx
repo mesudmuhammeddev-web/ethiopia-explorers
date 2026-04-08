@@ -200,7 +200,6 @@ const Destinations = () => {
                   const target = e.currentTarget;
                   if (!target.src.endsWith("/placeholder.svg")) target.src = "/placeholder.svg";
                 }} />
-                 <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background via-background/70 to-transparent" />
                 <div className="absolute top-2 right-2 sm:top-3 sm:right-3 rounded-full bg-primary/90 px-2 py-0.5 sm:px-2.5 sm:py-1 font-body text-[10px] sm:text-xs font-semibold text-primary-foreground">
                   ${dest.price}+
                 </div>
