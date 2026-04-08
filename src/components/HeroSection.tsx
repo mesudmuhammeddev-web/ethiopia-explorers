@@ -72,8 +72,7 @@ const HeroSection = () => {
           style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
         />
       </AnimatePresence>
-      <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background" />
-      <div className="absolute inset-0 bg-background/30" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/5 via-background/15 to-background/75" />
 
       {/* Slide indicators */}
       <div className="absolute bottom-20 sm:bottom-24 left-1/2 z-20 flex -translate-x-1/2 gap-2">
@@ -141,7 +140,7 @@ const HeroSection = () => {
             size="lg"
             variant="outline"
             onClick={scrollToPackages}
-            className="gap-2 rounded-full border-foreground/20 px-8 py-6 font-body text-base font-semibold text-foreground backdrop-blur-sm transition-all hover:scale-105 hover:bg-foreground/10"
+            className="gap-2 rounded-full border-foreground/20 px-8 py-6 font-body text-base font-semibold text-foreground transition-all hover:scale-105 hover:bg-foreground/10"
           >
             {t("hero.seePackages")}
             <ArrowRight className="h-5 w-5" />
