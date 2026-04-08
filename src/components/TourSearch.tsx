@@ -202,7 +202,7 @@ const TourSearch = () => {
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                         loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
+                      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background/70 to-transparent" />
                       {isHot && (
                         <div className="absolute top-1 left-1 flex items-center gap-0.5 rounded-md bg-destructive/90 px-1.5 py-0.5 text-[9px] font-bold text-destructive-foreground">
                           <Flame className="h-2.5 w-2.5" /> HOT

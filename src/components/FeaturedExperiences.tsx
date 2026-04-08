@@ -60,7 +60,7 @@ const FeaturedExperiences = () => {
                 )}
 
                 {/* Availability counter */}
-                <div className="absolute top-3 right-3 z-10 hidden sm:flex items-center gap-1 rounded-full bg-background/80 backdrop-blur-sm px-2.5 py-1 text-xs font-medium text-foreground border border-border">
+                <div className="absolute top-3 right-3 z-10 hidden sm:flex items-center gap-1 rounded-full border border-border bg-card/95 px-2.5 py-1 text-xs font-medium text-foreground shadow-sm">
                   <TrendingUp className="h-3 w-3 text-primary" />
                   {Math.floor(Math.random() * 8) + 3} booked this week
                 </div>
@@ -68,7 +68,7 @@ const FeaturedExperiences = () => {
                 <div className="aspect-[3/4] overflow-hidden">
                   <img src={tour.image} alt={tour.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-background/95 via-background/70 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-5">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <span className="rounded-full bg-primary/20 px-2.5 py-0.5 text-xs font-medium text-primary">{tour.duration}</span>
