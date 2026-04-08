@@ -64,15 +64,14 @@ const HeroSection = () => {
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
+          initial={{ scale: 1.06 }}
+          animate={{ scale: 1 }}
+          exit={{ scale: 1.02 }}
           transition={{ duration: 1.2, ease: "easeInOut" }}
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
         />
       </AnimatePresence>
-      <div className="absolute inset-0 bg-black/20" />
 
       {/* Slide indicators */}
       <div className="absolute bottom-20 sm:bottom-24 left-1/2 z-20 flex -translate-x-1/2 gap-2">
@@ -88,7 +87,7 @@ const HeroSection = () => {
       </div>
 
       <div className="container relative z-10 mx-auto px-6 text-center">
-        <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}>
+        <motion.div initial={{ y: 40 }} animate={{ y: 0 }} transition={{ duration: 1, delay: 0.3 }}>
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2">
             <MapPin className="h-4 w-4 text-primary" />
             <span className="font-body text-sm tracking-widest text-primary uppercase">{t("hero.badge")}</span>
@@ -96,8 +95,8 @@ const HeroSection = () => {
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ y: 40 }}
+          animate={{ y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
           className="mx-auto max-w-4xl font-display text-3xl font-bold leading-tight text-white sm:text-5xl md:text-7xl lg:text-8xl [text-shadow:0_2px_16px_hsl(var(--foreground)/0.35)]"
         >
@@ -109,9 +108,9 @@ const HeroSection = () => {
         <AnimatePresence mode="wait">
           <motion.p
             key={currentSlide}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
+            initial={{ y: 10 }}
+            animate={{ y: 0 }}
+            exit={{ y: -10 }}
             transition={{ duration: 0.5 }}
             className="mx-auto mt-6 max-w-2xl font-body text-lg text-white/90 md:text-xl [text-shadow:0_2px_12px_hsl(var(--foreground)/0.3)]"
           >
@@ -121,8 +120,8 @@ const HeroSection = () => {
 
         {/* Dual CTA Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ y: 30 }}
+          animate={{ y: 0 }}
           transition={{ duration: 1, delay: 0.8 }}
           className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
@@ -149,8 +148,8 @@ const HeroSection = () => {
 
         {/* Integrated Search Form */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ y: 30 }}
+          animate={{ y: 0 }}
           transition={{ duration: 1, delay: 1 }}
           className="mx-auto mt-10 max-w-3xl"
         >
@@ -188,7 +187,7 @@ const HeroSection = () => {
         </motion.div>
 
         {/* Stats */}
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.3 }} className="mx-auto mt-12 sm:mt-16 grid max-w-2xl grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8">
+        <motion.div initial={{ y: 12 }} animate={{ y: 0 }} transition={{ duration: 1, delay: 1.3 }} className="mx-auto mt-12 sm:mt-16 grid max-w-2xl grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8">
           {[
             { value: "500+", label: t("hero.happyTravelers") },
             { value: "50+", label: t("hero.uniqueTours") },

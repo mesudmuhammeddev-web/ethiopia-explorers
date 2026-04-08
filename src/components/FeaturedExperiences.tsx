@@ -46,8 +46,8 @@ const FeaturedExperiences = () => {
             return (
               <motion.div
                 key={tour.id}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ y: 40 }}
+                whileInView={{ y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 className="group hover-lift relative overflow-hidden rounded-2xl"

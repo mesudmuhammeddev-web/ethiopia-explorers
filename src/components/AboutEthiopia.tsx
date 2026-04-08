@@ -267,8 +267,8 @@ const AboutEthiopia = () => {
               {milestones.map((m, i) => (
                 <motion.div
                   key={m.year}
-                  initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ x: i % 2 === 0 ? -40 : 40 }}
+                  whileInView={{ x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15, type: "spring", stiffness: 80, damping: 16 }}
                   className={`relative mb-16 flex items-center gap-8 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} pl-12 md:pl-0`}
