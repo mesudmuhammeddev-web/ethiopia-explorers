@@ -46,8 +46,8 @@ const FeaturedExperiences = () => {
             return (
               <motion.div
                 key={tour.id}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ y: 40 }}
+                whileInView={{ y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 className="group hover-lift relative overflow-hidden rounded-2xl"
@@ -68,7 +68,6 @@ const FeaturedExperiences = () => {
                 <div className="aspect-[3/4] overflow-hidden">
                   <img src={tour.image} alt={tour.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
                 </div>
-                <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-background/95 via-background/70 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-5">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <span className="rounded-full bg-primary/20 px-2.5 py-0.5 text-xs font-medium text-primary">{tour.duration}</span>

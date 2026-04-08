@@ -267,8 +267,8 @@ const AboutEthiopia = () => {
               {milestones.map((m, i) => (
                 <motion.div
                   key={m.year}
-                  initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ x: i % 2 === 0 ? -40 : 40 }}
+                  whileInView={{ x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15, type: "spring", stiffness: 80, damping: 16 }}
                   className={`relative mb-16 flex items-center gap-8 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} pl-12 md:pl-0`}
@@ -284,8 +284,6 @@ const AboutEthiopia = () => {
                       <div className="relative">
                         <div className="aspect-[16/10] w-64 overflow-hidden">
                           <img src={m.image} alt={m.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
-                          {/* Image overlay gradient */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-card/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                         </div>
                         <div className="p-4">
                           <span className="font-display text-xl font-bold text-primary">{m.year}</span>
