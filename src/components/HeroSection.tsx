@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, MapPin, Search, ChevronDown, MessageCircle } from "lucide-react";
+import { ArrowRight, Search, ChevronDown, MessageCircle, Star, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
@@ -24,7 +24,7 @@ const HeroSection = () => {
   const navigate = useNavigate();
   const [destination, setDestination] = useState("");
   const [category, setCategory] = useState("");
-  const [duration, setDuration] = useState("");
+  const [travelers, setTravelers] = useState("2");
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = useCallback(() => {
@@ -32,7 +32,7 @@ const HeroSection = () => {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 5000);
+    const interval = setInterval(nextSlide, 6000);
     return () => clearInterval(interval);
   }, [nextSlide]);
 
@@ -40,171 +40,204 @@ const HeroSection = () => {
     const matched = tours.find((tour) => {
       const destMatch = !destination || tour.destination === destination;
       const catMatch = !category || tour.category === category;
-      const durMatch =
-        !duration ||
-        (duration === "1-3" && parseInt(tour.duration) <= 3) ||
-        (duration === "4-7" && parseInt(tour.duration) >= 4 && parseInt(tour.duration) <= 7) ||
-        (duration === "8+" && parseInt(tour.duration) >= 8);
-      return destMatch && catMatch && durMatch;
+      return destMatch && catMatch;
     });
-    if (matched) {
-      navigate(`/tour/${slugify(matched.name)}`);
-    } else {
-      navigate("/tours");
-    }
-  };
-
-  const scrollToPackages = () => {
-    navigate("/tours");
+    if (matched) navigate(`/tour/${slugify(matched.name)}`);
+    else navigate("/tours");
   };
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      {/* Sliding background images */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentSlide}
-          initial={{ scale: 1.06 }}
-          animate={{ scale: 1 }}
-          exit={{ scale: 1.02 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
-        />
-      </AnimatePresence>
-
-      {/* Slide indicators */}
-      <div className="absolute bottom-20 sm:bottom-24 left-1/2 z-20 flex -translate-x-1/2 gap-2">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrentSlide(i)}
-            className={`h-1.5 rounded-full transition-all duration-500 ${
-              i === currentSlide ? "w-8 bg-primary" : "w-3 bg-foreground/30"
-            }`}
-          />
-        ))}
-      </div>
-
-      <div className="container relative z-10 mx-auto px-6 text-center">
-        <motion.div initial={{ y: 40 }} animate={{ y: 0 }} transition={{ duration: 1, delay: 0.3 }}>
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2">
-            <MapPin className="h-4 w-4 text-primary" />
-            <span className="font-body text-sm tracking-widest text-primary uppercase">{t("hero.badge")}</span>
-          </div>
-        </motion.div>
-
-        <motion.h1
-          initial={{ y: 40 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="mx-auto max-w-4xl font-display text-3xl font-bold leading-tight text-white sm:text-5xl md:text-7xl lg:text-8xl [text-shadow:0_2px_16px_hsl(var(--foreground)/0.35)]"
-        >
-          {t("hero.title1")}{" "}
-          <span className="text-gradient-gold italic">{t("hero.title2")}</span> &{" "}
-          <span className="text-gradient-gold italic">{t("hero.title3")}</span>
-        </motion.h1>
-
+    <section className="relative isolate overflow-hidden">
+      {/* Background slider */}
+      <div className="absolute inset-0 -z-10">
         <AnimatePresence mode="wait">
-          <motion.p
+          <motion.div
             key={currentSlide}
-            initial={{ y: 10 }}
-            animate={{ y: 0 }}
-            exit={{ y: -10 }}
-            transition={{ duration: 0.5 }}
-            className="mx-auto mt-6 max-w-2xl font-body text-lg text-white/90 md:text-xl [text-shadow:0_2px_12px_hsl(var(--foreground)/0.3)]"
-          >
-            {t(slides[currentSlide].tagline)}
-          </motion.p>
+            initial={{ scale: 1.08, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.4, ease: "easeOut" }}
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
+          />
         </AnimatePresence>
-
-        {/* Dual CTA Buttons */}
-        <motion.div
-          initial={{ y: 30 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row"
-        >
-          <Button
-            size="lg"
-            asChild
-            className="gap-2 rounded-full bg-[hsl(var(--accent))] px-8 py-6 font-body text-base font-semibold text-accent-foreground shadow-lg transition-all hover:scale-105"
-          >
-            <a href="https://wa.me/251998900160?text=Hello!%20I'm%20interested%20in%20booking%20a%20tour." target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="h-5 w-5" />
-              {t("hero.bookNow")}
-            </a>
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            onClick={scrollToPackages}
-            className="gap-2 rounded-full border-foreground/20 px-8 py-6 font-body text-base font-semibold text-foreground transition-all hover:scale-105 hover:bg-foreground/10"
-          >
-            {t("hero.seePackages")}
-            <ArrowRight className="h-5 w-5" />
-          </Button>
-        </motion.div>
-
-        {/* Integrated Search Form */}
-        <motion.div
-          initial={{ y: 30 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="mx-auto mt-10 max-w-3xl"
-        >
-          <div className="glass-card rounded-2xl p-3">
-            <div className="grid gap-2 grid-cols-1 sm:grid-cols-4">
-              <div className="relative">
-                <select value={destination} onChange={(e) => setDestination(e.target.value)} className="w-full appearance-none rounded-xl bg-secondary/60 px-4 py-3.5 pr-10 font-body text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50">
-                  <option value="">{t("hero.allDestinations")}</option>
-                  {destinationList.map((d) => (<option key={d} value={d}>{d}</option>))}
-                </select>
-                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              </div>
-              <div className="relative">
-                <select value={category} onChange={(e) => setCategory(e.target.value)} className="w-full appearance-none rounded-xl bg-secondary/60 px-4 py-3.5 pr-10 font-body text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50">
-                  <option value="">{t("hero.allActivities")}</option>
-                  {categories.map((c) => (<option key={c} value={c}>{c}</option>))}
-                </select>
-                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              </div>
-              <div className="relative">
-                <select value={duration} onChange={(e) => setDuration(e.target.value)} className="w-full appearance-none rounded-xl bg-secondary/60 px-4 py-3.5 pr-10 font-body text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50">
-                  <option value="">{t("hero.anyDuration")}</option>
-                  <option value="1-3">{t("hero.days13")}</option>
-                  <option value="4-7">{t("hero.days47")}</option>
-                  <option value="8+">{t("hero.days8")}</option>
-                </select>
-                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              </div>
-              <Button onClick={handleSearch} className="gap-2 rounded-xl bg-primary px-6 py-3.5 font-body text-sm font-semibold text-primary-foreground hover:bg-accent/90">
-                <Search className="h-4 w-4" />
-                {t("hero.findTours")}
-              </Button>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Stats */}
-        <motion.div initial={{ y: 12 }} animate={{ y: 0 }} transition={{ duration: 1, delay: 1.3 }} className="mx-auto mt-12 sm:mt-16 grid max-w-2xl grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8">
-          {[
-            { value: "500+", label: t("hero.happyTravelers") },
-            { value: "50+", label: t("hero.uniqueTours") },
-            { value: "15+", label: t("hero.destinations") },
-            { value: "4.9", label: t("hero.starRating") },
-          ].map((stat) => (
-            <div key={stat.label}>
-              <div className="font-display text-2xl font-bold text-primary sm:text-3xl md:text-4xl">{stat.value}</div>
-              <div className="mt-1 font-body text-[10px] sm:text-xs tracking-wider text-muted-foreground uppercase">{stat.label}</div>
-            </div>
-          ))}
-        </motion.div>
+        {/* Soft gradient — keeps image visible, only darkens bottom for text legibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/55" />
       </div>
 
-      <motion.div animate={{ y: [0, 12, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="absolute bottom-8 left-1/2 -translate-x-1/2">
-        <div className="h-10 w-6 rounded-full border-2 border-foreground/30 p-1">
-          <div className="mx-auto h-2 w-1 rounded-full bg-primary" />
+      {/* Top content area */}
+      <div className="container mx-auto px-6 pt-24 pb-40 sm:pt-32 sm:pb-48 lg:pt-40 lg:pb-56">
+        <div className="max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-3.5 py-1.5 backdrop-blur-md"
+          >
+            <ShieldCheck className="h-3.5 w-3.5 text-white" />
+            <span className="font-body text-[11px] font-medium tracking-wider text-white uppercase">
+              {t("hero.badge")}
+            </span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
+            style={{ textShadow: "0 2px 24px rgba(0,0,0,0.35)" }}
+          >
+            {t("hero.title1")} <span className="italic text-white">{t("hero.title2")}</span> &{" "}
+            <span className="italic text-white">{t("hero.title3")}</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            className="mt-5 max-w-xl font-body text-base text-white/90 sm:text-lg"
+            style={{ textShadow: "0 2px 16px rgba(0,0,0,0.35)" }}
+          >
+            Discover ancient civilizations, dramatic landscapes, and authentic cultural journeys across Ethiopia.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
+          >
+            <Button
+              size="lg"
+              asChild
+              className="h-12 gap-2 rounded-full bg-[hsl(var(--accent))] px-7 font-body text-sm font-semibold text-accent-foreground shadow-xl transition-transform hover:scale-[1.02]"
+            >
+              <a
+                href="https://wa.me/251998900160?text=Hello!%20I'm%20interested%20in%20booking%20a%20tour."
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MessageCircle className="h-4 w-4" />
+                {t("hero.bookNow")}
+              </a>
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => navigate("/tours")}
+              className="h-12 gap-2 rounded-full border-white/40 bg-white/10 px-7 font-body text-sm font-semibold text-white backdrop-blur-md hover:bg-white/20 hover:text-white"
+            >
+              Explore Tours
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+
+            {/* Inline rating proof */}
+            <div className="hidden sm:flex items-center gap-2 pl-2">
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <span className="font-body text-sm font-medium text-white">
+                4.9 <span className="text-white/70">· 500+ travelers</span>
+              </span>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Slide indicators */}
+        <div className="mt-10 flex gap-2">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentSlide(i)}
+              aria-label={`Slide ${i + 1}`}
+              className={`h-1 rounded-full transition-all duration-500 ${
+                i === currentSlide ? "w-10 bg-white" : "w-5 bg-white/40"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Floating search card — overlaps bottom of hero, GetYourGuide-style */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.55 }}
+        className="container mx-auto px-6 -mb-12 sm:-mb-14 relative z-20"
+      >
+        <div className="mx-auto max-w-5xl rounded-2xl bg-card border border-border shadow-2xl p-2 sm:p-3">
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-[1.2fr_1.2fr_0.8fr_auto]">
+            {/* Destination */}
+            <div className="group relative rounded-xl px-4 py-3 hover:bg-secondary/60 transition-colors">
+              <label className="block font-body text-[10px] font-bold tracking-wider text-primary uppercase">
+                Destination
+              </label>
+              <div className="mt-1 flex items-center justify-between">
+                <select
+                  value={destination}
+                  onChange={(e) => setDestination(e.target.value)}
+                  className="w-full appearance-none bg-transparent font-body text-sm font-medium text-foreground focus:outline-none cursor-pointer"
+                >
+                  <option value="">Anywhere in Ethiopia</option>
+                  {destinationList.filter((d) => d !== "All").map((d) => (
+                    <option key={d} value={d}>{d}</option>
+                  ))}
+                </select>
+                <ChevronDown className="h-4 w-4 text-muted-foreground" />
+              </div>
+            </div>
+
+            {/* Activity */}
+            <div className="group relative rounded-xl px-4 py-3 hover:bg-secondary/60 transition-colors sm:border-l border-border">
+              <label className="block font-body text-[10px] font-bold tracking-wider text-primary uppercase">
+                Activity Type
+              </label>
+              <div className="mt-1 flex items-center justify-between">
+                <select
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  className="w-full appearance-none bg-transparent font-body text-sm font-medium text-foreground focus:outline-none cursor-pointer"
+                >
+                  <option value="">All experiences</option>
+                  {categories.filter((c) => c !== "All").map((c) => (
+                    <option key={c} value={c}>{c}</option>
+                  ))}
+                </select>
+                <ChevronDown className="h-4 w-4 text-muted-foreground" />
+              </div>
+            </div>
+
+            {/* Travelers */}
+            <div className="group relative rounded-xl px-4 py-3 hover:bg-secondary/60 transition-colors sm:border-l border-border">
+              <label className="block font-body text-[10px] font-bold tracking-wider text-primary uppercase">
+                Travelers
+              </label>
+              <div className="mt-1 flex items-center justify-between">
+                <select
+                  value={travelers}
+                  onChange={(e) => setTravelers(e.target.value)}
+                  className="w-full appearance-none bg-transparent font-body text-sm font-medium text-foreground focus:outline-none cursor-pointer"
+                >
+                  <option value="1">1 traveler</option>
+                  <option value="2">2 travelers</option>
+                  <option value="3">3 travelers</option>
+                  <option value="4">4+ travelers</option>
+                </select>
+                <ChevronDown className="h-4 w-4 text-muted-foreground" />
+              </div>
+            </div>
+
+            {/* Search button */}
+            <Button
+              onClick={handleSearch}
+              className="h-auto rounded-xl bg-[hsl(var(--accent))] px-6 py-4 font-body text-sm font-bold text-accent-foreground hover:bg-[hsl(var(--accent))]/90"
+            >
+              <Search className="h-4 w-4 mr-2" />
+              Find Tours
+            </Button>
+          </div>
         </div>
       </motion.div>
     </section>
