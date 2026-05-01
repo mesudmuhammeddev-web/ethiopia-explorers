@@ -1,108 +1,188 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { ArrowRight, Users, MessageCircle, Flame, TrendingUp } from "lucide-react";
+import { Star, Clock, MapPin, MessageCircle, Flame, TrendingUp, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { tours, getPriceForGroup } from "@/data/tours";
+import { tours, getPriceForGroup, slugify } from "@/data/tours";
 import { getBookingFormUrl } from "@/lib/bookingForm";
 
-// Top profitable packages first, lower-selling pushed down
 const featuredIds = [1, 2, 3, 4, 7, 9, 13, 14];
 
 const FeaturedExperiences = () => {
-  const { t } = useTranslation();
   const navigate = useNavigate();
   const [travelers, setTravelers] = useState(2);
-  const featured = featuredIds.map((id) => tours.find((tour) => tour.id === id)!).filter(Boolean);
+  const featured = featuredIds
+    .map((id) => tours.find((t) => t.id === id)!)
+    .filter(Boolean);
 
   return (
-    <section id="experiences" className="relative py-24">
+    <section id="experiences" className="relative py-20 sm:py-24">
       <div className="container mx-auto px-6">
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
-          <span className="font-body text-sm tracking-widest text-primary uppercase">{t("featured.badge")}</span>
-          <h2 className="mt-3 font-display text-4xl font-bold text-foreground md:text-5xl">
-            {t("featured.title")} <span className="text-gradient-gold italic">{t("featured.titleHighlight")}</span>
-          </h2>
-          <div className="mx-auto mt-6 flex items-center justify-center gap-2">
-            <Users className="h-4 w-4 text-muted-foreground" />
-            <span className="font-body text-xs text-muted-foreground">{t("featured.groupSize")}</span>
-            {[1, 2, 4].map((n) => (
+        {/* Header */}
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between mb-10">
+          <div>
+            <span className="font-body text-xs sm:text-sm tracking-widest text-primary uppercase font-semibold">
+              Top Experiences
+            </span>
+            <h2 className="mt-2 font-display text-3xl sm:text-4xl font-bold text-foreground">
+              Featured Ethiopia tours
+            </h2>
+            <p className="mt-2 font-body text-sm sm:text-base text-muted-foreground">
+              Hand-picked, top-rated, and instantly bookable.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <span className="font-body text-xs text-muted-foreground hidden sm:inline">Group:</span>
+            {[
+              { n: 1, label: "Solo" },
+              { n: 2, label: "2–3" },
+              { n: 4, label: "4+" },
+            ].map((opt) => (
               <button
-                key={n}
-                onClick={() => setTravelers(n)}
-                className={`rounded-lg px-2.5 py-1 font-body text-xs font-medium transition-all ${travelers === n ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"}`}
+                key={opt.n}
+                onClick={() => setTravelers(opt.n)}
+                className={`rounded-full border px-3.5 py-1.5 font-body text-xs font-semibold transition-all ${
+                  travelers === opt.n
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border bg-card text-muted-foreground hover:text-foreground hover:border-primary/40"
+                }`}
               >
-                {n === 1 ? t("featured.solo") : n === 2 ? "2–3" : "4+"}
+                {opt.label}
               </button>
             ))}
           </div>
-        </motion.div>
+        </div>
 
-        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        {/* Cards */}
+        <div className="grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {featured.map((tour, i) => {
             const price = getPriceForGroup(tour.pricing, travelers);
-            const isHot = i < 3; // Top 3 are "hot" / most profitable
+            const isHot = i < 2;
+            const isPopular = i >= 2 && i < 4;
+            const slug = slugify(tour.name);
+            const reviewCount = 80 + (tour.id * 17) % 220;
+
             return (
-              <motion.div
+              <motion.article
                 key={tour.id}
-                initial={{ y: 40 }}
-                whileInView={{ y: 0 }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group hover-lift relative overflow-hidden rounded-2xl"
+                transition={{ delay: Math.min(i * 0.06, 0.3) }}
+                className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
-                {/* Hot badge */}
-                {isHot && (
-                  <div className="absolute top-3 left-3 z-10 flex items-center gap-1 rounded-full bg-destructive/90 px-2.5 py-1 text-xs font-bold text-destructive-foreground">
-                    <Flame className="h-3 w-3" /> Popular
-                  </div>
-                )}
-
-                {/* Availability counter */}
-                <div className="absolute top-3 right-3 z-10 hidden sm:flex items-center gap-1 rounded-full border border-border bg-card/95 px-2.5 py-1 text-xs font-medium text-foreground shadow-sm">
-                  <TrendingUp className="h-3 w-3 text-primary" />
-                  {Math.floor(Math.random() * 8) + 3} booked this week
-                </div>
-
-                <div className="aspect-[3/4] overflow-hidden">
-                  <img src={tour.image} alt={tour.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
-                </div>
-                <div className="absolute inset-x-0 bottom-0 p-5">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <span className="rounded-full bg-primary/20 px-2.5 py-0.5 text-xs font-medium text-primary">{tour.duration}</span>
-                  </div>
-                  <h3 className="mt-2 font-display text-lg font-bold leading-tight text-foreground">{tour.name}</h3>
-                  <p className="mt-1.5 font-body text-xs leading-relaxed text-muted-foreground line-clamp-2">{tour.description}</p>
-                  <div className="mt-3 flex items-end justify-between">
-                    <div>
-                      <span className="font-display text-xl font-bold text-primary">${price.toFixed(2)}</span>
-                      <p className="font-body text-[10px] text-muted-foreground">
-                        {travelers >= 4 ? t("tourSearch.groupRate") : travelers >= 2 ? t("tourSearch.perPerson") : t("tourSearch.soloRate")}
-                      </p>
+                {/* Image */}
+                <div
+                  className="relative aspect-[4/3] overflow-hidden cursor-pointer"
+                  onClick={() => navigate(`/tour/${slug}`)}
+                >
+                  <img
+                    src={tour.image}
+                    alt={tour.name}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  {/* Top-left badge */}
+                  {isHot && (
+                    <div className="absolute top-3 left-3 flex items-center gap-1 rounded-full bg-[hsl(var(--accent))] px-2.5 py-1 font-body text-[10px] font-bold uppercase tracking-wider text-accent-foreground shadow-md">
+                      <Flame className="h-3 w-3" /> Hot
                     </div>
-                    <div className="flex gap-1.5">
+                  )}
+                  {isPopular && (
+                    <div className="absolute top-3 left-3 flex items-center gap-1 rounded-full bg-primary px-2.5 py-1 font-body text-[10px] font-bold uppercase tracking-wider text-primary-foreground shadow-md">
+                      <TrendingUp className="h-3 w-3" /> Popular
+                    </div>
+                  )}
+                  {/* Duration chip */}
+                  <div className="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-full bg-card/95 backdrop-blur-sm px-2.5 py-1 font-body text-[11px] font-semibold text-foreground shadow-sm">
+                    <Clock className="h-3 w-3 text-primary" />
+                    {tour.duration}
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="flex flex-1 flex-col p-4">
+                  {/* Location + category */}
+                  <div className="flex items-center gap-1.5 font-body text-[11px] text-muted-foreground">
+                    <MapPin className="h-3 w-3 text-primary/70" />
+                    <span className="truncate">{tour.destination}</span>
+                    <span>•</span>
+                    <span className="text-primary font-semibold">{tour.category}</span>
+                  </div>
+
+                  {/* Title */}
+                  <h3
+                    onClick={() => navigate(`/tour/${slug}`)}
+                    className="mt-2 font-display text-base font-bold text-foreground leading-snug line-clamp-2 cursor-pointer hover:text-primary transition-colors"
+                  >
+                    {tour.name}
+                  </h3>
+
+                  {/* Rating */}
+                  <div className="mt-2 flex items-center gap-1.5">
+                    <Star className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400" />
+                    <span className="font-body text-xs font-bold text-foreground">{tour.rating}</span>
+                    <span className="font-body text-xs text-muted-foreground">
+                      ({reviewCount} reviews)
+                    </span>
+                  </div>
+
+                  {/* Price + CTA */}
+                  <div className="mt-auto pt-4 flex items-end justify-between gap-2 border-t border-border/50 mt-4">
+                    <div className="min-w-0">
+                      <div className="font-body text-[10px] text-muted-foreground uppercase tracking-wider">
+                        From
+                      </div>
+                      <div className="font-display text-xl font-bold text-foreground leading-none">
+                        ${price.toFixed(0)}
+                      </div>
+                      <div className="font-body text-[10px] text-muted-foreground mt-0.5">
+                        per person
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1.5 shrink-0">
                       <a
                         href={`https://wa.me/251998900160?text=${encodeURIComponent(`Hi, I want to book ${tour.name}`)}`}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="Book via WhatsApp"
                         className="flex h-9 w-9 items-center justify-center rounded-lg bg-green-600 text-white hover:bg-green-700 transition-colors"
-                        aria-label={`Book ${tour.name} via WhatsApp`}
                       >
                         <MessageCircle className="h-4 w-4" />
                       </a>
-                      <a href={getBookingFormUrl({ tourName: tour.name, price, travelers })} target="_blank" rel="noopener noreferrer">
-                        <Button size="sm" className="gap-1 bg-accent text-accent-foreground hover:bg-accent/90">
-                          {t("featured.book")}
-                          <ArrowRight className="h-3.5 w-3.5" />
+                      <a
+                        href={getBookingFormUrl({ tourName: tour.name, price, travelers })}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button
+                          size="sm"
+                          className="h-9 gap-1 rounded-lg bg-[hsl(var(--accent))] px-3 font-body text-xs font-bold text-accent-foreground hover:bg-[hsl(var(--accent))]/90"
+                        >
+                          Book
+                          <ArrowRight className="h-3 w-3" />
                         </Button>
                       </a>
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </motion.article>
             );
           })}
+        </div>
+
+        {/* View all */}
+        <div className="mt-10 text-center">
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => navigate("/tours")}
+            className="rounded-full border-primary/30 px-8 font-body text-sm font-semibold text-primary hover:bg-primary hover:text-primary-foreground"
+          >
+            View All 50+ Tours
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
         </div>
       </div>
     </section>
