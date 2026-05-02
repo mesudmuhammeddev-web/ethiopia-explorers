@@ -84,11 +84,10 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
-            style={{ textShadow: "0 2px 24px rgba(0,0,0,0.35)" }}
+            className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[64px]"
+            style={{ textShadow: "0 2px 24px rgba(0,0,0,0.45)" }}
           >
-            {t("hero.title1")} <span className="italic text-white">{t("hero.title2")}</span> &{" "}
-            <span className="italic text-white">{t("hero.title3")}</span>
+            Explore Ethiopia with <span className="italic">Local Experts</span> — Safe, Private & Fully Licensed Tours
           </motion.h1>
 
           <motion.p
@@ -98,13 +97,33 @@ const HeroSection = () => {
             className="mt-5 max-w-xl font-body text-base text-white/90 sm:text-lg"
             style={{ textShadow: "0 2px 16px rgba(0,0,0,0.35)" }}
           >
-            Discover ancient civilizations, dramatic landscapes, and authentic cultural journeys across Ethiopia.
+            Authentic cultural journeys, adventure tours, and custom travel experiences across Ethiopia — guided by trusted local experts.
           </motion.p>
+
+          {/* Trust bar — 4 checkmarks */}
+          <motion.ul
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.35 }}
+            className="mt-6 flex flex-wrap gap-x-5 gap-y-2 font-body text-xs sm:text-sm font-medium text-white/95"
+          >
+            {[
+              "Licensed Ethiopian Travel Agency",
+              "500+ Verified Travelers",
+              "4.9★ Average Rating",
+              "24/7 WhatsApp Support",
+            ].map((item) => (
+              <li key={item} className="flex items-center gap-1.5" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}>
+                <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[hsl(var(--accent))] text-[10px] font-bold text-accent-foreground">✓</span>
+                {item}
+              </li>
+            ))}
+          </motion.ul>
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
+            transition={{ duration: 0.7, delay: 0.45 }}
             className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
           >
             <Button
@@ -113,35 +132,27 @@ const HeroSection = () => {
               className="h-12 gap-2 rounded-full bg-[hsl(var(--accent))] px-7 font-body text-sm font-semibold text-accent-foreground shadow-xl transition-transform hover:scale-[1.02]"
             >
               <a
-                href="https://wa.me/251998900160?text=Hello!%20I'm%20interested%20in%20booking%20a%20tour."
+                href="https://wa.me/251998900160?text=Hi!%20I'd%20like%20to%20plan%20my%20Ethiopia%20trip."
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <MessageCircle className="h-4 w-4" />
-                {t("hero.bookNow")}
+                Plan My Trip on WhatsApp
               </a>
             </Button>
             <Button
               size="lg"
               variant="outline"
-              onClick={() => navigate("/tours")}
+              onClick={() => {
+                const el = document.getElementById("experiences");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+                else navigate("/tours");
+              }}
               className="h-12 gap-2 rounded-full border-white/40 bg-white/10 px-7 font-body text-sm font-semibold text-white backdrop-blur-md hover:bg-white/20 hover:text-white"
             >
-              Explore Tours
+              View Top Tours
               <ArrowRight className="h-4 w-4" />
             </Button>
-
-            {/* Inline rating proof */}
-            <div className="hidden sm:flex items-center gap-2 pl-2">
-              <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-              <span className="font-body text-sm font-medium text-white">
-                4.9 <span className="text-white/70">· 500+ travelers</span>
-              </span>
-            </div>
           </motion.div>
         </div>
 
