@@ -1,10 +1,15 @@
 import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import SEOHead from "@/components/SEOHead";
+import AboutHero from "@/components/about/AboutHero";
+import OurStory from "@/components/about/OurStory";
+import WhyTrustUs from "@/components/about/WhyTrustUs";
+import OurValues from "@/components/about/OurValues";
+import MeetTheTeam from "@/components/about/MeetTheTeam";
+import WhatMakesDifferent from "@/components/about/WhatMakesDifferent";
+import LicensedSection from "@/components/about/LicensedSection";
+import AboutFinalCTA from "@/components/about/AboutFinalCTA";
 
-const AboutEthiopia = lazy(() => import("@/components/AboutEthiopia"));
-const WhyChooseUs = lazy(() => import("@/components/WhyChooseUs"));
-const Testimonials = lazy(() => import("@/components/Testimonials"));
 const Footer = lazy(() => import("@/components/Footer"));
 
 const SectionFallback = () => (
@@ -17,25 +22,24 @@ const AboutPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="About Ethiopia Travel Explorer — Your Trusted Ethiopia Tour Agency"
-        description="Learn about Ethiopia Travel Explorer, our team, our story, and why 500+ travelers trust us. 50+ tours, 15+ destinations, 4.9★ rating."
+        title="About Us — Licensed Ethiopian Travel Agency | Ethiopia Travel Explorer"
+        description="Fully licensed Ethiopian travel agency based in Addis Ababa. 500+ happy travelers, 50+ tours, certified local guides, 24/7 WhatsApp support. Meet the team behind your journey."
         canonicalPath="/about"
       />
       <Navbar />
-      <div className="pt-24">
-        <Suspense fallback={<SectionFallback />}>
-          <AboutEthiopia />
-        </Suspense>
-        <Suspense fallback={<SectionFallback />}>
-          <WhyChooseUs />
-        </Suspense>
-        <Suspense fallback={<SectionFallback />}>
-          <Testimonials />
-        </Suspense>
-        <Suspense fallback={<SectionFallback />}>
-          <Footer />
-        </Suspense>
-      </div>
+      <main className="pt-20">
+        <AboutHero />
+        <OurStory />
+        <WhyTrustUs />
+        <OurValues />
+        <MeetTheTeam />
+        <WhatMakesDifferent />
+        <LicensedSection />
+        <AboutFinalCTA />
+      </main>
+      <Suspense fallback={<SectionFallback />}>
+        <Footer />
+      </Suspense>
     </div>
   );
 };
