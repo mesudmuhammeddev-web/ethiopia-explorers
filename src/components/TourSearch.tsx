@@ -233,14 +233,20 @@ const TourSearch = () => {
                       </div>
                     </div>
 
-                    {/* Expand chevron - visible on desktop inline */}
-                    <motion.div
-                      animate={{ rotate: isExpanded ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="hidden sm:block flex-shrink-0"
+                    {/* Go to tour detail page */}
+                    <motion.button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate(`/tour/${tour.slug}`);
+                      }}
+                      whileHover={{ x: 4 }}
+                      transition={{ duration: 0.2 }}
+                      aria-label={`View ${tour.name} details`}
+                      className="hidden sm:flex flex-shrink-0 items-center justify-center h-10 w-10 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
                     >
-                      <ChevronDown className="h-5 w-5 text-muted-foreground" />
-                    </motion.div>
+                      <ArrowRight className="h-5 w-5" />
+                    </motion.button>
                   </div>
 
                   {/* Bottom: availability + price + actions (stacks on mobile) */}
