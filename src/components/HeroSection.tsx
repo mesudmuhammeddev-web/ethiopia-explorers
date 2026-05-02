@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Search, ChevronDown, MessageCircle, Star, ShieldCheck } from "lucide-react";
+import { ArrowRight, Search, ChevronDown, MessageCircle, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
