@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { tours, getPriceForGroup, slugify } from "@/data/tours";
 import { getBookingFormUrl } from "@/lib/bookingForm";
 
-const featuredIds = [1, 2, 3, 4, 7, 9, 13, 14];
+// Best sellers only — Lake Tana, Lalibela, Simien, Danakil, Omo Valley, Harar
+const featuredIds = [1, 6, 7, 9, 14, 13];
 
 const FeaturedExperiences = () => {
   const navigate = useNavigate();
@@ -22,13 +23,13 @@ const FeaturedExperiences = () => {
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between mb-10">
           <div>
             <span className="font-body text-xs sm:text-sm tracking-widest text-primary uppercase font-semibold">
-              Top Experiences
+              Best Sellers
             </span>
             <h2 className="mt-2 font-display text-3xl sm:text-4xl font-bold text-foreground">
-              Featured Ethiopia tours
+              Most Booked Experiences in Ethiopia
             </h2>
             <p className="mt-2 font-body text-sm sm:text-base text-muted-foreground">
-              Hand-picked, top-rated, and instantly bookable.
+              The 6 tours travelers love most — hand-picked and instantly bookable.
             </p>
           </div>
 
@@ -55,7 +56,7 @@ const FeaturedExperiences = () => {
         </div>
 
         {/* Cards */}
-        <div className="grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((tour, i) => {
             const price = getPriceForGroup(tour.pricing, travelers);
             const isHot = i < 2;
@@ -180,7 +181,7 @@ const FeaturedExperiences = () => {
             onClick={() => navigate("/tours")}
             className="rounded-full border-primary/30 px-8 font-body text-sm font-semibold text-primary hover:bg-primary hover:text-primary-foreground"
           >
-            View All 50+ Tours
+            View All Tours
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>
