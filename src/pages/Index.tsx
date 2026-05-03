@@ -4,11 +4,16 @@ import HeroSection from "@/components/HeroSection";
 import SEOHead from "@/components/SEOHead";
 
 const TrustStats = lazy(() => import("@/components/TrustStats"));
+const MicroTrust = lazy(() => import("@/components/MicroTrust"));
 const FeaturedExperiences = lazy(() => import("@/components/FeaturedExperiences"));
 const WhyChooseUs = lazy(() => import("@/components/WhyChooseUs"));
 const Destinations = lazy(() => import("@/components/Destinations"));
 const HowItWorks = lazy(() => import("@/components/HowItWorks"));
 const Testimonials = lazy(() => import("@/components/Testimonials"));
+const TrustedPartners = lazy(() => import("@/components/TrustedPartners"));
+const MeetTheTeamHome = lazy(() => import("@/components/MeetTheTeamHome"));
+const LicenseProof = lazy(() => import("@/components/LicenseProof"));
+const WhatsAppTrust = lazy(() => import("@/components/WhatsAppTrust"));
 const FinalCTA = lazy(() => import("@/components/FinalCTA"));
 const Footer = lazy(() => import("@/components/Footer"));
 
@@ -29,19 +34,29 @@ const Index = () => {
       <Navbar />
       {/* 1. Hero */}
       <HeroSection />
-      {/* 2. Social proof strip */}
+      {/* 2. Trust bar — instant credibility */}
       <Suspense fallback={<SectionFallback />}><TrustStats /></Suspense>
-      {/* 3. Featured tours — 6 best sellers only */}
+      {/* 3. Micro-trust strip */}
+      <Suspense fallback={<SectionFallback />}><MicroTrust /></Suspense>
+      {/* 4. Featured tours — 6 best sellers only */}
       <Suspense fallback={<SectionFallback />}><FeaturedExperiences /></Suspense>
-      {/* 4. Why travel with us */}
+      {/* 5. Why travel with us */}
       <Suspense fallback={<SectionFallback />}><WhyChooseUs /></Suspense>
-      {/* 5. Destinations */}
+      {/* 6. Destinations */}
       <Suspense fallback={<SectionFallback />}><Destinations /></Suspense>
-      {/* 6. How it works */}
+      {/* 7. How it works */}
       <Suspense fallback={<SectionFallback />}><HowItWorks /></Suspense>
-      {/* 7. Testimonials */}
+      {/* 8. Real testimonials with flags & avatars */}
       <Suspense fallback={<SectionFallback />}><Testimonials /></Suspense>
-      {/* 8 + 9. Final CTA (with trust block) */}
+      {/* 9. Meet the local team */}
+      <Suspense fallback={<SectionFallback />}><MeetTheTeamHome /></Suspense>
+      {/* 10. Trusted partners */}
+      <Suspense fallback={<SectionFallback />}><TrustedPartners /></Suspense>
+      {/* 11. License & legal proof */}
+      <Suspense fallback={<SectionFallback />}><LicenseProof /></Suspense>
+      {/* 12. WhatsApp trust booster */}
+      <Suspense fallback={<SectionFallback />}><WhatsAppTrust /></Suspense>
+      {/* 13. Final CTA */}
       <Suspense fallback={<SectionFallback />}><FinalCTA /></Suspense>
       <Suspense fallback={<SectionFallback />}><Footer /></Suspense>
     </div>
