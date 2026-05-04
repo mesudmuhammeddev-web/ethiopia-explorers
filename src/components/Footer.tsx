@@ -4,18 +4,15 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
-const destinations = ["Lake Tana", "Lalibela", "Simien Mountains", "Danakil Depression", "Gondar", "Axum", "Omo Valley", "Harar"];
-
 const Footer = () => {
   const { t } = useTranslation();
   const [email, setEmail] = useState("");
 
   const quickLinks = [
-    { label: t("footer.bespokeTours"), href: "/tours" },
-    { label: t("nav.destinations"), href: "/destinations" },
-    { label: t("nav.experiences"), href: "/tours" },
-    { label: t("footer.travelGuide"), href: "/about" },
-    { label: t("footer.aboutUs"), href: "/about" },
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact", href: "/contact" },
   ];
 
   return (
@@ -61,14 +58,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-display text-sm font-bold tracking-wider text-foreground uppercase">{t("footer.topDestinations")}</h4>
-            <ul className="mt-4 space-y-3">
-              {destinations.map((dest) => (
-                <li key={dest}><Link to="/destinations" className="font-body text-sm text-muted-foreground transition-colors hover:text-primary">{dest}</Link></li>
-              ))}
-            </ul>
-          </div>
+          <div className="hidden lg:block" />
 
           <div>
             <h4 className="font-display text-sm font-bold tracking-wider text-foreground uppercase">{t("footer.contactUs")}</h4>
