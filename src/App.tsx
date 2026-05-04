@@ -10,9 +10,6 @@ import Index from "./pages/Index";
 import WhatsAppButton from "./components/WhatsAppButton";
 import HelpPopup from "./components/HelpPopup";
 
-const TourDetail = lazy(() => import("./pages/TourDetail"));
-const ToursPage = lazy(() => import("./pages/ToursPage"));
-const DestinationsPage = lazy(() => import("./pages/DestinationsPage"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -44,12 +41,6 @@ const App = () => (
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/tours" element={
-            <Suspense fallback={<PageFallback />}><ToursPage /></Suspense>
-          } />
-          <Route path="/destinations" element={
-            <Suspense fallback={<PageFallback />}><DestinationsPage /></Suspense>
-          } />
           <Route path="/about" element={
             <Suspense fallback={<PageFallback />}><AboutPage /></Suspense>
           } />
@@ -61,9 +52,6 @@ const App = () => (
           } />
           <Route path="/blog/:slug" element={
             <Suspense fallback={<PageFallback />}><BlogPost /></Suspense>
-          } />
-          <Route path="/tour/:slug" element={
-            <Suspense fallback={<PageFallback />}><TourDetail /></Suspense>
           } />
           <Route path="*" element={
             <Suspense fallback={<PageFallback />}><NotFound /></Suspense>
