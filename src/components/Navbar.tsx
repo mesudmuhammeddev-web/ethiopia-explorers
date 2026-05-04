@@ -16,7 +16,58 @@ type NavEntry = {
 };
 
 const navMenu: NavEntry[] = [
-  { key: "home", label: "Home", href: "/" },
+  {
+    key: "experiences",
+    label: "Experiences",
+    tagline: "Inspiration — discover Ethiopia by region",
+    items: [
+      { label: "Northern Heritage", href: "/contact?region=north" },
+      { label: "Danakil & Afar", href: "/contact?region=danakil" },
+      { label: "Omo Valley", href: "/contact?region=omo" },
+      { label: "Simien Mountains", href: "/contact?region=simien" },
+      { label: "Bale Highlands", href: "/contact?region=bale" },
+      { label: "Rift Valley", href: "/contact?region=rift-valley" },
+      { label: "Harar & Eastern Ethiopia", href: "/contact?region=harar" },
+      { label: "Addis Ababa", href: "/contact?region=addis" },
+      { label: "Coffee Origin", href: "/contact?region=coffee" },
+    ],
+  },
+  {
+    key: "tours",
+    label: "Tours",
+    tagline: "Browse & book curated journeys",
+    items: [
+      { label: "All Tours", href: "/contact" },
+      { label: "Day Trips", href: "/contact?type=day" },
+      { label: "Multi-Day Tours", href: "/contact?type=multi-day" },
+      { label: "Group Departures", href: "/contact?type=group" },
+      { label: "Private Tours", href: "/contact?type=private" },
+    ],
+  },
+  {
+    key: "activities",
+    label: "Activities",
+    tagline: "Find your kind of adventure",
+    items: [
+      { label: "Trekking & Hiking", href: "/contact?activity=trekking" },
+      { label: "Cultural Experiences", href: "/contact?activity=cultural" },
+      { label: "Coffee Tours", href: "/contact?activity=coffee" },
+      { label: "Wildlife & Safari", href: "/contact?activity=wildlife" },
+      { label: "Birding", href: "/contact?activity=birding" },
+      { label: "Festivals & Events", href: "/contact?activity=festivals" },
+      { label: "Adventure", href: "/contact?activity=adventure" },
+    ],
+  },
+  {
+    key: "private",
+    label: "Private Journeys",
+    tagline: "Tailor-made luxury & special travel",
+    items: [
+      { label: "Tailor-Made Trips", href: "/contact?type=tailor-made" },
+      { label: "Luxury Experiences", href: "/contact?type=luxury" },
+      { label: "Honeymoon / Special Travel", href: "/contact?type=honeymoon" },
+    ],
+  },
   { key: "blog", label: "Blog", href: "/blog" },
   { key: "about", label: "About", href: "/about" },
   { key: "contact", label: "Contact", href: "/contact" },
