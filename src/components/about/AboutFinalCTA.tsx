@@ -40,7 +40,7 @@ const AboutFinalCTA = () => {
               variant="outline"
               className="border-white bg-white/10 text-white hover:bg-white hover:text-primary"
             >
-              <Link to="/tours">
+              <Link to="/contact">
                 <Sparkles className="mr-2 h-5 w-5" />
                 Get Instant Custom Trip Plan
               </Link>

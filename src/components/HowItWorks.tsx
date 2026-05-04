@@ -5,14 +5,14 @@ const steps = [
   {
     icon: MapPin,
     step: "01",
-    title: "Choose Destination",
-    text: "Browse 15+ Ethiopian destinations from Lalibela to the Omo Valley.",
+    title: "Tell Us Your Dream",
+    text: "Share your interests, dates, and travel style with our local team.",
   },
   {
     icon: Calendar,
     step: "02",
-    title: "Pick Your Tour",
-    text: "Select from 50+ guided tours tailored to your interests and pace.",
+    title: "Get a Custom Plan",
+    text: "We craft a tailor-made Ethiopia itinerary just for you.",
   },
   {
     icon: MessageCircle,

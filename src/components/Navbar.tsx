@@ -16,58 +16,8 @@ type NavEntry = {
 };
 
 const navMenu: NavEntry[] = [
-  {
-    key: "experiences",
-    label: "Experiences",
-    tagline: "Inspiration — discover Ethiopia by region",
-    items: [
-      { label: "Northern Heritage", href: "/destinations?region=north" },
-      { label: "Danakil & Afar", href: "/destinations?region=danakil" },
-      { label: "Omo Valley", href: "/destinations?region=omo" },
-      { label: "Simien Mountains", href: "/destinations?region=simien" },
-      { label: "Bale Highlands", href: "/destinations?region=bale" },
-      { label: "Rift Valley", href: "/destinations?region=rift-valley" },
-      { label: "Harar & Eastern Ethiopia", href: "/destinations?region=harar" },
-      { label: "Addis Ababa", href: "/destinations?region=addis" },
-      { label: "Coffee Origin", href: "/destinations?region=coffee" },
-    ],
-  },
-  {
-    key: "tours",
-    label: "Tours",
-    tagline: "Browse & book curated journeys",
-    items: [
-      { label: "All Tours", href: "/tours" },
-      { label: "Day Trips", href: "/tours?type=day" },
-      { label: "Multi-Day Tours", href: "/tours?type=multi-day" },
-      { label: "Group Departures", href: "/tours?type=group" },
-      { label: "Private Tours", href: "/tours?type=private" },
-    ],
-  },
-  {
-    key: "activities",
-    label: "Activities",
-    tagline: "Find your kind of adventure",
-    items: [
-      { label: "Trekking & Hiking", href: "/tours?activity=trekking" },
-      { label: "Cultural Experiences", href: "/tours?activity=cultural" },
-      { label: "Coffee Tours", href: "/tours?activity=coffee" },
-      { label: "Wildlife & Safari", href: "/tours?activity=wildlife" },
-      { label: "Birding", href: "/tours?activity=birding" },
-      { label: "Festivals & Events", href: "/tours?activity=festivals" },
-      { label: "Adventure", href: "/tours?activity=adventure" },
-    ],
-  },
-  {
-    key: "private",
-    label: "Private Journeys",
-    tagline: "Tailor-made luxury & special travel",
-    items: [
-      { label: "Tailor-Made Trips", href: "/tours?type=tailor-made" },
-      { label: "Luxury Experiences", href: "/tours?type=luxury" },
-      { label: "Honeymoon / Special Travel", href: "/tours?type=honeymoon" },
-    ],
-  },
+  { key: "home", label: "Home", href: "/" },
+  { key: "blog", label: "Blog", href: "/blog" },
   { key: "about", label: "About", href: "/about" },
   { key: "contact", label: "Contact", href: "/contact" },
 ];
@@ -251,7 +201,7 @@ const Navbar = () => {
 
           <Button
             size="sm"
-            onClick={() => navigate("/tours")}
+            onClick={() => navigate("/contact")}
             className="ml-2 gap-2 bg-accent text-accent-foreground hover:bg-accent/90 cursor-pointer"
           >
             <Phone className="h-3.5 w-3.5" />
@@ -348,7 +298,7 @@ const Navbar = () => {
               <Button
                 onClick={() => {
                   setMobileOpen(false);
-                  navigate("/tours");
+                  navigate("/contact");
                 }}
                 className="mt-3 bg-accent text-accent-foreground hover:bg-accent/90"
               >
