@@ -15,6 +15,8 @@ const ContactPage = lazy(() => import("./pages/ContactPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const BlogPage = lazy(() => import("./pages/BlogPage"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
+const NorthernHeritageHub = lazy(() => import("./pages/NorthernHeritageHub"));
+const NorthernHeritageTour = lazy(() => import("./pages/NorthernHeritageTour"));
 
 const queryClient = new QueryClient();
 
@@ -52,6 +54,12 @@ const App = () => (
           } />
           <Route path="/blog/:slug" element={
             <Suspense fallback={<PageFallback />}><BlogPost /></Suspense>
+          } />
+          <Route path="/experiences/northern-heritage" element={
+            <Suspense fallback={<PageFallback />}><NorthernHeritageHub /></Suspense>
+          } />
+          <Route path="/experiences/northern-heritage/:slug" element={
+            <Suspense fallback={<PageFallback />}><NorthernHeritageTour /></Suspense>
           } />
           <Route path="*" element={
             <Suspense fallback={<PageFallback />}><NotFound /></Suspense>
