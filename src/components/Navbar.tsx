@@ -21,7 +21,7 @@ const navMenu: NavEntry[] = [
     label: "Experiences",
     tagline: "Inspiration — discover Ethiopia by region",
     items: [
-      { label: "Northern Heritage", href: "/experiences/northern-heritage" },
+      { label: "Northern Heritage", href: "/contact?region=north" },
       { label: "Danakil & Afar", href: "/contact?region=danakil" },
       { label: "Omo Valley", href: "/contact?region=omo" },
       { label: "Simien Mountains", href: "/contact?region=simien" },
