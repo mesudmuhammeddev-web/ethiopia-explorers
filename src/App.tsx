@@ -17,6 +17,9 @@ const BlogPage = lazy(() => import("./pages/BlogPage"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const NorthernHeritageHub = lazy(() => import("./pages/NorthernHeritageHub"));
 const NorthernHeritageTour = lazy(() => import("./pages/NorthernHeritageTour"));
+const ExperienceHub = lazy(() => import("./pages/ExperienceHub"));
+const ExperienceTour = lazy(() => import("./pages/ExperienceTour"));
+const ServicePage = lazy(() => import("./pages/ServicePage"));
 
 const queryClient = new QueryClient();
 
@@ -60,6 +63,15 @@ const App = () => (
           } />
           <Route path="/experiences/northern-heritage/:slug" element={
             <Suspense fallback={<PageFallback />}><NorthernHeritageTour /></Suspense>
+          } />
+          <Route path="/experiences/:category" element={
+            <Suspense fallback={<PageFallback />}><ExperienceHub /></Suspense>
+          } />
+          <Route path="/experiences/:category/:slug" element={
+            <Suspense fallback={<PageFallback />}><ExperienceTour /></Suspense>
+          } />
+          <Route path="/services/:slug" element={
+            <Suspense fallback={<PageFallback />}><ServicePage /></Suspense>
           } />
           <Route path="*" element={
             <Suspense fallback={<PageFallback />}><NotFound /></Suspense>
